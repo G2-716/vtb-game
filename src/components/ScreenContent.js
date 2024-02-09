@@ -5,74 +5,21 @@ import {useProgress} from "../contexts/ProgressContext";
 import {SCREENS} from "../constants/screens";
 import {Intro1} from "./screens/Intro1";
 import {Intro2} from "./screens/Intro2";
-import {Intro3} from './screens/Intro3'
-import {Intro4} from './screens/Intro4'
-import {Lift1} from './screens/Lift1'
-import {Lift2} from './screens/Lift2'
-import {Lift3} from './screens/Lift3'
-import {Game11} from './screens/Game11'
-import {Game12} from './screens/Game12'
-import {Game13} from './screens/Game13'
-import {Game14} from './screens/Game14'
-import {Game15} from './screens/Game15'
-import {Game16} from './screens/Game16'
-import {Game17} from './screens/Game17'
-import {Game18} from './screens/Game18'
-import {Game19} from './screens/Game19'
-import {Game110} from './screens/Game110'
-import {Game21} from './screens/Game21'
-import {Game22} from './screens/Game22'
-import {Game23} from './screens/Game23'
-import {Game24} from './screens/Game24'
-import {Game25} from './screens/Game25'
-import {Game26} from './screens/Game26'
-import {Game27} from './screens/Game27'
-import {Game28} from './screens/Game28'
-import {Game29} from './screens/Game29'
-import {Game31} from './screens/Game31'
-import {Game32} from './screens/Game32'
-import {Game33} from './screens/Game33'
-import {Game34} from './screens/Game34'
-import {Game35} from './screens/Game35'
-import {Game36} from './screens/Game36'
-import {Game37} from './screens/Game37'
-import {Game38} from './screens/Game38'
-import {Game39} from './screens/Game39'
-import {Game310} from './screens/Game310'
-import {Game41} from './screens/Game41'
-import {Game42} from './screens/Game42'
-import {Game43} from './screens/Game43'
-import {Game44} from './screens/Game44'
-import {Game45} from './screens/Game45'
-import {Game46} from './screens/Game46'
-import {Game47} from './screens/Game47'
-import {Game48} from './screens/Game48'
-import {Game49} from './screens/Game49'
-import {Game410} from './screens/Game410'
-import {Game51} from './screens/Game51'
-import {Game52} from './screens/Game52'
-import {Game53} from './screens/Game53'
-import {Game54} from './screens/Game54'
-import {Game55} from './screens/Game55'
-import {Game56} from './screens/Game56'
-import {Game57} from './screens/Game57'
-import {Game58} from './screens/Game58'
-import {Game59} from './screens/Game59'
-import {Internship1} from './screens/Internship1'
-import {Internship2} from './screens/Internship2'
-import {Internship3} from './screens/Internship3'
-import {Test1} from './screens/Test1'
-import {Test2} from './screens/Test2'
-import {Test3} from './screens/Test3'
-import {Test4} from './screens/Test4'
-import {Test5} from './screens/Test5'
-import {Test6} from './screens/Test6'
-import {Test7} from './screens/Test7'
-import {Test8} from './screens/Test8'
-import {Test9} from './screens/Test9'
-import {Test10} from './screens/Test10'
-import {Test11} from './screens/Test11'
-import {Test12} from './screens/Test12'
+import {Intro3} from './screens/Intro3';
+import {Intro4} from './screens/Intro4';
+import {Lift1} from './screens/Lift1';
+import {Lift2} from './screens/Lift2';
+import {Lift3} from './screens/Lift3';
+import {Game11, Game110, Game12, Game13, Game14, Game15, Game16, Game17, Game18, Game19} from './screens/floor3';
+import {Game21, Game22, Game23, Game24, Game25, Game26, Game27, Game28, Game29} from './screens/floor2';
+import {Game31, Game310, Game32, Game33, Game34, Game35, Game36, Game37, Game38, Game39} from './screens/floor1';
+import {Game41, Game410, Game42, Game43, Game44, Game45, Game46, Game47, Game48, Game49} from './screens/floor5';
+import {Game51, Game52, Game53, Game54, Game55, Game56, Game57, Game58, Game59} from './screens/floor4';
+import { 
+    Internship1, Internship2, Internship3, Test1, Test10, Test11, 
+    Test12, Test2, Test3, Test4, Test5, Test6, Test7, Test8, Test9 
+} from './screens/floor6';
+
 import {Final1} from './screens/Final1'
 import {Final2} from './screens/Final2'
 import {Final3} from './screens/Final3'

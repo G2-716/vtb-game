@@ -1,0 +1,12 @@
+import {useProgress} from "../../../contexts/ProgressContext";
+
+export function Test3() {
+    const {next} = useProgress()
+
+    return (
+        <div>
+            <h1>Test3</h1>
+            <button onClick={() => next()}>next</button>
+        </div>
+    )
+}
