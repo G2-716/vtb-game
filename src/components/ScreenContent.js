@@ -1,4 +1,5 @@
 import {useMemo} from "react";
+import {SwitchTransition, CSSTransition} from "react-transition-group";
 import styled from '@emotion/styled'
 import {useProgress} from "../contexts/ProgressContext";
 import {SCREENS} from "../constants/screens";
@@ -152,10 +153,32 @@ const SCREEN_COMPONENTS = {
     [SCREENS.FINAL_3]: Final3,
 }
 
+const SWITCH_DURATION = 400;
+
+const SWITCH_NAME = 'switch';
+
 const Wrapper = styled.div`
     position: relative;
     width: 100%;
     height: 100%;
+
+    &.${SWITCH_NAME}-enter {
+        opacity: 0;
+    }
+
+    &.${SWITCH_NAME}-enter-active {
+        opacity: 1;
+        transition: opacity ${SWITCH_DURATION}ms;
+    }
+
+    &.${SWITCH_NAME}-exit {
+        opacity: 1;
+    }
+
+    &.${SWITCH_NAME}-exit-active {
+        opacity: 0;
+        transition: opacity ${SWITCH_DURATION}ms;
+    }
 `
 
 export function ScreenContent() {
@@ -163,8 +186,12 @@ export function ScreenContent() {
     const Screen = useMemo(() => SCREEN_COMPONENTS[screen], [screen])
 
     return Screen && (
-        <Wrapper>
-            <Screen />
-        </Wrapper>
+        <SwitchTransition mode='out-in'>
+            <CSSTransition key={screen} timeout={SWITCH_DURATION} classNames={SWITCH_NAME}>
+                <Wrapper>
+                    <Screen />
+                </Wrapper>
+            </CSSTransition>
+        </SwitchTransition>
     )
 }
