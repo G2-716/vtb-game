@@ -1,12 +1,9 @@
 import {useProgress} from "../../contexts/ProgressContext";
+import { BgScreenWrapper } from "../shared/BgScreenWrapper";
+import pic from "../../assets/images/elevator1.png";
 
 export function Lift1() {
     const {next} = useProgress()
 
-    return (
-        <div>
-            <h1>Lift1</h1>
-            <button onClick={() => next()}>next</button>
-        </div>
-    )
+    return <BgScreenWrapper background={pic} onClick={() => next()} isIcon />
 }

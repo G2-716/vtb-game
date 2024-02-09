@@ -1,0 +1,20 @@
+import styled from "@emotion/styled";
+import { BgScreenWrapper } from "./BgScreenWrapper";
+
+const Wrapper = styled.div`
+    width: 100%;
+    height: 100%;
+    background: url(${({background}) => background}) no-repeat 0 0 /cover;
+`;
+
+const ScreenStyled = styled(BgScreenWrapper)`
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+`;
+
+export const BgImageScreen = ({ image, onClick, background, isIcon }) => (
+    <Wrapper background={background}>
+        <ScreenStyled background={image} text={"Познакомиться"} onClick={onClick} isIcon={isIcon}/>
+    </Wrapper>
+)

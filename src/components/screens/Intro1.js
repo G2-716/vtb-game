@@ -1,12 +1,11 @@
 import {useProgress} from "../../contexts/ProgressContext";
+import pic from '../../assets/images/start.png';
+import {BgScreenWrapper} from '../shared/BgScreenWrapper';
 
 export function Intro1() {
     const {next} = useProgress()
 
     return (
-        <div>
-            <h1>Intro1</h1>
-            <button onClick={() => next()}>next</button>
-        </div>
+        <BgScreenWrapper background={pic} onClick={() => next()} text="Вперёд" />
     )
 }

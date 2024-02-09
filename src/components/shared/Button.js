@@ -33,6 +33,7 @@ const ButtonStyled = styled.button`
     padding: ${({$size}) => $size === BUTTON_SIZE.md ? 'var(--spacing_x2) var(--spacing_x4)' : 'var(--spacing) var(--spacing_x2)'};
     border-radius: 45px;
     font-size: 18px;
+    width: max-content;
 `;
 
 export const Button = ({ type = 'filled', size = 'md', ...props }) => <ButtonStyled $type={type} $size={size} {...props} />;

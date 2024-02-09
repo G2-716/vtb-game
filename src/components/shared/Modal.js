@@ -11,10 +11,13 @@ const ModalStyled = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 2px solid black;
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
     width: 72.8vw;
     max-width: 273px;
+    padding: 20px;
+    border: 2px solid black;
+    text-align: center;
 `;
 
 const Sign = styled.div`
