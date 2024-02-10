@@ -36,3 +36,12 @@
     font-weight: 400;
     font-style: normal;
 }
+
+
+@font-face {
+    font-family: 'ComicSansMS';
+    src: local('ComicSansMS'), local('Comic Sans MS'),
+    url('../assets/fonts/ComicSansMS/ComicSansMS.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
