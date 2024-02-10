@@ -13,11 +13,11 @@ const ModalStyled = styled.div`
     transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
-    width: 72.8vw;
-    max-width: 273px;
+    width: 72.8%;
     padding: 20px;
     border: 2px solid black;
     text-align: center;
+    background: white;
 `;
 
 const Sign = styled.div`
@@ -26,9 +26,9 @@ const Sign = styled.div`
     right: calc(0px - 22px);
 `;
 
-export const Modal = ({ children }) => (
+export const Modal = ({ className, children }) => (
     <ModalWrapper>
-        <ModalStyled>
+        <ModalStyled className={className}>
             {children}
             <Sign>
                 <svg width="12" height="50" viewBox="0 0 12 50" fill="none" xmlns="http://www.w3.org/2000/svg">

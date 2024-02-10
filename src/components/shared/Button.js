@@ -34,6 +34,8 @@ const ButtonStyled = styled.button`
     border-radius: 45px;
     font-size: 18px;
     width: max-content;
+    
+    cursor: pointer;
 `;
 
 export const Button = ({ type = 'filled', size = 'md', ...props }) => <ButtonStyled $type={type} $size={size} {...props} />;

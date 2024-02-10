@@ -1,12 +1,11 @@
-import {useProgress} from "../../../contexts/ProgressContext";
+import bg from '../../../assets/images/floor3Finish.png';
+import icon from '../../../assets/images/floor3FinishIcon.png';
+import { FinishFloorScreen } from "../../shared/FinishFloorScreen";
 
 export function Game110() {
-    const {next} = useProgress()
+    const finishText = 'Именные Гранты ВТБ — это 5 недель интенсивной прокачки навыков, ' + 
+    'мастер-классы от ведущих экспертов, карьерные консультации, подарки от Банка ВТБ и главный ' + 
+    'приз — грант в размере 200 000 рублей на профессиональное развитие для 20 лучших участников программы';
 
-    return (
-        <div>
-            <h1>Game110</h1>
-            <button onClick={() => next()}>next</button>
-        </div>
-    )
+    return <FinishFloorScreen finishText={finishText} background={bg} icon={icon}/>
 }
