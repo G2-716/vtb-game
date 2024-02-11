@@ -21,6 +21,10 @@ const ScreenStyled = styled(BgScreenWrapper)`
     @media screen and (min-height: 800px) {
         background-size: contain;
     }
+
+    @media screen and (max-width: 370px) and (min-height: 650px) {
+        background-size: contain;
+    }
 `;
 
 export const BgImageScreen = ({ image, onClick, background, isIcon }) => (
