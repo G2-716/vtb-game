@@ -1,12 +1,11 @@
 import {useProgress} from "../../../contexts/ProgressContext";
+import pic from '../../../assets/images/answer4_skills.png';
+import background from '../../../assets/images/bg_floor4.png';
+import { BgImageScreen } from "../../shared/BgImageScreen";
+import {SCREENS} from '../../../constants/screens';
 
 export function Game55() {
     const {next} = useProgress()
 
-    return (
-        <div>
-            <h1>Game55</h1>
-            <button onClick={() => next()}>next</button>
-        </div>
-    )
+    return <BgImageScreen image={pic} onClick={() => next(SCREENS.GAME_5_8)} background={background} isIcon/>
 }

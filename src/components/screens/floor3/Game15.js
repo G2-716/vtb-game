@@ -1,6 +1,6 @@
 import {useProgress} from "../../../contexts/ProgressContext";
 import pic from '../../../assets/images/answer3_values.png';
-import background from '../../../assets/images/bg_floor1.png';
+import background from '../../../assets/images/bg_floor3.png';
 import { BgImageScreen } from "../../shared/BgImageScreen";
 import {SCREENS} from '../../../constants/screens';
 

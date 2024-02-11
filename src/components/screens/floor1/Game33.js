@@ -1,12 +1,15 @@
-import {useProgress} from "../../../contexts/ProgressContext";
+import { SCREENS } from "../../../constants/screens";
+import { QuestionScreen } from "../../shared/QuestionScreen";
+import questionImg from "../../../assets/images/question1.png";
 
 export function Game33() {
-    const {next} = useProgress()
+    const answerScreens = {
+        projects: SCREENS.GAME_3_4,
+        values: SCREENS.GAME_3_5,
+        skills: SCREENS.GAME_3_6,
+        work: SCREENS.GAME_3_7,
+        game: SCREENS.GAME_3_8
+    }
 
-    return (
-        <div>
-            <h1>Game33</h1>
-            <button onClick={() => next()}>next</button>
-        </div>
-    )
+    return <QuestionScreen answerScreens={answerScreens} image={questionImg} />
 }
