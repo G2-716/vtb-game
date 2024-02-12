@@ -19,6 +19,7 @@ const ModalStyled = styled.div`
     border: 2px solid black;
     text-align: center;
     background: white;
+    white-space: pre-line;
 `;
 
 const Sign = styled.div`

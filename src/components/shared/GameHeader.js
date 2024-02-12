@@ -1,9 +1,5 @@
 import styled from "@emotion/styled";
-import { useState } from "react";
-import { SCREENS } from "../../constants/screens";
-import { useProgress } from "../../contexts/ProgressContext";
 import { useSizeRatio } from "../../contexts/SizeRatioContext";
-import { SkipModal } from './SkipModal';
 
 const Wrapper = styled.div`
     width: 100%;
@@ -44,28 +40,20 @@ const SkipButton = styled.p`
 `;
 
 
-export const GameHeader = ({ title, onClickRules, onSkip, isShownButtons = true }) => {
-    const [isSkipModal, setIsSkipModal] = useState(false);
+export const GameHeader = ({ title, onClickRules, onSkip, isHiddenButtons }) => {
     const ratio = useSizeRatio();
-    const {next} = useProgress();
-
-    const handleSkip = () => {
-        setIsSkipModal(prev => !prev);
-        onSkip?.(!isSkipModal);
-    };
 
     return (
         <>
             <Wrapper $ratio={ratio}>
                 <Title $ratio={ratio}>{title}</Title>
-                {isShownButtons && ( 
+                {!isHiddenButtons && ( 
                     <>
                         {onClickRules && <RulesButton $ratio={ratio} onClick={onClickRules}>?</RulesButton>}
-                        <SkipButton $ratio={ratio} onClick={handleSkip}>Пропустить</SkipButton>
+                        <SkipButton $ratio={ratio} onClick={onSkip}>Пропустить</SkipButton>
                     </>
                 )}
             </Wrapper>
-            {isSkipModal && (<SkipModal onContinue={handleSkip} onSkip={() => next(SCREENS.LIFT_3)}/>)}
         </>
     )
 }
