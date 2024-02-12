@@ -192,7 +192,7 @@ export const WordGame = ({isHiddenKeyboard, isBlurred}) => {
                 </Modal>
             )}
             {isSkipping && (<SkipModal onContinue={() => setIsSkipping(false)} onSkip={() => next(SCREENS.LIFT_3)}/>)}
-            {endModal.shown && <EndGameModal points={endModal.points}/>}
+            {endModal.shown && <EndGameModal points={endModal.points} onNext={() => next()}/>}
         </>
         
     );
