@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { colors } from '../../constants/colors';
+import { useSizeRatio } from '../../contexts/SizeRatioContext';
 
 export const BUTTON_TYPES = {
     filled: 'filled',
@@ -22,7 +23,7 @@ const TYPE_TO_COLOR = {
 };
 
 const ButtonStyled = styled.button`
-    --spacing: 10px;
+    --spacing: calc(10px * ${({$ratio}) => $ratio});
     --spacing_x2: calc(var(--spacing) * 2);
     --spacing_x4: calc(var(--spacing) * 4);
 
@@ -31,11 +32,15 @@ const ButtonStyled = styled.button`
     color: ${({$type}) => TYPE_TO_COLOR[$type]};
     background-color: ${({background, $type}) => background ?? TYPE_TO_BACKGROUND[$type]};
     padding: ${({$size}) => $size === BUTTON_SIZE.md ? 'var(--spacing_x2) var(--spacing_x4)' : 'var(--spacing) var(--spacing_x2)'};
-    border-radius: 45px;
-    font-size: 18px;
+    border-radius: calc(45px * ${({$ratio}) => $ratio});
+    font-size: calc(18px * ${({$ratio}) => $ratio});
     width: max-content;
     
     cursor: pointer;
 `;
 
-export const Button = ({ type = 'filled', size = 'md', ...props }) => <ButtonStyled $type={type} $size={size} {...props} />;
+export const Button = ({ type = 'filled', size = 'md', ...props }) => {
+    const ratio = useSizeRatio();
+
+    return <ButtonStyled $ratio={ratio} $type={type} $size={size} {...props} />;
+}

@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { useState } from "react";
 import { colors } from "../../constants/colors";
 import { useProgress } from "../../contexts/ProgressContext";
+import { useSizeRatio } from "../../contexts/SizeRatioContext";
 
 const Wrapper = styled.div`
    display: flex;
@@ -10,24 +11,24 @@ const Wrapper = styled.div`
 `;
 
 const Image = styled.img`
-    margin-top: 14px;
-    width: min(349px, 93vw);
+    margin-top: calc(14px * ${({$ratio}) => $ratio});
+    width: calc(349px * ${({$ratio}) => $ratio});
     object-fit: contain;
 `;
 
 const Picture = styled(Image)`
-    height: min(337px, 89vw);
-    margin-bottom: 20px;
+    height: calc(337px * ${({$ratio}) => $ratio});
+    margin-bottom: calc(20px * ${({$ratio}) => $ratio});
 `;
 
 const BigPicture = styled(Image)`
-    height: min(352px, 94vw);
-    margin-bottom: 8px;
-    margin-left: -8px;
+    height: calc(352px * ${({$ratio}) => $ratio});
+    margin-bottom: calc(8px * ${({$ratio}) => $ratio});
+    margin-left: calc(0px - 8px * ${({$ratio}) => $ratio});
 `;
 
 const QuestionsBlock = styled.div`
-    width: min(349px, 93vw);
+    width: calc(349px * ${({$ratio}) => $ratio});
 `;
 
 const HorizontalBlock = styled.div`
@@ -36,25 +37,25 @@ const HorizontalBlock = styled.div`
 
     & > div {
         margin-top: 0;
-        padding-right: 17px;
+        padding-right: calc(17px * ${({$ratio}) => $ratio});
     }
 
     & > div + div {
-        margin-left: 10px;
+        margin-left: calc(10px * ${({$ratio}) => $ratio});
     }
 `;
 
 const Answer = styled.div`
-    font-size: 16px;
+    font-size: calc(16px * ${({$ratio}) => $ratio});
     background: ${({$isActive}) => $isActive ? 'white' : colors.gray};
     border: 2px solid ${colors.gray};
-    border-radius: 15px;
-    padding: 10px 20px;
+    border-radius: calc(15px * ${({$ratio}) => $ratio});
+    padding: calc(10px * ${({$ratio}) => $ratio}) calc(20px * ${({$ratio}) => $ratio});
+    margin-top: calc(10px * ${({$ratio}) => $ratio});
     color: ${({$isActive}) => $isActive ? colors.gray : 'white'};
     white-space: pre-line;
     cursor: pointer;
     transition: background .2s;
-    margin-top: 10px;
 `;
 
 const SkipAnswer = styled(Answer)`
@@ -65,6 +66,7 @@ const SkipAnswer = styled(Answer)`
 export const QuestionScreen = ({ image, answerScreens, isBigPicture }) => {
     const {next} = useProgress();
     const [chosen, setChosen] = useState('');
+    const ratio = useSizeRatio();
 
     const ImageComponent = isBigPicture ? BigPicture : Picture;
 
@@ -75,16 +77,18 @@ export const QuestionScreen = ({ image, answerScreens, isBigPicture }) => {
 
     return (
         <Wrapper>
-            <ImageComponent src={image} alt={''} />
-            <QuestionsBlock>
+            <ImageComponent src={image} alt={''} $ratio={ratio}/>
+            <QuestionsBlock $ratio={ratio}>
                 <HorizontalBlock>
                     <Answer 
+                        $ratio={ratio}
                         $isActive={chosen === 'projects'}
                         onClick={() => handleChoose('projects', answerScreens?.projects)}
                     >
                         {'Над какими\nпроектами\nвы работаете?'}
                     </Answer>
                     <Answer
+                        $ratio={ratio}
                         $isActive={chosen === 'values'}
                         onClick={() => handleChoose('values', answerScreens?.values)}
                     >
@@ -92,18 +96,20 @@ export const QuestionScreen = ({ image, answerScreens, isBigPicture }) => {
                     </Answer>
                 </HorizontalBlock>
                 <Answer
+                    $ratio={ratio}
                     $isActive={chosen === 'skills'}
                     onClick={() => handleChoose('skills', answerScreens?.skills)}
                 >  
                     Какие навыки вам важны для успешной работы?
                 </Answer>
                 <Answer
+                    $ratio={ratio}
                     $isActive={chosen === 'work'}
                     onClick={() => handleChoose('work', answerScreens?.work)}
                 >
                     За что вы любите стажировку в ВТБ?
                 </Answer>
-                <SkipAnswer onClick={() => next(answerScreens?.game)}>
+                <SkipAnswer $ratio={ratio} onClick={() => next(answerScreens?.game)}>
                     Завершить диалог и перейти к игре
                 </SkipAnswer>
             </QuestionsBlock>

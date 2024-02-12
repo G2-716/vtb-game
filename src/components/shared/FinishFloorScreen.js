@@ -4,6 +4,7 @@ import { SCREENS } from "../../constants/screens";
 import { useProgress } from "../../contexts/ProgressContext";
 import { ArrowButton } from "./ArrowButton";
 import { FinishFloorModal } from "./FinishFloorModal";
+import { useSizeRatio } from "../../contexts/SizeRatioContext";
 
 const Wrapper = styled.div`
     width: 100%;
@@ -13,13 +14,14 @@ const Wrapper = styled.div`
 
 const ButtonStyled = styled(ArrowButton)`
     position: absolute;
-    bottom: min(35px, 9.6vw);
-    right: min(16px, 4.2vw);
+    bottom: calc(35px * ${({$ratio}) => $ratio});
+    right: calc(16px * ${({$ratio}) => $ratio});
 `;
 
 export const FinishFloorScreen = ({finishText, background, icon, children}) => {
     const [isShowModal, setIsShowModal] = useState(false);
     const {next} = useProgress();
+    const ratio = useSizeRatio();
 
     return (
         <Wrapper background={background}>
@@ -28,7 +30,7 @@ export const FinishFloorScreen = ({finishText, background, icon, children}) => {
                     {children}
                 </FinishFloorModal>
             ) : (
-                <ButtonStyled onClick={() => setIsShowModal(true)}/>
+                <ButtonStyled onClick={() => setIsShowModal(true)} $ratio={ratio}/>
             )}
         </Wrapper>
     )

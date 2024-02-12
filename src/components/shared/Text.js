@@ -1,6 +1,13 @@
 import styled from "@emotion/styled";
+import { useSizeRatio } from "../../contexts/SizeRatioContext";
 
-export const Text = styled.p`
-    font-size: 15px;
-    line-height: 19px;
+const TextStyled = styled.p`
+    font-size: calc(15px * ${({$ratio}) => $ratio});
+    line-height: calc(19px * ${({$ratio}) => $ratio});
 `;
+
+export const Text = (props) => {
+    const ratio = useSizeRatio();
+
+    return <TextStyled {...props} $ratio={ratio} />
+}
