@@ -11,7 +11,7 @@ const TimerWrapper = styled.div`
 
 const Time = styled.p`
   font-weight: 700;
-  font-size: calc(16px * ${({$ratio}) => $ratio});
+  font-size: calc(35px * ${({$ratio}) => $ratio});
   color: #4C6FCD;
 `;
 
@@ -63,7 +63,7 @@ export const Timer = memo(({ className, isStart, shownTime, onFinish, initialTim
                 $interval.current = null;
             }
         }
-    }, [initialTime, isStart, onFinish]);
+    }, [initialTime, isStart]);
 
     const getMinutes = useCallback(() => {
        const minutes = Math.floor(time / 60);
@@ -77,7 +77,7 @@ export const Timer = memo(({ className, isStart, shownTime, onFinish, initialTim
 
     return (
         <TimerWrapper className={className}>
-            <Time $ratio={ratio}>{shownTime ?? `${getMinutes()}:${getSeconds()}`}</Time>
+            <Time $ratio={ratio}>{shownTime && `${getMinutes()}:${getSeconds()}`}</Time>
         </TimerWrapper>
     );
 });

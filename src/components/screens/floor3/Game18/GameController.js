@@ -1,7 +1,7 @@
 import {useCallback, useEffect, useState} from "react";
 
 
-export function GameController({ children, onMoveUp, onMoveDown, onMoveLeft, onMoveRight }) {
+export function GameController({ active, children, onMoveUp, onMoveDown, onMoveLeft, onMoveRight }) {
     const [startX, setStartX] = useState(0);
     const [startY, setStartY] = useState(0);
 
@@ -64,16 +64,18 @@ export function GameController({ children, onMoveUp, onMoveDown, onMoveLeft, onM
     );
 
     useEffect(() => {
-        window.addEventListener("touchstart", handleTouchStart, { passive: false });
-        window.addEventListener("touchend", handleTouchEnd, { passive: false });
-        window.addEventListener("keydown", handleKeyDown);
+        if (active) {
+            window.addEventListener("touchstart", handleTouchStart, { passive: false });
+            window.addEventListener("touchend", handleTouchEnd, { passive: false });
+            window.addEventListener("keydown", handleKeyDown);
 
-        return () => {
-            window.removeEventListener("touchstart", handleTouchStart);
-            window.removeEventListener("touchend", handleTouchEnd);
-            window.removeEventListener("keydown", handleKeyDown);
-        };
-    }, [handleTouchStart, handleTouchEnd, handleKeyDown]);
+            return () => {
+                window.removeEventListener("touchstart", handleTouchStart);
+                window.removeEventListener("touchend", handleTouchEnd);
+                window.removeEventListener("keydown", handleKeyDown);
+            };
+        }
+    }, [active, handleTouchStart, handleTouchEnd, handleKeyDown]);
 
     return children;
 }

@@ -4,6 +4,7 @@ import { useSizeRatio } from "../../contexts/SizeRatioContext";
 const TextStyled = styled.p`
     font-size: calc(15px * ${({$ratio}) => $ratio});
     line-height: calc(19px * ${({$ratio}) => $ratio});
+    white-space: pre-wrap;
 `;
 
 export const Text = (props) => {

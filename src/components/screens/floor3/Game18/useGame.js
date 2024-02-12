@@ -312,6 +312,10 @@ export function useGame(onWin, onLose) {
         return gameState.tilesByIds.map((tileId) => gameState.tiles[tileId]);
     };
 
+    const hasTileValue = (value) => {
+        return getTiles().some(tile => tile?.value === value)
+    };
+
     const hasMoves = () => {
         if (getEmptyCells().length) {
             return true
@@ -355,6 +359,14 @@ export function useGame(onWin, onLose) {
         dispatch({ type: ACTIONS.CREATE_TILE, tile: { position: [1, 1], value: 2 } });
     };
 
+    const result = {
+        score: gameState.score,
+        getTiles,
+        hasTileValue,
+        moveTiles,
+        startGame,
+    };
+
     useEffect(() => {
         if (gameState.hasChanged) {
             setTimeout(() => {
@@ -367,17 +379,12 @@ export function useGame(onWin, onLose) {
     }, [gameState.hasChanged]);
 
     useEffect(() => {
-        if (getTiles().some(tile => tile?.value === 2048)) {
-            onWin?.()
+        if (hasTileValue(2024)) {
+            onWin?.(result)
         } else if (!hasMoves()) {
-            onLose?.()
+            onLose?.(result)
         }
     }, [gameState, onWin, onLose]);
 
-    return {
-        score: gameState.score,
-        getTiles,
-        moveTiles,
-        startGame,
-    };
+    return result
 }

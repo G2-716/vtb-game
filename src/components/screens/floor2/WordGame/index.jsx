@@ -165,8 +165,10 @@ export const WordGame = ({isHiddenKeyboard, isBlurred}) => {
     return (
         <>
             <Wrapper $isBlurred={isScreenBlurred}>
-                <GameHeader 
-                    title={'Угадай\nслово'} 
+                <GameHeader
+                    title={'Угадай\nслово'}
+                    size={40}
+                    align="baseline"
                     isHiddenButtons={isScreenBlurred}
                     onSkip={() => setIsSkipping(true)}
                     onClickRules={() => setIsRules(true)}

@@ -5,11 +5,11 @@ const Wrapper = styled.div`
     width: 100%;
     display: flex;
     padding: 14px 24px 0 18px;
-    align-items: baseline;
+    align-items: ${({align}) => align};
 `;
 
 const Title = styled.h3`
-    font-size: calc(40px * ${({$ratio}) => $ratio});
+    font-size: calc(${({size}) => size}px * ${({$ratio}) => $ratio});
     line-height: calc(32px * ${({$ratio}) => $ratio});
     width: min-content;
     color: #1856A8;
@@ -40,13 +40,13 @@ const SkipButton = styled.p`
 `;
 
 
-export const GameHeader = ({ title, onClickRules, onSkip, isHiddenButtons }) => {
+export const GameHeader = ({ title, size, align, onClickRules, onSkip, isHiddenButtons }) => {
     const ratio = useSizeRatio();
 
     return (
         <>
-            <Wrapper $ratio={ratio}>
-                <Title $ratio={ratio}>{title}</Title>
+            <Wrapper $ratio={ratio} align={align}>
+                <Title size={size} $ratio={ratio}>{title}</Title>
                 {!isHiddenButtons && ( 
                     <>
                         {onClickRules && <RulesButton $ratio={ratio} onClick={onClickRules}>?</RulesButton>}
