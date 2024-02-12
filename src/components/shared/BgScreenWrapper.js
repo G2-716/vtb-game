@@ -1,5 +1,7 @@
 import styled from "@emotion/styled";
+import { useSizeRatio } from "../../contexts/SizeRatioContext";
 import { ArrowButton } from "./ArrowButton";
+import { Button } from "./Button";
 
 const Wrapper = styled.div`
     width: 100%;
@@ -7,20 +9,31 @@ const Wrapper = styled.div`
     background: url(${({ background }) => background}) no-repeat center 100% / contain;
 `;
 
-const ButtonStyled = styled(ArrowButton)`
+const ButtonArrowStyled = styled(ArrowButton)`
     position: absolute;
-    bottom: min(35px, 9.6vw);
-    right: min(16px, 4.2vw);
+    bottom: calc(35px * ${({$ratio}) => $ratio});
+    right: calc(16px * ${({$ratio}) => $ratio});
 `;
 
-export const BgScreenWrapper = ({onClick, isIcon, text, background, className}) => (
-    <Wrapper className={className} background={background}>
-        {isIcon ? (
-            <ButtonStyled onClick={onClick} />
-        ) : (
-            <ButtonStyled onClick={onClick}>
-                {text}
-            </ButtonStyled>
-        )}
-    </Wrapper>
-)
+const ButtonStyled = styled(Button)`
+    position: absolute;
+    bottom: calc(35px * ${({$ratio}) => $ratio});
+    right: calc(16px * ${({$ratio}) => $ratio});
+`;
+
+
+export const BgScreenWrapper = ({onClick, isIcon, text, background, className}) => {
+    const ratio = useSizeRatio();
+
+    return (
+        <Wrapper className={className} background={background}>
+            {isIcon ? (
+                <ButtonArrowStyled onClick={onClick} $ratio={ratio}/>
+            ) : (
+                <ButtonStyled onClick={onClick} $ratio={ratio}>
+                    {text}
+                </ButtonStyled>
+            )}
+        </Wrapper>
+    )
+}
