@@ -64,18 +64,20 @@ export function Game18() {
     }, []);
 
     return (
-        <GameController
-            active={isGameActive}
-            onMoveUp={() => moveTiles(ACTIONS.MOVE_UP)}
-            onMoveDown={() => moveTiles(ACTIONS.MOVE_DOWN)}
-            onMoveLeft={() => moveTiles(ACTIONS.MOVE_LEFT)}
-            onMoveRight={() => moveTiles(ACTIONS.MOVE_RIGHT)}
-        >
+        <>
             <Wrapper isBlurred={!isGameActive}>
                 <GameHeader size={56} align='center' title="2048" onSkip={() => setIsSkipping(true)} />
                 <WrapperInner sizeRatio={sizeRatio}>
-                    <Timer shownTime isStart={isGameActive} initialTime={60 * 3} onFinish={() => setEndModal({shown: true, points: getPoints()})} />
-                    <GameBoard tiles={getTiles()} />
+                    <Timer shownTime size={35} isStart={isGameActive} initialTime={60 * 3} onFinish={() => setEndModal({shown: true, points: getPoints()})} />
+                    <GameController
+                        active={isGameActive}
+                        onMoveUp={() => moveTiles(ACTIONS.MOVE_UP)}
+                        onMoveDown={() => moveTiles(ACTIONS.MOVE_DOWN)}
+                        onMoveLeft={() => moveTiles(ACTIONS.MOVE_LEFT)}
+                        onMoveRight={() => moveTiles(ACTIONS.MOVE_RIGHT)}
+                    >
+                        <GameBoard tiles={getTiles()} />
+                    </GameController>
                     <Description sizeRatio={sizeRatio}>
                         <b>Как играть:</b> {'\n'}
                         Проводи пальцем по экрану, чтобы перемещать плитки. Когда две плитки с одинаковыми цифрами соприкасаются, они сливаются в одну!
@@ -84,6 +86,6 @@ export function Game18() {
             </Wrapper>
             {isSkipping && (<SkipModal onContinue={() => setIsSkipping(false)} onSkip={() => next()}/>)}
             {endModal.shown && <EndGameModal points={endModal.points} onNext={() => next()}/>}
-        </GameController>
+        </>
     )
 }

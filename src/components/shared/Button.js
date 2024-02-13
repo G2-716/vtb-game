@@ -27,6 +27,9 @@ const ButtonStyled = styled.button`
     --spacing_x2: calc(var(--spacing) * 2);
     --spacing_x4: calc(var(--spacing) * 4);
 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     outline: none;
     border:  2px solid ${({background}) => background ?? colors.gray};
     color: ${({$type}) => TYPE_TO_COLOR[$type]};

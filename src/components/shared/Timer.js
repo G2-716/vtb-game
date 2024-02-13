@@ -11,11 +11,11 @@ const TimerWrapper = styled.div`
 
 const Time = styled.p`
   font-weight: 700;
-  font-size: calc(35px * ${({$ratio}) => $ratio});
+  font-size: calc(${({size}) => size}px * ${({$ratio}) => $ratio});
   color: #4C6FCD;
 `;
 
-export const Timer = memo(({ className, isStart, shownTime, onFinish, initialTime = 0 }) => {
+export const Timer = memo(({ className, size, reverse, isStart, shownTime, onFinish, initialTime = 0 }) => {
     const [time, setTime] = useState(initialTime);
     const ratio = useSizeRatio();
     const $interval = useRef(null);
@@ -37,15 +37,19 @@ export const Timer = memo(({ className, isStart, shownTime, onFinish, initialTim
             $interval.current = setInterval(() => {
                 setTime($time.current);
 
-                if ($time.current === 0) {
-                    onFinish?.();
-                    clearInterval($interval.current);
-                    $interval.current = null;
+                if (reverse) {
+                    $time.current += 1;
+                } else {
+                    if ($time.current === 0) {
+                        onFinish?.();
+                        clearInterval($interval.current);
+                        $interval.current = null;
 
-                    return;
+                        return;
+                    }
+
+                    $time.current -= 1;
                 }
-
-                $time.current -= 1;
                 
             }, 1000);
         }
@@ -77,7 +81,7 @@ export const Timer = memo(({ className, isStart, shownTime, onFinish, initialTim
 
     return (
         <TimerWrapper className={className}>
-            <Time $ratio={ratio}>{shownTime && `${getMinutes()}:${getSeconds()}`}</Time>
+            <Time $ratio={ratio} size={size}>{shownTime && `${getMinutes()}:${getSeconds()}`}</Time>
         </TimerWrapper>
     );
 });
