@@ -31,10 +31,9 @@ const Description = styled(Text)`
     margin-top: ${({sizeRatio}) => `calc(58px * ${sizeRatio})`};
 `
 
-export function Game18() {
+export function Game2048({isRules}) {
     const {next} = useProgress()
     const sizeRatio = useSizeRatio()
-    const [isRules, setIsRules] = useState(false);
     const [isSkipping, setIsSkipping] = useState(false);
     const [endModal, setEndModal] = useState({shown: false, points: 0});
     const isGameActive = useMemo(
@@ -60,13 +59,15 @@ export function Game18() {
     }
 
     useEffect(() => {
-        startGame();
-    }, []);
+        if (!isRules) {
+            startGame();
+        }
+    }, [isRules]);
 
     return (
         <>
             <Wrapper isBlurred={!isGameActive}>
-                <GameHeader size={56} align='center' title="2048" onSkip={() => setIsSkipping(true)} />
+                <GameHeader size={56} align='center' title="2048" onSkip={isRules ? null : () => setIsSkipping(true)} />
                 <WrapperInner sizeRatio={sizeRatio}>
                     <Timer shownTime size={35} isStart={isGameActive} initialTime={60 * 3} onFinish={() => setEndModal({shown: true, points: getPoints()})} />
                     <GameController
@@ -78,10 +79,12 @@ export function Game18() {
                     >
                         <GameBoard tiles={getTiles()} />
                     </GameController>
-                    <Description sizeRatio={sizeRatio}>
-                        <b>Как играть:</b> {'\n'}
-                        Проводи пальцем по экрану, чтобы перемещать плитки. Когда две плитки с одинаковыми цифрами соприкасаются, они сливаются в одну!
-                    </Description>
+                    {!isRules && (
+                        <Description sizeRatio={sizeRatio}>
+                            <b>Как играть:</b> {'\n'}
+                            Проводи пальцем по экрану, чтобы перемещать плитки. Когда две плитки с одинаковыми цифрами соприкасаются, они сливаются в одну!
+                        </Description>
+                    )}
                 </WrapperInner>
             </Wrapper>
             {isSkipping && (<SkipModal onContinue={() => setIsSkipping(false)} onSkip={() => next()}/>)}

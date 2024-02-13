@@ -36,10 +36,9 @@ const Actions = styled(BoardActions)`
     margin-top: ${({sizeRatio}) => `calc(16px * ${sizeRatio})`};
 `
 
-export function Game48() {
+export function TetrisGame({isRules}) {
     const {next} = useProgress()
     const sizeRatio = useSizeRatio()
-    const [isRules, setIsRules] = useState(false);
     const [isSkipping, setIsSkipping] = useState(false);
     const [endModal, setEndModal] = useState({shown: false, points: 0});
     const isGameActive = useMemo(
@@ -49,6 +48,7 @@ export function Game48() {
     const [gameStats, addLinesCleared] = useGameStats();
     const [player, setPlayer, resetPlayer] = usePlayer();
     const [board] = useBoard({
+        active: isGameActive,
         rows: 15,
         columns: 10,
         player,
@@ -72,7 +72,7 @@ export function Game48() {
     return (
         <>
             <Wrapper isBlurred={!isGameActive}>
-                <GameHeader size={40} align='baseline' title="Тетрис" onSkip={() => setIsSkipping(true)} />
+                <GameHeader size={40} align='baseline' title="Тетрис" onSkip={isRules ? null : () => setIsSkipping(true)} />
                 <WrapperInner sizeRatio={sizeRatio}>
                     <Timer size={25} initialTime={0} shownTime isStart={isGameActive} reverse />
                     <GameController
@@ -86,7 +86,7 @@ export function Game48() {
                         {({input}) => (
                             <>
                                 <BoardStyled sizeRatio={sizeRatio} board={board} />
-                                <Actions sizeRatio={sizeRatio} onInput={input} />
+                                {!isRules && <Actions sizeRatio={sizeRatio} onInput={input} />}
                             </>
                         )}
                     </GameController>

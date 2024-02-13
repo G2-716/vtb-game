@@ -50,7 +50,7 @@ export const GameHeader = ({ title, size, align, onClickRules, onSkip, isHiddenB
                 {!isHiddenButtons && ( 
                     <>
                         {onClickRules && <RulesButton $ratio={ratio} onClick={onClickRules}>?</RulesButton>}
-                        <SkipButton $ratio={ratio} onClick={onSkip}>Пропустить</SkipButton>
+                        {onSkip && <SkipButton $ratio={ratio} onClick={onSkip}>Пропустить</SkipButton>}
                     </>
                 )}
             </Wrapper>

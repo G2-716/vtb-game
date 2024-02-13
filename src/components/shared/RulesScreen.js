@@ -7,7 +7,16 @@ import { Button, BUTTON_SIZE, BUTTON_TYPES } from "./Button";
 const Wrapper = styled.div`
     position: absolute;
     inset: 0;
-    background: url(${({background}) => background}) no-repeat 0 100% / cover;
+`;
+
+const Background = styled.img`
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: ${({width}) => width ?? '100%'};
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 `;
 
 const ButtonsWrapper = styled.div`
@@ -24,12 +33,13 @@ const ButtonsWrapper = styled.div`
     }
 `;
 
-export const RulesScreen = ({background, onNext}) => {
+export const RulesScreen = ({background, backgroundWidth, onNext}) => {
     const ratio = useSizeRatio();
     const {next} = useProgress();
 
     return (
-        <Wrapper background={background}>
+        <Wrapper>
+            <Background src={background} width={backgroundWidth} />
             <ButtonsWrapper $ratio={ratio}>
                 <Button onClick={onNext}>Играть</Button>
                 <Button 
