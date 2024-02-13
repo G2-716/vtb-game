@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.c6f00f2a.css",
-    "main.js": "./static/js/main.a550c2be.js",
+    "main.js": "./static/js/main.47744321.js",
     "static/media/bg_floor2.png": "./static/media/bg_floor2.c2950a444af1bea19eb4.png",
     "static/media/elevator1.png": "./static/media/elevator1.703f00634e0f7c291e6d.png",
     "static/media/bg_floor5.png": "./static/media/bg_floor5.a15f341e3ebdf5d99c29.png",
@@ -16,8 +16,10 @@
     "static/media/bg_elevator.png": "./static/media/bg_elevator.25b3e5263471138ddc55.png",
     "static/media/floor1_people.png": "./static/media/floor1_people.c5170e6ea694c67baaf8.png",
     "static/media/answer5_projects.png": "./static/media/answer5_projects.ad9cb678e991cdf48872.png",
+    "static/media/rules_tetrisGame.png": "./static/media/rules_tetrisGame.763826e2c745c33b4cba.png",
     "static/media/bg_floor1.png": "./static/media/bg_floor1.bd39ef1be4bf5f777e52.png",
     "static/media/answer1_projects.png": "./static/media/answer1_projects.bd79276e8e254448ae03.png",
+    "static/media/rules_2048Game.png": "./static/media/rules_2048Game.054b2565a799111c21a0.png",
     "static/media/answer1_skills.png": "./static/media/answer1_skills.268c053cac9f613c9a59.png",
     "static/media/answer5_values.png": "./static/media/answer5_values.98df4562c052e72c7de0.png",
     "static/media/answer5_skills.png": "./static/media/answer5_skills.ef8e7316853b70579a00.png",
@@ -74,10 +76,10 @@
     "static/media/bg_elevatorMenu.svg": "./static/media/bg_elevatorMenu.b773e2e53a189176df5c1a0bb66bfeb8.svg",
     "index.html": "./index.html",
     "main.c6f00f2a.css.map": "./static/css/main.c6f00f2a.css.map",
-    "main.a550c2be.js.map": "./static/js/main.a550c2be.js.map"
+    "main.47744321.js.map": "./static/js/main.47744321.js.map"
   },
   "entrypoints": [
     "static/css/main.c6f00f2a.css",
-    "static/js/main.a550c2be.js"
+    "static/js/main.47744321.js"
   ]
 }
