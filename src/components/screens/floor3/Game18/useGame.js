@@ -1,10 +1,9 @@
-import {useCallback, useEffect, useReducer} from "react";
+import {useEffect, useReducer} from "react";
 import isNil from "lodash/isNil";
 import isEqual from "lodash/isEqual";
 import flattenDeep from "lodash/flattenDeep";
-import throttle from "lodash/throttle";
 import { uid } from "uid";
-import { ACTIONS, TILE_COUNT_PER_DIMENSION, MERGE_ANIMATION_DURATION, MOVE_ANIMATION_DURATION } from "./constants";
+import { ACTIONS, TILE_COUNT_PER_DIMENSION, MOVE_ANIMATION_DURATION } from "./constants";
 
 function createBoard() {
     const board = [];
@@ -345,14 +344,13 @@ export function useGame(onWin, onLose) {
         return false
     };
 
-    const moveTiles = useCallback(
-        throttle(
-            (type) => dispatch({ type }),
-            MOVE_ANIMATION_DURATION,
-            { trailing: false },
-        ),
-        [dispatch],
-    );
+    const moveTiles = (type) => {
+        if (gameState.hasChanged) {
+            return
+        }
+
+        dispatch({type})
+    }
 
     const startGame = () => {
         dispatch({ type: ACTIONS.CREATE_TILE, tile: { position: [0, 0], value: 2 } });
@@ -371,9 +369,7 @@ export function useGame(onWin, onLose) {
         if (gameState.hasChanged) {
             setTimeout(() => {
                 dispatch({ type: ACTIONS.CLEAN_UP });
-                setTimeout(() => {
-                    appendRandomTile();
-                }, MERGE_ANIMATION_DURATION)
+                appendRandomTile();
             }, MOVE_ANIMATION_DURATION);
         }
     }, [gameState.hasChanged]);

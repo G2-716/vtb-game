@@ -6,7 +6,7 @@ import {GameController} from "./components/GameController";
 import {useGameStats} from "./hooks/useGameStats";
 import {usePlayer} from "./hooks/usePlayer";
 import {useBoard} from "./hooks/useBoard";
-import {useEffect, useMemo, useState} from "react";
+import {useMemo, useState} from "react";
 import {GameHeader} from "../../../shared/GameHeader";
 import {SkipModal} from "../../../shared/SkipModal";
 import {EndGameModal} from "../../../shared/EndGameModal";
@@ -42,14 +42,13 @@ export function Game48() {
     const [isRules, setIsRules] = useState(false);
     const [isSkipping, setIsSkipping] = useState(false);
     const [endModal, setEndModal] = useState({shown: false, points: 0});
-    const [gameOver, setGameOver] = useState(false)
     const isGameActive = useMemo(
-        () => !(isRules || isSkipping || endModal.shown || gameOver),
-        [isRules, isSkipping, endModal.shown, gameOver],
+        () => !(isRules || isSkipping || endModal.shown),
+        [isRules, isSkipping, endModal.shown],
     );
     const [gameStats, addLinesCleared] = useGameStats();
     const [player, setPlayer, resetPlayer] = usePlayer();
-    const [board, setBoard] = useBoard({
+    const [board] = useBoard({
         rows: 15,
         columns: 10,
         player,
@@ -70,12 +69,6 @@ export function Game48() {
         return 0
     }
 
-    useEffect(() => {
-        if (gameOver) {
-            setEndModal({shown: true, points: getPoints()})
-        }
-    }, [gameOver]);
-
     return (
         <>
             <Wrapper isBlurred={!isGameActive}>
@@ -87,7 +80,7 @@ export function Game48() {
                         board={board}
                         gameStats={gameStats}
                         player={player}
-                        setGameOver={setGameOver}
+                        setGameOver={() => setEndModal({shown: true, points: getPoints()})}
                         setPlayer={setPlayer}
                     >
                         {({input}) => (
