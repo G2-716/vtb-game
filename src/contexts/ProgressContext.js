@@ -35,7 +35,7 @@ export function ProgressProvider(props) {
     }
 
     function addTestPoints() {
-        setTestPoints(prev => +prev);
+        setTestPoints(prev => prev + 1);
     }
 
     const state = {
