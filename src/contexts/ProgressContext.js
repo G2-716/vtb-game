@@ -5,6 +5,7 @@ import {usePrevious} from "../hooks/usePrevious";
 
 const INITIAL_STATE = {
     screen: SCREENS.INTRO_1,
+    testPoints: 0,
 }
 
 const ProgressContext = createContext(INITIAL_STATE)
@@ -12,6 +13,7 @@ const ProgressContext = createContext(INITIAL_STATE)
 export function ProgressProvider(props) {
     const {children} = props
     const [screen, setScreen] = useState(getUrlParam('screen') || INITIAL_STATE.screen)
+    const [testPoints, setTestPoints] = useState(INITIAL_STATE.testPoints)
     const previousScreen = usePrevious(screen)
 
     function next(customScreen) {
@@ -32,12 +34,18 @@ export function ProgressProvider(props) {
         setScreen(getUrlParam('screen') || INITIAL_STATE.screen)
     }
 
+    function addTestPoints() {
+        setTestPoints(prev => +prev);
+    }
+
     const state = {
         screen,
         previousScreen,
+        testPoints,
         next,
         back,
         reset,
+        addTestPoints,
     }
 
     return (

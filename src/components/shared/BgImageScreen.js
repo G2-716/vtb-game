@@ -27,8 +27,8 @@ const ScreenStyled = styled(BgScreenWrapper)`
     }
 `;
 
-export const BgImageScreen = ({ image, onClick, background, isIcon }) => (
+export const BgImageScreen = ({ image, onClick, background, isIcon, text = "Познакомиться" }) => (
     <Wrapper background={background}>
-        <ScreenStyled background={image} text={"Познакомиться"} onClick={onClick} isIcon={isIcon}/>
+        <ScreenStyled background={image} text={text} onClick={onClick} isIcon={isIcon}/>
     </Wrapper>
 )
