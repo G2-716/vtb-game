@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import {useProgress} from "../../../contexts/ProgressContext";
-import bg from '../../../assets/images/rules_2048Game.png';
+import bg from '../../../assets/images/rules_2048.png';
 import { RulesScreen } from "../../shared/RulesScreen";
 import { Game2048 } from "./Game2048";
 
@@ -15,7 +15,7 @@ export function Game18() {
     return  (
         <Wrapper>
             <Game2048 isRules />
-            <RulesScreen background={bg} backgroundWidth='98%' onNext={() => next()} />
+            <RulesScreen background={bg} onNext={() => next()} />
         </Wrapper>
     )
 }

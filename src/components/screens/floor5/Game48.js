@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import {useProgress} from "../../../contexts/ProgressContext";
-import bg from '../../../assets/images/rules_tetrisGame.png';
+import bg from '../../../assets/images/rules_tetris.png';
 import { RulesScreen } from "../../shared/RulesScreen";
 import { TetrisGame } from "./TetrisGame";
 
@@ -15,7 +15,7 @@ export function Game48() {
     return  (
         <Wrapper>
             <TetrisGame isRules />
-            <RulesScreen background={bg} backgroundWidth='96%' onNext={() => next()} />
+            <RulesScreen background={bg} onNext={() => next()} />
         </Wrapper>
     )
 }

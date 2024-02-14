@@ -23,15 +23,15 @@ const WrapperInner = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: ${({sizeRatio}) => `calc(26px * ${sizeRatio})`};
-    padding: ${({sizeRatio}) => `0 calc(16px * ${sizeRatio}) calc(50px * ${sizeRatio})`};
+    margin-top: ${({sizeRatio}) => `calc(73px * ${sizeRatio})`};
+    padding: ${({sizeRatio}) => `0 calc(18px * ${sizeRatio}) calc(50px * ${sizeRatio})`};
 `
 
 const Description = styled(Text)`
     margin-top: ${({sizeRatio}) => `calc(58px * ${sizeRatio})`};
 `
 
-export function Game2048({isRules}) {
+export function LinesGame({isRules}) {
     const {next} = useProgress()
     const sizeRatio = useSizeRatio()
     const [isSkipping, setIsSkipping] = useState(false);
@@ -67,27 +67,24 @@ export function Game2048({isRules}) {
     return (
         <>
             <Wrapper isBlurred={!isGameActive}>
-                <GameHeader size={56} align='center' title="2048" onSkip={isRules ? null : () => setIsSkipping(true)} />
-                <GameController
-                    active={isGameActive}
-                    onMoveUp={() => moveTiles(ACTIONS.MOVE_UP)}
-                    onMoveDown={() => moveTiles(ACTIONS.MOVE_DOWN)}
-                    onMoveLeft={() => moveTiles(ACTIONS.MOVE_LEFT)}
-                    onMoveRight={() => moveTiles(ACTIONS.MOVE_RIGHT)}
-                >
-                    {(ref) => (
-                        <WrapperInner ref={ref} sizeRatio={sizeRatio}>
-                            <Timer shownTime size={35} isStart={isGameActive} initialTime={60 * 3} onFinish={() => setEndModal({shown: true, points: getPoints()})} />
-                            <GameBoard tiles={getTiles()} />
-                            {!isRules && (
-                                <Description sizeRatio={sizeRatio}>
-                                    <b>Как играть:</b> {'\n'}
-                                    Проводи пальцем по экрану, чтобы перемещать плитки. Когда две плитки с одинаковыми цифрами соприкасаются, они сливаются в одну!
-                                </Description>
-                            )}
-                        </WrapperInner>
+                <GameHeader size={40} align='baseline' title={'Соедини\nточки'} onSkip={isRules ? null : () => setIsSkipping(true)} />
+                <WrapperInner sizeRatio={sizeRatio}>
+                    <GameController
+                        active={isGameActive}
+                        onMoveUp={() => moveTiles(ACTIONS.MOVE_UP)}
+                        onMoveDown={() => moveTiles(ACTIONS.MOVE_DOWN)}
+                        onMoveLeft={() => moveTiles(ACTIONS.MOVE_LEFT)}
+                        onMoveRight={() => moveTiles(ACTIONS.MOVE_RIGHT)}
+                    >
+                        <GameBoard tiles={getTiles()} />
+                    </GameController>
+                    {!isRules && (
+                        <Description sizeRatio={sizeRatio}>
+                            <b>Как играть:</b> {'\n'}
+                            Соедини все одинаковые точки так, чтобы линии не пересекались
+                        </Description>
                     )}
-                </GameController>
+                </WrapperInner>
             </Wrapper>
             {isSkipping && (<SkipModal onContinue={() => setIsSkipping(false)} onSkip={() => next()}/>)}
             {endModal.shown && <EndGameModal points={endModal.points} onNext={() => next()}/>}

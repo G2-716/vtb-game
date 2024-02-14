@@ -1,13 +1,14 @@
-import {useCallback, useEffect, useRef, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 
 
 export function GameController({ active, children, onMoveUp, onMoveDown, onMoveLeft, onMoveRight }) {
     const [startX, setStartX] = useState(0);
     const [startY, setStartY] = useState(0);
-    const targetRef = useRef()
 
     const handleKeyDown = useCallback(
         (e) => {
+            e.preventDefault();
+
             switch (e.code) {
                 case "ArrowUp":
                     onMoveUp();
@@ -63,18 +64,18 @@ export function GameController({ active, children, onMoveUp, onMoveDown, onMoveL
     );
 
     useEffect(() => {
-        if (active && targetRef.current) {
-            targetRef.current.addEventListener("touchstart", handleTouchStart, { passive: false });
-            targetRef.current.addEventListener("touchend", handleTouchEnd, { passive: false });
-            document.addEventListener("keydown", handleKeyDown);
+        if (active) {
+            window.addEventListener("touchstart", handleTouchStart, { passive: false });
+            window.addEventListener("touchend", handleTouchEnd, { passive: false });
+            window.addEventListener("keydown", handleKeyDown);
 
             return () => {
-                targetRef.current.removeEventListener("touchstart", handleTouchStart);
-                targetRef.current.removeEventListener("touchend", handleTouchEnd);
-                document.removeEventListener("keydown", handleKeyDown);
+                window.removeEventListener("touchstart", handleTouchStart);
+                window.removeEventListener("touchend", handleTouchEnd);
+                window.removeEventListener("keydown", handleKeyDown);
             };
         }
     }, [active, handleTouchStart, handleTouchEnd, handleKeyDown]);
 
-    return children(targetRef);
+    return children;
 }

@@ -73,24 +73,22 @@ export function TetrisGame({isRules}) {
         <>
             <Wrapper isBlurred={!isGameActive}>
                 <GameHeader size={40} align='baseline' title="Тетрис" onSkip={isRules ? null : () => setIsSkipping(true)} />
-                <WrapperInner sizeRatio={sizeRatio}>
-                    <Timer size={25} initialTime={0} shownTime isStart={isGameActive} reverse />
-                    <GameController
-                        active={isGameActive}
-                        board={board}
-                        gameStats={gameStats}
-                        player={player}
-                        setGameOver={() => setEndModal({shown: true, points: getPoints()})}
-                        setPlayer={setPlayer}
-                    >
-                        {({input}) => (
-                            <>
-                                <BoardStyled sizeRatio={sizeRatio} board={board} />
-                                {!isRules && <Actions sizeRatio={sizeRatio} onInput={input} />}
-                            </>
-                        )}
-                    </GameController>
-                </WrapperInner>
+                <GameController
+                    active={isGameActive}
+                    board={board}
+                    gameStats={gameStats}
+                    player={player}
+                    setGameOver={() => setEndModal({shown: true, points: getPoints()})}
+                    setPlayer={setPlayer}
+                >
+                    {({input}) => (
+                        <WrapperInner sizeRatio={sizeRatio}>
+                            <Timer size={25} initialTime={0} shownTime isStart={isGameActive} reverse />
+                            <BoardStyled sizeRatio={sizeRatio} board={board} />
+                            {!isRules && <Actions sizeRatio={sizeRatio} onInput={input} />}
+                        </WrapperInner>
+                    )}
+                </GameController>
             </Wrapper>
             {isSkipping && (<SkipModal onContinue={() => setIsSkipping(false)} onSkip={() => next()}/>)}
             {endModal.shown && <EndGameModal points={endModal.points} onNext={() => next()}/>}

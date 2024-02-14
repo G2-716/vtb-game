@@ -10,7 +10,7 @@ import {Intro4} from './screens/Intro4';
 import {Lift1} from './screens/Lift1';
 import {Lift2} from './screens/Lift2';
 import {Lift3} from './screens/Lift3';
-import {Game11, Game19, Game12, Game13, Game14, Game15, Game16, Game17, Game18} from './screens/floor3';
+import {Game11, Game19, Game12, Game13, Game14, Game15, Game16, Game17, Game18, Game110} from './screens/floor3';
 import {Game21, Game22, Game23, Game24, Game25, Game26, Game27, Game28, Game29} from './screens/floor2';
 import {Game31, Game310, Game32, Game33, Game34, Game35, Game36, Game37, Game38, Game39} from './screens/floor1';
 import {Game41, Game42, Game43, Game44, Game45, Game46, Game47, Game48, Game49, Game410} from './screens/floor5';
@@ -41,6 +41,7 @@ const SCREEN_COMPONENTS = {
     [SCREENS.GAME_1_7]: Game17,
     [SCREENS.GAME_1_8]: Game18,
     [SCREENS.GAME_1_9]: Game19,
+    [SCREENS.GAME_1_10]: Game110,
     [SCREENS.GAME_2_1]: Game21,
     [SCREENS.GAME_2_2]: Game22,
     [SCREENS.GAME_2_3]: Game23,

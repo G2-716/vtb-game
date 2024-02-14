@@ -13,7 +13,7 @@ const Background = styled.img`
     position: absolute;
     left: 0;
     bottom: 0;
-    width: ${({width}) => width ?? '100%'};
+    width: 100%;
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
@@ -33,13 +33,13 @@ const ButtonsWrapper = styled.div`
     }
 `;
 
-export const RulesScreen = ({background, backgroundWidth, onNext}) => {
+export const RulesScreen = ({background, onNext}) => {
     const ratio = useSizeRatio();
     const {next} = useProgress();
 
     return (
         <Wrapper>
-            <Background src={background} width={backgroundWidth} />
+            <Background src={background} />
             <ButtonsWrapper $ratio={ratio}>
                 <Button onClick={onNext}>Играть</Button>
                 <Button 
