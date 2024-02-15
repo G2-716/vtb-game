@@ -59,10 +59,8 @@ export function Game2048({isRules}) {
     }
 
     useEffect(() => {
-        if (!isRules) {
-            startGame();
-        }
-    }, [isRules]);
+        startGame();
+    }, []);
 
     return (
         <>

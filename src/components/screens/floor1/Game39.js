@@ -1,5 +1,5 @@
-import {LinesGame} from "./LinesGame";
+import {PointsGame} from "./PointsGame";
 
 export function Game39() {
-    return <LinesGame isRules={false} />
+    return <PointsGame isRules={false} />
 }

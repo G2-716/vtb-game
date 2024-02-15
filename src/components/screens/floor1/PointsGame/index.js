@@ -1,12 +1,10 @@
-import {useCallback, useEffect, useMemo, useState} from "react";
+import {useMemo, useState} from "react";
 import styled from "@emotion/styled";
 import {useProgress} from "../../../../contexts/ProgressContext";
 import {useGame} from "./useGame";
 import {GameBoard} from "./GameBoard";
 import {GameController} from "./GameController";
-import {ACTIONS} from "./constants";
 import {GameHeader} from "../../../shared/GameHeader";
-import {Timer} from "../../../shared/Timer";
 import {Text} from "../../../shared/Text";
 import {useSizeRatio} from "../../../../contexts/SizeRatioContext";
 import {SkipModal} from "../../../shared/SkipModal";
@@ -28,10 +26,10 @@ const WrapperInner = styled.div`
 `
 
 const Description = styled(Text)`
-    margin-top: ${({sizeRatio}) => `calc(58px * ${sizeRatio})`};
+    margin-top: ${({sizeRatio}) => `calc(78px * ${sizeRatio})`};
 `
 
-export function LinesGame({isRules}) {
+export function PointsGame({isRules}) {
     const {next} = useProgress()
     const sizeRatio = useSizeRatio()
     const [isSkipping, setIsSkipping] = useState(false);
@@ -40,51 +38,48 @@ export function LinesGame({isRules}) {
         () => !(isRules || isSkipping || endModal.shown),
         [isRules, isSkipping, endModal.shown],
     );
-    const {startGame, hasTileValue, getTiles, moveTiles} = useGame(
-        () => setEndModal({shown: true, points: getPoints()}),
+    const {board, paths, attempts, onDragEnd, onDragMove, onDragStart} = useGame(
         () => setEndModal({shown: true, points: getPoints()}),
     );
 
     function getPoints() {
-        if (hasTileValue(2048)) {
+        if (attempts === 1) {
             return 3
         }
-        if (hasTileValue(1024)) {
+
+        if (attempts === 2) {
             return 2
         }
-        if (hasTileValue(512)) {
+
+        if (attempts === 3) {
             return 1
         }
+
         return 0
     }
-
-    useEffect(() => {
-        if (!isRules) {
-            startGame();
-        }
-    }, [isRules]);
 
     return (
         <>
             <Wrapper isBlurred={!isGameActive}>
                 <GameHeader size={40} align='baseline' title={'Соедини\nточки'} onSkip={isRules ? null : () => setIsSkipping(true)} />
-                <WrapperInner sizeRatio={sizeRatio}>
                     <GameController
                         active={isGameActive}
-                        onMoveUp={() => moveTiles(ACTIONS.MOVE_UP)}
-                        onMoveDown={() => moveTiles(ACTIONS.MOVE_DOWN)}
-                        onMoveLeft={() => moveTiles(ACTIONS.MOVE_LEFT)}
-                        onMoveRight={() => moveTiles(ACTIONS.MOVE_RIGHT)}
+                        onDragStart={onDragStart}
+                        onDragMove={onDragMove}
+                        onDragEnd={onDragEnd}
                     >
-                        <GameBoard tiles={getTiles()} />
+                        {(ref) => (
+                            <WrapperInner ref={ref} sizeRatio={sizeRatio}>
+                                <GameBoard board={board} paths={paths} />
+                                {!isRules && (
+                                    <Description sizeRatio={sizeRatio}>
+                                        <b>Как играть:</b> {'\n'}
+                                        Соедини все одинаковые точки так, чтобы линии не пересекались
+                                    </Description>
+                                )}
+                            </WrapperInner>
+                        )}
                     </GameController>
-                    {!isRules && (
-                        <Description sizeRatio={sizeRatio}>
-                            <b>Как играть:</b> {'\n'}
-                            Соедини все одинаковые точки так, чтобы линии не пересекались
-                        </Description>
-                    )}
-                </WrapperInner>
             </Wrapper>
             {isSkipping && (<SkipModal onContinue={() => setIsSkipping(false)} onSkip={() => next()}/>)}
             {endModal.shown && <EndGameModal points={endModal.points} onNext={() => next()}/>}
