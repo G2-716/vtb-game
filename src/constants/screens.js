@@ -72,6 +72,7 @@ export const SCREENS = {
     FINAL_1: 'FINAL_1',
     FINAL_2: 'FINAL_2',
     FINAL_3: 'FINAL_3',
+    FINAL_4: 'FINAL_4',
 }
 
 export const NEXT_SCREENS = {
@@ -147,5 +148,6 @@ export const NEXT_SCREENS = {
     [SCREENS.TEST_12]: SCREENS.FINAL_1,
     [SCREENS.FINAL_1]: SCREENS.FINAL_2,
     [SCREENS.FINAL_2]: SCREENS.FINAL_3,
-    [SCREENS.FINAL_3]: null,
+    [SCREENS.FINAL_3]: SCREENS.FINAL_4,
+    [SCREENS.FINAL_4]: null,
 }

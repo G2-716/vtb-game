@@ -1,11 +1,11 @@
 import styled from "@emotion/styled";
-import { SCREENS } from "../../../constants/screens";
 import {useProgress} from "../../../contexts/ProgressContext";
 import { useSizeRatio } from "../../../contexts/SizeRatioContext";
 import { Button, BUTTON_SIZE, BUTTON_TYPES } from "../../shared/Button";
 import {Modal} from '../../shared/Modal';
 import { ResultText } from "../../shared/ResultText";
 import pic from '../../../assets/images/test_end.png';
+import { colors } from "../../../constants/colors";
 
 const Wrapper = styled.div`
     width: 100%;
@@ -37,20 +37,19 @@ const Picture = styled.img`
     object-fit: contain;
 `;
 
-export function Test12() {
+export function Final4() {
     const ratio = useSizeRatio();
-    const {next, testPoints} = useProgress();
+    const {totalPoints} = useProgress();
 
     return (
         <Wrapper>
-            <ModalStyled opened $ratio={ratio}>
-                <ResultText points={testPoints}/>
+            <ModalStyled $ratio={ratio} opened>
+                <ResultText points={totalPoints}/>
                 <ButtonsBlock $ratio={ratio}>
-                    <Button onClick={() => next(SCREENS.INTERNSHIP_2)}>К этажу стажировок</Button>
+                    <Button background={colors.blue}>Перейти к рейтингу{'\n'}игроков</Button>
                     <Button 
                         type={BUTTON_TYPES.outlined} 
                         size={BUTTON_SIZE.sm}
-                        onClick={() => next(SCREENS.FINAL_1)}
                     >
                         Завершить игру
                     </Button>
