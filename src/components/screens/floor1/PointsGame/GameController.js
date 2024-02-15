@@ -8,7 +8,7 @@ export function GameController({ active, children, onDragStart, onDragMove, onDr
     const lastTargetRef = useRef(null)
 
     const handleDragStart = useCallback((e) => {
-        const { name, x, y } = e.target.dataset
+        const { name, x, y } = e.target?.dataset || {}
 
         if (name !== DRAGGABLE_NAME) {
             return
@@ -20,7 +20,7 @@ export function GameController({ active, children, onDragStart, onDragMove, onDr
 
     const handleDragMove = useCallback((e) => {
         const currentElement = document.elementFromPoint(e.x, e.y)
-        const { name, x, y } = currentElement.dataset
+        const { name, x, y } = currentElement?.dataset || {}
 
         if (
             name !== DRAGGABLE_NAME
@@ -37,7 +37,7 @@ export function GameController({ active, children, onDragStart, onDragMove, onDr
     const handleDragEnd = useCallback(
         (e) => {
             const currentElement = document.elementFromPoint(e.x, e.y)
-            const { name, x, y } = currentElement.dataset
+            const { name, x, y } = currentElement?.dataset || {}
 
             if (name !== DRAGGABLE_NAME) {
                 return
