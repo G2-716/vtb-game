@@ -20,9 +20,10 @@ import {
     Test12, Test2, Test3, Test4, Test5, Test6, Test7, Test8, Test9 
 } from './screens/floor6';
 
-import {Final1} from './screens/Final1'
-import {Final2} from './screens/Final2'
-import {Final3} from './screens/Final3'
+import {Final1} from './screens/final/Final1'
+import {Final2} from './screens/final/Final2'
+import {Final3} from './screens/final/Final3'
+import {Final4} from './screens/final/Final4'
 
 const SCREEN_COMPONENTS = {
     [SCREENS.INTRO_1]: Intro1,
@@ -98,6 +99,7 @@ const SCREEN_COMPONENTS = {
     [SCREENS.FINAL_1]: Final1,
     [SCREENS.FINAL_2]: Final2,
     [SCREENS.FINAL_3]: Final3,
+    [SCREENS.FINAL_4]: Final4,
 }
 
 const SWITCH_DURATION = 400;
