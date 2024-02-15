@@ -132,58 +132,56 @@ export function Internship3() {
                     <Button type={BUTTON_TYPES.outlined} onClick={() => next(SCREENS.LIFT_3)}>В лифт</Button>
                 </ButtonsWrapper>
             </Wrapper>
-            {isModal && (
-                <Modal>
-                    <ModalTitle>{info.name}</ModalTitle>
-                    {info.applying && (
-                        <ModalTextBlock>
-                            <ModalText>Срок приёма заявок:{'\n'}</ModalText>
-                            <ModalValues>{info.applying}</ModalValues>
-                        </ModalTextBlock>
-                    )}
-                    {info.start && (
-                        <ModalTextBlock>
-                            <ModalText>Старт программы:{'\n'}</ModalText>
-                            <ModalValues>{info.start}</ModalValues>
-                        </ModalTextBlock>
-                    )}
-                    {info.duration && (
-                        <ModalTextBlock >
-                            <ModalText>Продолжительность:{'\n'}</ModalText>
-                            <ModalValues>{info.duration}</ModalValues>
-                        </ModalTextBlock>
-                    )}
-                    {info.placement && (
-                        <ModalTextBlock>
-                            <ModalText>География: </ModalText>
-                            <ModalValues>{info.placement}</ModalValues>
-                        </ModalTextBlock>
-                    )}
-                    {info.type && (
-                        <ModalTextBlock>
-                            <ModalText>Тип: </ModalText>
-                            <ModalValues>{info.type}</ModalValues>
-                        </ModalTextBlock>
-                    )}
-                    {info.direction && (
-                        <ModalTextBlock>
-                            <ModalText>Направление школы: </ModalText>
-                            <ModalValues>{info.direction}</ModalValues>
-                        </ModalTextBlock>
-                    )}
-                    {info.directions && (
-                        <ModalTextBlock>
-                            <ModalText>Направления программы: </ModalText>
-                            <ul>
+            <Modal opened={isModal}>
+                <ModalTitle>{info.name}</ModalTitle>
+                {info.applying && (
+                    <ModalTextBlock>
+                        <ModalText>Срок приёма заявок:{'\n'}</ModalText>
+                        <ModalValues>{info.applying}</ModalValues>
+                    </ModalTextBlock>
+                )}
+                {info.start && (
+                    <ModalTextBlock>
+                        <ModalText>Старт программы:{'\n'}</ModalText>
+                        <ModalValues>{info.start}</ModalValues>
+                    </ModalTextBlock>
+                )}
+                {info.duration && (
+                    <ModalTextBlock >
+                        <ModalText>Продолжительность:{'\n'}</ModalText>
+                        <ModalValues>{info.duration}</ModalValues>
+                    </ModalTextBlock>
+                )}
+                {info.placement && (
+                    <ModalTextBlock>
+                        <ModalText>География: </ModalText>
+                        <ModalValues>{info.placement}</ModalValues>
+                    </ModalTextBlock>
+                )}
+                {info.type && (
+                    <ModalTextBlock>
+                        <ModalText>Тип: </ModalText>
+                        <ModalValues>{info.type}</ModalValues>
+                    </ModalTextBlock>
+                )}
+                {info.direction && (
+                    <ModalTextBlock>
+                        <ModalText>Направление школы: </ModalText>
+                        <ModalValues>{info.direction}</ModalValues>
+                    </ModalTextBlock>
+                )}
+                {info.directions && (
+                    <ModalTextBlock>
+                        <ModalText>Направления программы: </ModalText>
+                        <ul>
                             {info.directions.map((direction) => (
                                 <LiStyled><ModalValues>{direction}</ModalValues></LiStyled>
                             ))}
-                            </ul>
-                        </ModalTextBlock>
-                    )}
-                    <ButtonStyled background={colors.blue} onClick={() => setIsModal(false)}>Продолжить</ButtonStyled> 
-                </Modal>
-            )}
+                        </ul>
+                    </ModalTextBlock>
+                )}
+                <ButtonStyled background={colors.blue} onClick={() => setIsModal(false)}>Продолжить</ButtonStyled>
+            </Modal>
         </Container>
     )
 }

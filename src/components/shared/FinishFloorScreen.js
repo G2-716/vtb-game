@@ -25,13 +25,10 @@ export const FinishFloorScreen = ({finishText, background, icon, children}) => {
 
     return (
         <Wrapper background={background}>
-            {isShowModal ? (
-                <FinishFloorModal icon={icon} onClick={() => next(SCREENS.LIFT_3)} text={finishText}>
-                    {children}
-                </FinishFloorModal>
-            ) : (
-                <ButtonStyled onClick={() => setIsShowModal(true)} $ratio={ratio}/>
-            )}
+            <FinishFloorModal opened={isShowModal} icon={icon} onClick={() => next(SCREENS.LIFT_3)} text={finishText}>
+                {children}
+            </FinishFloorModal>
+            {!isShowModal && <ButtonStyled onClick={() => setIsShowModal(true)} $ratio={ratio}/>}
         </Wrapper>
     )
 }

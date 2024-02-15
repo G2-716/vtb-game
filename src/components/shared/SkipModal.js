@@ -12,11 +12,11 @@ const ButtonWrapper = styled.div`
     }
 `;
 
-export const SkipModal = ({onContinue, onSkip}) => {
+export const SkipModal = ({opened, onContinue, onSkip}) => {
     const ratio = useSizeRatio();
 
     return (
-        <Modal>
+        <Modal opened={opened}>
             <Text>
                 Уверен, что хочешь пропустить игру? Если пропустишь — не сможешь получить баллы
             </Text>

@@ -107,25 +107,23 @@ export function Lift3() {
                     </Floor>
                 ))}
             </Wrapper>
-            {isModal && (
-                <Modal>
-                    <Text>
-                        Уверен, что хочешь завершить игру? В рейтинг пойдут только те баллы, которые ты успел заработать до этого момента
-                    </Text>
-                    <ButtonsWrapper $ratio={ratio}>
-                        <Button size={BUTTON_SIZE.sm} onClick={() => setIsModal(false)}>
-                            Нет, продолжить игру
-                        </Button>
-                        <Button 
-                            size={BUTTON_SIZE.sm} 
-                            onClick={() => next(SCREENS.FINAL_1)}
-                            type={BUTTON_TYPES.outlined}
-                        >
-                            Да, завершить игру
-                        </Button>
-                    </ButtonsWrapper>
-                </Modal>
-            )}
+            <Modal opened={isModal}>
+                <Text>
+                    Уверен, что хочешь завершить игру? В рейтинг пойдут только те баллы, которые ты успел заработать до этого момента
+                </Text>
+                <ButtonsWrapper $ratio={ratio}>
+                    <Button size={BUTTON_SIZE.sm} onClick={() => setIsModal(false)}>
+                        Нет, продолжить игру
+                    </Button>
+                    <Button
+                        size={BUTTON_SIZE.sm}
+                        onClick={() => next(SCREENS.FINAL_1)}
+                        type={BUTTON_TYPES.outlined}
+                    >
+                        Да, завершить игру
+                    </Button>
+                </ButtonsWrapper>
+            </Modal>
         </>
     )
 }

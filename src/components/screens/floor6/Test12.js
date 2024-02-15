@@ -42,7 +42,7 @@ export function Test12() {
 
     return (
         <Wrapper>
-            <ModalStyled $ratio={ratio}>
+            <ModalStyled opened $ratio={ratio}>
                 <ResultText points={testPoints}/>
                 <ButtonsBlock $ratio={ratio}>
                     <Button onClick={() => next(SCREENS.INTERNSHIP_2)}>К этажу стажировок</Button>

@@ -183,18 +183,16 @@ export const WordGame = ({isHiddenKeyboard, isBlurred}) => {
                     isHiddenKeyboard={isHiddenKeyboard}
                 />
             </Wrapper>
-            {isRules && (
-                <Modal>
-                    <Text>
-                        {'Твоя задача — открыть загаданное слово. Вводи предполагаемое слово и нажимай на галочку. \n\n'}
-                        Если в введённом слове буква находится на том же месте, что и в загаданном, то она подсветится <b style={{color: colors.purple}}>фиолетовым</b>.{'\n'} 
-                        Если буква есть в искомом слове, но находится на другом месте, она подсветится  <b style={{color: colors.blue}}>синим</b>.
-                    </Text>
-                    <ButtonStyled $ratio={ratio}onClick={() => setIsRules(false)}>Всё понятно</ButtonStyled>
-                </Modal>
-            )}
-            {isSkipping && (<SkipModal onContinue={() => setIsSkipping(false)} onSkip={() => next(SCREENS.LIFT_3)}/>)}
-            {endModal.shown && <EndGameModal points={endModal.points} onNext={() => next()}/>}
+            <Modal opened={isRules}>
+                <Text>
+                    {'Твоя задача — открыть загаданное слово. Вводи предполагаемое слово и нажимай на галочку. \n\n'}
+                    Если в введённом слове буква находится на том же месте, что и в загаданном, то она подсветится <b style={{color: colors.purple}}>фиолетовым</b>.{'\n'}
+                    Если буква есть в искомом слове, но находится на другом месте, она подсветится  <b style={{color: colors.blue}}>синим</b>.
+                </Text>
+                <ButtonStyled $ratio={ratio}onClick={() => setIsRules(false)}>Всё понятно</ButtonStyled>
+            </Modal>
+            <SkipModal opened={isSkipping} onContinue={() => setIsSkipping(false)} onSkip={() => next(SCREENS.LIFT_3)}/>
+            <EndGameModal opened={endModal.shown} points={endModal.points} onNext={() => next()}/>
         </>
         
     );

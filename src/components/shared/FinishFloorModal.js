@@ -20,11 +20,11 @@ const ButtonStyled = styled(Button)`
     margin: calc(40px * ${({$ratio}) => $ratio}) auto 0;
 `;
 
-export const FinishFloorModal = ({ text, icon, onClick, children}) => {
+export const FinishFloorModal = ({ opened, text, icon, onClick, children}) => {
     const ratio = useSizeRatio();
 
     return (
-        <ModalStyled $ratio={ratio}>
+        <ModalStyled opened={opened} $ratio={ratio}>
             {children ?? (<Icon background={icon} $ratio={ratio}/>)}
             <Text>{text}</Text>
             <ButtonStyled onClick={onClick} $ratio={ratio}>Продолжить</ButtonStyled>

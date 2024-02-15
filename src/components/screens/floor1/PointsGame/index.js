@@ -81,8 +81,8 @@ export function PointsGame({isRules}) {
                         )}
                     </GameController>
             </Wrapper>
-            {isSkipping && (<SkipModal onContinue={() => setIsSkipping(false)} onSkip={() => next()}/>)}
-            {endModal.shown && <EndGameModal points={endModal.points} onNext={() => next()}/>}
+            <SkipModal opened={isSkipping} onContinue={() => setIsSkipping(false)} onSkip={() => next()}/>
+            <EndGameModal opened={endModal.shown} points={endModal.points} onNext={() => next()}/>
         </>
     )
 }

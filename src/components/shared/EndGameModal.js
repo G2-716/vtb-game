@@ -10,7 +10,7 @@ const ButtonStyled = styled(Button)`
     margin: calc(40px * ${({$ratio}) => $ratio}) auto 0;
 `;
 
-export const EndGameModal = ({points, onNext}) => {
+export const EndGameModal = ({opened, points, onNext}) => {
     const ratio = useSizeRatio();
     let ending = 'ов';
 
@@ -28,7 +28,7 @@ export const EndGameModal = ({points, onNext}) => {
     }
     
     return (
-        <Modal>
+        <Modal opened={opened}>
             <ResultText points={points} />
             <ButtonStyled $ratio={ratio} onClick={onNext}>Продолжить</ButtonStyled>
         </Modal>
