@@ -37,7 +37,7 @@ const Actions = styled(BoardActions)`
 `
 
 export function TetrisGame({isRules}) {
-    const {next} = useProgress()
+    const {next, addTetrisPoints} = useProgress()
     const sizeRatio = useSizeRatio()
     const [isSkipping, setIsSkipping] = useState(false);
     const [endModal, setEndModal] = useState({shown: false, points: 0});
@@ -55,6 +55,12 @@ export function TetrisGame({isRules}) {
         resetPlayer,
         addLinesCleared
     });
+
+    function handleResult() {
+        const points = getPoints()
+        setEndModal({shown: true, points})
+        addTetrisPoints(points)
+    }
 
     function getPoints() {
         if (gameStats.linesCompleted >= 5) {
@@ -78,7 +84,7 @@ export function TetrisGame({isRules}) {
                     board={board}
                     gameStats={gameStats}
                     player={player}
-                    setGameOver={() => setEndModal({shown: true, points: getPoints()})}
+                    setGameOver={handleResult}
                     setPlayer={setPlayer}
                 >
                     {({input}) => (

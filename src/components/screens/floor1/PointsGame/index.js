@@ -30,7 +30,7 @@ const Description = styled(Text)`
 `
 
 export function PointsGame({isRules}) {
-    const {next} = useProgress()
+    const {next, addLinesPoints} = useProgress()
     const sizeRatio = useSizeRatio()
     const [isSkipping, setIsSkipping] = useState(false);
     const [endModal, setEndModal] = useState({shown: false, points: 0});
@@ -38,9 +38,13 @@ export function PointsGame({isRules}) {
         () => !(isRules || isSkipping || endModal.shown),
         [isRules, isSkipping, endModal.shown],
     );
-    const {board, paths, attempts, onDragEnd, onDragMove, onDragStart} = useGame(
-        () => setEndModal({shown: true, points: getPoints()}),
-    );
+    const {board, paths, attempts, onDragEnd, onDragMove, onDragStart} = useGame(handleResult);
+
+    function handleResult() {
+        const points = getPoints()
+        setEndModal({shown: true, points})
+        addLinesPoints(points)
+    }
 
     function getPoints() {
         if (attempts === 1) {

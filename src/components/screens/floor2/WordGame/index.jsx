@@ -34,7 +34,7 @@ export const WordGame = ({isHiddenKeyboard, isBlurred}) => {
         return Array.from({length}, func);
     };
     const ratio = useSizeRatio();
-    const {next} = useProgress();
+    const {next, addWordPoints} = useProgress();
 
     const [isRules, setIsRules] = useState(false);
     const [isSkipping, setIsSkipping] = useState(false);
@@ -74,6 +74,10 @@ export const WordGame = ({isHiddenKeyboard, isBlurred}) => {
         setCurrentLetterId(id + 1);
     }, [currentLetterId, currentTry, tries]);
 
+    const handleResult = useCallback((points) => {
+        setEndModal({shown: true, points});
+        addWordPoints(points)
+    }, [addWordPoints])
 
     const onAcceptTry = useCallback(() => {
         if (!isDoneBtnActive) return;
@@ -116,13 +120,13 @@ export const WordGame = ({isHiddenKeyboard, isBlurred}) => {
             let points = 1;
             if (currentTry < 3) points = 3;
             if (currentTry === 3) points = 2;
-            setEndModal({shown: true, points});
+            handleResult(points)
             return;
         }
 
         if (currentTry + 1 === tries.length) {
             setCurrentLetterId(0);
-            setEndModal({shown: true, points: 0});
+            handleResult(0)
             
             return;
         } 
@@ -132,7 +136,7 @@ export const WordGame = ({isHiddenKeyboard, isBlurred}) => {
         }, 0);
         
         setCurrentTry(id => id + 1);
-    }, [isDoneBtnActive, tries, currentTry]);
+    }, [isDoneBtnActive, tries, currentTry, handleResult]);
 
     const onDelete = useCallback(() => {
         if (currentLetterId - 1 < 0) return;

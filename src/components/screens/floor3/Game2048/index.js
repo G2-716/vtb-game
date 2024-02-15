@@ -32,7 +32,7 @@ const Description = styled(Text)`
 `
 
 export function Game2048({isRules}) {
-    const {next} = useProgress()
+    const {next, addPoints2048} = useProgress()
     const sizeRatio = useSizeRatio()
     const [isSkipping, setIsSkipping] = useState(false);
     const [endModal, setEndModal] = useState({shown: false, points: 0});
@@ -40,10 +40,13 @@ export function Game2048({isRules}) {
         () => !(isRules || isSkipping || endModal.shown),
         [isRules, isSkipping, endModal.shown],
     );
-    const {startGame, hasTileValue, getTiles, moveTiles} = useGame(
-        () => setEndModal({shown: true, points: getPoints()}),
-        () => setEndModal({shown: true, points: getPoints()}),
-    );
+    const {startGame, hasTileValue, getTiles, moveTiles} = useGame(handleResult, handleResult);
+
+    function handleResult() {
+        const points = getPoints()
+        setEndModal({shown: true, points})
+        addPoints2048(points)
+    }
 
     function getPoints() {
         if (hasTileValue(2048)) {
