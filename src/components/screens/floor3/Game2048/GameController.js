@@ -1,4 +1,5 @@
-import {useCallback, useEffect, useRef, useState} from "react";
+import {useCallback, useRef, useState} from "react";
+import {useClickListener} from "../../../../hooks/useClickListener";
 
 
 export function GameController({ active, children, onMoveUp, onMoveDown, onMoveLeft, onMoveRight }) {
@@ -6,39 +7,15 @@ export function GameController({ active, children, onMoveUp, onMoveDown, onMoveL
     const [startY, setStartY] = useState(0);
     const targetRef = useRef()
 
-    const handleKeyDown = useCallback(
-        (e) => {
-            switch (e.code) {
-                case "ArrowUp":
-                    onMoveUp();
-                    break;
-                case "ArrowDown":
-                    onMoveDown();
-                    break;
-                case "ArrowLeft":
-                    onMoveLeft();
-                    break;
-                case "ArrowRight":
-                    onMoveRight();
-                    break;
-            }
-        },
-        [onMoveDown, onMoveUp, onMoveRight, onMoveLeft],
-    );
-
-    const handleTouchStart = useCallback((e) => {
-        e.preventDefault();
-
-        setStartX(e.touches[0].clientX);
-        setStartY(e.touches[0].clientY);
+    const handleStart = useCallback((e) => {
+        setStartX(e.x);
+        setStartY(e.y);
     }, []);
 
-    const handleTouchEnd = useCallback(
+    const handleEnd = useCallback(
         (e) => {
-            e.preventDefault();
-
-            const endX = e.changedTouches[0].clientX;
-            const endY = e.changedTouches[0].clientY;
+            const endX = e.x;
+            const endY = e.y;
             const deltaX = endX - startX;
             const deltaY = endY - startY;
 
@@ -62,19 +39,13 @@ export function GameController({ active, children, onMoveUp, onMoveDown, onMoveL
         [startX, startY, onMoveDown, onMoveUp, onMoveRight, onMoveLeft],
     );
 
-    useEffect(() => {
-        if (active && targetRef.current) {
-            targetRef.current.addEventListener("touchstart", handleTouchStart, { passive: false });
-            targetRef.current.addEventListener("touchend", handleTouchEnd, { passive: false });
-            document.addEventListener("keydown", handleKeyDown);
-
-            return () => {
-                targetRef.current.removeEventListener("touchstart", handleTouchStart);
-                targetRef.current.removeEventListener("touchend", handleTouchEnd);
-                document.removeEventListener("keydown", handleKeyDown);
-            };
-        }
-    }, [active, handleTouchStart, handleTouchEnd, handleKeyDown]);
+    useClickListener({
+        active,
+        prevent: true,
+        targetRef,
+        onStart: handleStart,
+        onEnd: handleEnd,
+    })
 
     return children(targetRef);
 }

@@ -43,7 +43,7 @@ export function GameBoard({ className, board, paths }) {
                 })
             ))}
             {Object.keys(paths).map((id) => paths[id] && (
-                <Line xmlns="http://www.w3.org/2000/svg">
+                <Line key={id} xmlns="http://www.w3.org/2000/svg">
                     <path stroke={POINTS[id].color} strokeWidth={15 * sizeRatio} d={createRoundedPolyline(paths[id].map(([x, y]) => {
                         const size = (CONTAINER_SIZE / TILE_COUNT_PER_DIMENSION) * sizeRatio
                         return [x * size + (size / 2), y * size + (size / 2)]
