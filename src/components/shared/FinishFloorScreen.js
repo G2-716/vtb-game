@@ -10,6 +10,7 @@ const Wrapper = styled.div`
     width: 100%;
     height: 100%;
     background: url(${({background}) => background}) no-repeat 0 0 /cover;
+    ${({$isBlurred}) => $isBlurred ? 'filter: blur(1.5px)' : ''};
 `;
 
 const ButtonStyled = styled(ArrowButton)`
@@ -24,11 +25,14 @@ export const FinishFloorScreen = ({finishText, background, icon, children}) => {
     const ratio = useSizeRatio();
 
     return (
-        <Wrapper background={background}>
+        <>
+            <Wrapper background={background} $isBlurred={isShowModal}>
+                {!isShowModal && <ButtonStyled onClick={() => setIsShowModal(true)} $ratio={ratio}/>}
+            </Wrapper>
             <FinishFloorModal opened={isShowModal} icon={icon} onClick={() => next(SCREENS.LIFT_3)} text={finishText}>
                 {children}
             </FinishFloorModal>
-            {!isShowModal && <ButtonStyled onClick={() => setIsShowModal(true)} $ratio={ratio}/>}
-        </Wrapper>
+        </>
+        
     )
 }

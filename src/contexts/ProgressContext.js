@@ -17,6 +17,7 @@ const ProgressContext = createContext(INITIAL_STATE)
 export function ProgressProvider(props) {
     const {children} = props
     const [screen, setScreen] = useState(getUrlParam('screen') || INITIAL_STATE.screen)
+    const [isFirstElevator, setIsFirstElevator] = useState(true);
     const [testPoints, setTestPoints] = useState(INITIAL_STATE.testPoints)
     const [points2048, setPoints2048] = useState(INITIAL_STATE.points2048)
     const [wordPoints, setWordPoints] = useState(INITIAL_STATE.wordPoints)
@@ -68,6 +69,10 @@ export function ProgressProvider(props) {
         setMoveFigurePoints(amount)
     }
 
+    function handleVisitElevator() {
+        setIsFirstElevator(false);
+    }
+
     const state = {
         screen,
         testPoints,
@@ -77,6 +82,8 @@ export function ProgressProvider(props) {
         tetrisPoints,
         moveFigurePoints,
         totalPoints,
+        isFirstElevator,
+        handleVisitElevator,
         next,
         reset,
         addTestPoints,

@@ -69,30 +69,34 @@ import finish_service from '../assets/images/finish_service.png'
 import finish_strategy from '../assets/images/finish_strategy.png'
 import floor1_people from '../assets/images/floor1_people.png'
 import floor1_start from '../assets/images/floor1_start.png'
-import floor1CircleIcon from '../assets/images/floor1CircleIcon.svg'
+import floor1CircleIcon from '../assets/images/floor1CircleIcon.png'
+import floor1Finish from '../assets/images/floor1Finish.png'
+import floor1FinishIcon from '../assets/images/floor1FinishIcon.png'
 import floor1Icon from '../assets/images/floor1Icon.png'
 import floor2_start from '../assets/images/floor2_start.png'
-import floor2CircleIcon from '../assets/images/floor2CircleIcon.svg'
+import floor2CircleIcon from '../assets/images/floor2CircleIcon.png'
 import floor2Finish from '../assets/images/floor2Finish.png'
 import floor2FinishIcon from '../assets/images/floor2FinishIcon.png'
 import floor2Icon from '../assets/images/floor2Icon.png'
 import floor3_people from '../assets/images/floor3_people.png'
 import floor3_start from '../assets/images/floor3_start.png'
-import floor3CircleIcon from '../assets/images/floor3CircleIcon.svg'
+import floor3CircleIcon from '../assets/images/floor3CircleIcon.png'
 import floor3Finish from '../assets/images/floor3Finish.png'
 import floor3FinishIcon from '../assets/images/floor3FinishIcon.png'
 import floor3Icon from '../assets/images/floor3Icon.png'
 import floor4_start from '../assets/images/floor4_start.png'
-import floor4CircleIcon from '../assets/images/floor4CircleIcon.svg'
+import floor4CircleIcon from '../assets/images/floor4CircleIcon.png'
+import floor4Finish from '../assets/images/floor4Finish.png'
+import floor4FinishIcon from '../assets/images/floor4FinishIcon.png'
 import floor4Icon from '../assets/images/floor4Icon.png'
 import floor5_people from '../assets/images/floor5_people.png'
 import floor5_start from '../assets/images/floor5_start.png'
-import floor5CircleIcon from '../assets/images/floor5CircleIcon.svg'
+import floor5CircleIcon from '../assets/images/floor5CircleIcon.png'
 import floor5Finish from '../assets/images/floor5Finish.png'
 import floor5FinishIcon from '../assets/images/floor5FinishIcon.png'
 import floor5Icon from '../assets/images/floor5Icon.png'
 import floor6_start from '../assets/images/floor6_start.png'
-import floor6CircleIcon from '../assets/images/floor6CircleIcon.svg'
+import floor6CircleIcon from '../assets/images/floor6CircleIcon.png'
 import floor6Icon from '../assets/images/floor6Icon.png'
 import InfoIcon from '../assets/images/InfoIcon.svg'
 import internship1 from '../assets/images/internship1.png'
@@ -234,6 +238,8 @@ const SCREEN_IMAGES_TO_PRELOAD = [
     floor1_people,
     floor1_start,
     floor1CircleIcon,
+    floor1Finish,
+    floor1FinishIcon,
     floor1Icon,
     floor2_start,
     floor2CircleIcon,
@@ -248,6 +254,8 @@ const SCREEN_IMAGES_TO_PRELOAD = [
     floor3Icon,
     floor4_start,
     floor4CircleIcon,
+    floor4Finish,
+    floor4FinishIcon,
     floor4Icon,
     floor5_people,
     floor5_start,

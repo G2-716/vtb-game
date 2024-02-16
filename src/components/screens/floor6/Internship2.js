@@ -6,5 +6,5 @@ import { BgImageScreen } from "../../shared/BgImageScreen";
 export function Internship2() {
     const {next} = useProgress()
 
-    return <BgImageScreen image={pic} onClick={() => next()} background={background} text="Круто, давай посмотрим!"/>
+    return <BgImageScreen image={pic} onClick={() => next()} background={background} text="Круто, давай посмотрим!" isLift/>
 }

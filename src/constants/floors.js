@@ -1,9 +1,9 @@
-import circle1 from '../assets/images/floor1CircleIcon.svg';
-import circle2 from '../assets/images/floor2CircleIcon.svg';
-import circle3 from '../assets/images/floor3CircleIcon.svg';
-import circle4 from '../assets/images/floor4CircleIcon.svg';
-import circle5 from '../assets/images/floor5CircleIcon.svg';
-import circle6 from '../assets/images/floor6CircleIcon.svg';
+import circle1 from '../assets/images/floor1CircleIcon.png';
+import circle2 from '../assets/images/floor2CircleIcon.png';
+import circle3 from '../assets/images/floor3CircleIcon.png';
+import circle4 from '../assets/images/floor4CircleIcon.png';
+import circle5 from '../assets/images/floor5CircleIcon.png';
+import circle6 from '../assets/images/floor6CircleIcon.png';
 import floor1 from '../assets/images/floor1Icon.png';
 import floor2 from '../assets/images/floor2Icon.png';
 import floor3 from '../assets/images/floor3Icon.png';
@@ -54,6 +54,5 @@ export const FLOORS = [
         logo: floor6,
         circle: circle6,
         name: 'Стажировки',
-        background: '#E8F5FF'
     },
 ];

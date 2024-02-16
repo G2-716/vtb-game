@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import {useProgress} from "../../contexts/ProgressContext";
 import background from "../../assets/images/bg_elevatorMenu.svg";
+import hint from "../../assets/images/elevator_hint.png";
 import { SCREENS } from "../../constants/screens";
 import { FLOORS } from "../../constants/floors";
 import { useState } from "react";
@@ -31,11 +32,11 @@ const Floor = styled.div`
     display: flex;
     padding:  calc(4px * ${({$ratio}) => $ratio}) calc(10px * ${({$ratio}) => $ratio});
     cursor: pointer;
-    background: ${({$active, background}) => $active ? '#DBDBDB' : background};
+    background: ${({$active}) => $active ? '#CAE8FF' : '#E8F5FF'};
     border-radius: calc(10px * ${({$ratio}) => $ratio});
     align-items: center;
     transition: background .2s;
-    box-shadow: 2px 2px 0 0 #D1D1D1 ${({$active}) => $active ? ', inset 0 0 0 2px #f5f5f5' : ''};
+    box-shadow: 2px 2px 0 0 #D1D1D1 ${({$active}) => $active ? ', inset 0 0 0 2px #E8F5FF' : ''};
     margin-top: calc(13px * ${({$ratio}) => $ratio});
     white-space: pre-line;
 `;
@@ -73,15 +74,27 @@ const ButtonsWrapper = styled.div`
     } 
 `;
 
+const Hint = styled.img`
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(293px * ${({$ratio}) => $ratio});
+    height: calc(211px * ${({$ratio}) => $ratio});
+`;
+
 export function Lift3() {
-    const {next} = useProgress();
+    const {next, isFirstElevator, handleVisitElevator} = useProgress();
     const [chosen, setChosen] = useState(null);
     const [isModal, setIsModal] = useState(false);
     const ratio = useSizeRatio();
 
     const handleMove = (id, screen) => {
         setChosen(id);
-        setTimeout(() => next(screen), 400);
+        setTimeout(() => {
+            if (isFirstElevator) handleVisitElevator();
+            next(screen)
+        }, 400);
     };
 
     return (
@@ -99,7 +112,6 @@ export function Lift3() {
                         $ratio={ratio}
                         onClick={() => handleMove(floor.id, floor.screen)} 
                         $active={floor.id === chosen}
-                        background={floor.background ?? 'white'}
                     >
                         <FloorLogoIcon background={floor.logo} $ratio={ratio}/>
                         <FloorTitle $ratio={ratio}>{floor.name}</FloorTitle>
@@ -107,6 +119,7 @@ export function Lift3() {
                     </Floor>
                 ))}
             </Wrapper>
+            {isFirstElevator && <Hint src={hint} alt='' $ratio={ratio}/>}
             <Modal opened={isModal}>
                 <Text>
                     Уверен, что хочешь завершить игру? В рейтинг пойдут только те баллы, которые ты успел заработать до этого момента
