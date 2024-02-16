@@ -84,7 +84,7 @@ const Hint = styled.img`
 `;
 
 export function Lift3() {
-    const {next, isFirstElevator, handleVisitElevator} = useProgress();
+    const {next, isFirstElevator, visitElevator} = useProgress();
     const [chosen, setChosen] = useState(null);
     const [isModal, setIsModal] = useState(false);
     const ratio = useSizeRatio();
@@ -92,7 +92,7 @@ export function Lift3() {
     const handleMove = (id, screen) => {
         setChosen(id);
         setTimeout(() => {
-            if (isFirstElevator) handleVisitElevator();
+            if (isFirstElevator) visitElevator();
             next(screen)
         }, 400);
     };

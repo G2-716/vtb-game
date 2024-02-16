@@ -7,6 +7,7 @@ const INITIAL_STATE = {
     screen: SCREENS.INTRO_1,
     user: null,
     leaderboard: null,
+    isFirstElevator: true,
     testPoints: 0,
     points2048: 0,
     wordPoints: 0,
@@ -22,7 +23,7 @@ export function ProgressProvider(props) {
     const [screen, setScreen] = useState(getUrlParam('screen') || INITIAL_STATE.screen)
     const [user, setUser] = useState(INITIAL_STATE.user)
     const [leaderboard, setLeaderboard] = useState(INITIAL_STATE.leaderboard)
-    const [isFirstElevator, setIsFirstElevator] = useState(true);
+    const [isFirstElevator, setIsFirstElevator] = useState(INITIAL_STATE.isFirstElevator);
     const [testPoints, setTestPoints] = useState(INITIAL_STATE.testPoints)
     const [points2048, setPoints2048] = useState(INITIAL_STATE.points2048)
     const [wordPoints, setWordPoints] = useState(INITIAL_STATE.wordPoints)
@@ -53,11 +54,8 @@ export function ProgressProvider(props) {
         setTetrisPoints(INITIAL_STATE.tetrisPoints)
         setMoveFigurePoints(INITIAL_STATE.moveFigurePoints)
         setUser(INITIAL_STATE.user)
+        setIsFirstElevator(INITIAL_STATE.isFirstElevator)
         getLeaderboard().then(setLeaderboard)
-    }
-
-    function handleVisitElevator() {
-        setIsFirstElevator(false);
     }
 
     const state = {
@@ -72,9 +70,9 @@ export function ProgressProvider(props) {
         moveFigurePoints,
         totalPoints,
         isFirstElevator,
-        handleVisitElevator,
         next,
         reset,
+        visitElevator: () => setIsFirstElevator(false),
         addTestPoints: () => setTestPoints(prev => prev + 1),
         addPoints2048: setPoints2048,
         addWordPoints: setWordPoints,
