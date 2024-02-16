@@ -3,6 +3,7 @@ import { useState } from "react";
 import { colors } from "../../constants/colors";
 import { useProgress } from "../../contexts/ProgressContext";
 import { useSizeRatio } from "../../contexts/SizeRatioContext";
+import { LiftButton } from "./LiftButton";
 
 const Wrapper = styled.div`
    display: flex;
@@ -77,6 +78,7 @@ export const QuestionScreen = ({ image, answerScreens, isBigPicture }) => {
 
     return (
         <Wrapper>
+            <LiftButton />
             <ImageComponent src={image} alt={''} $ratio={ratio}/>
             <QuestionsBlock $ratio={ratio}>
                 <HorizontalBlock>

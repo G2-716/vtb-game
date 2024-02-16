@@ -6,5 +6,5 @@ import { BgImageScreen } from "../../shared/BgImageScreen";
 export function Test1() {
     const {next} = useProgress()
 
-    return <BgImageScreen image={pic} onClick={() => next()} background={background} text="К тесту"/>
+    return <BgImageScreen image={pic} onClick={() => next()} background={background} text="К тесту" isLift/>
 }

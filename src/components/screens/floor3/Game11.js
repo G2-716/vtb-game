@@ -6,5 +6,5 @@ import { BgImageScreen } from "../../shared/BgImageScreen";
 export function Game11() {
     const {next} = useProgress()
 
-    return <BgImageScreen image={pic} onClick={() => next()} background={background}/>
+    return <BgImageScreen image={pic} onClick={() => next()} background={background} isLift/>
 }

@@ -22,6 +22,7 @@ export function ProgressProvider(props) {
     const [screen, setScreen] = useState(getUrlParam('screen') || INITIAL_STATE.screen)
     const [user, setUser] = useState(INITIAL_STATE.user)
     const [leaderboard, setLeaderboard] = useState(INITIAL_STATE.leaderboard)
+    const [isFirstElevator, setIsFirstElevator] = useState(true);
     const [testPoints, setTestPoints] = useState(INITIAL_STATE.testPoints)
     const [points2048, setPoints2048] = useState(INITIAL_STATE.points2048)
     const [wordPoints, setWordPoints] = useState(INITIAL_STATE.wordPoints)
@@ -55,6 +56,10 @@ export function ProgressProvider(props) {
         getLeaderboard().then(setLeaderboard)
     }
 
+    function handleVisitElevator() {
+        setIsFirstElevator(false);
+    }
+
     const state = {
         screen,
         user,
@@ -66,6 +71,8 @@ export function ProgressProvider(props) {
         tetrisPoints,
         moveFigurePoints,
         totalPoints,
+        isFirstElevator,
+        handleVisitElevator,
         next,
         reset,
         addTestPoints: () => setTestPoints(prev => prev + 1),

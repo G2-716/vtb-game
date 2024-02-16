@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { BgScreenWrapper } from "./BgScreenWrapper";
+import { LiftButton } from "./LiftButton";
 
 const Wrapper = styled.div`
     width: 100%;
@@ -27,8 +28,9 @@ const ScreenStyled = styled(BgScreenWrapper)`
     }
 `;
 
-export const BgImageScreen = ({ image, onClick, background, isIcon, text = "Познакомиться" }) => (
+export const BgImageScreen = ({ image, onClick, background, isIcon, isLift, text = "Познакомиться" }) => (
     <Wrapper background={background}>
+        {isLift && <LiftButton />}
         <ScreenStyled background={image} text={text} onClick={onClick} isIcon={isIcon}/>
     </Wrapper>
 )
