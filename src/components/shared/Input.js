@@ -12,7 +12,7 @@ const Label = styled.span`
     flex-shrink: 0;
     font-family: 'ComicSansMS', 'VTBGroup', sans-serif;
     font-size: ${({sizeRatio}) => `calc(16px * ${sizeRatio})`};
-    color: ${({error}) => error ? '#F44336' : '#000000'};
+    color: ${({error}) => error ? '#E31C1C' : '#000000'};
     transition: color 200ms;
 `
 
@@ -21,25 +21,14 @@ const Field = styled.input`
     margin-left: ${({sizeRatio}) => `calc(10px * ${sizeRatio})`};
     padding: 0;
     border: 0;
-    border-bottom: ${({sizeRatio}) => `calc(2px * ${sizeRatio})`} solid ${({error}) => error ? '#F44336' : '#000000'};
+    border-bottom: ${({sizeRatio}) => `calc(2px * ${sizeRatio})`} solid ${({error}) => error ? '#E31C1C' : '#000000'};
     outline: none;
     background-color: #FFFFFF;
-    color: ${({error}) => error ? '#F44336' : '#000000'};
+    color: ${({error}) => error ? '#E31C1C' : '#000000'};
     font-family: 'ComicSansMS', 'VTBGroup', sans-serif;
     font-size: ${({sizeRatio}) => `calc(16px * ${sizeRatio})`};
     font-weight: 600;
     transition: border 200ms, color 200ms;
-`
-
-const Error = styled.span`
-    position: absolute;
-    color: #F44336;
-    font-family: 'ComicSansMS', 'VTBGroup', sans-serif;
-    font-size: ${({sizeRatio}) => `calc(10px * ${sizeRatio})`};
-    bottom: ${({sizeRatio}) => `calc(-6px * ${sizeRatio})`};
-    transform: ${({visible}) => visible ? 'translateY(100%)' : 'translateY(80%)'};
-    opacity: ${({visible}) => visible ? '1' : '0'};
-    transition: transform 200ms, opacity 200ms;
 `
 
 export function Input(props) {
@@ -54,7 +43,6 @@ export function Input(props) {
         <Wrapper sizeRatio={sizeRatio} className={className}>
             <Label sizeRatio={sizeRatio} error={error}>{label}</Label>
             <Field sizeRatio={sizeRatio} error={error} value={value} type="text" onChange={handleChange} />
-            <Error sizeRatio={sizeRatio} visible={!!error}>{error}</Error>
         </Wrapper>
     )
 }

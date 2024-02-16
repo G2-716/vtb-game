@@ -8,6 +8,7 @@ import {useSizeRatio} from "../../contexts/SizeRatioContext";
 import {Button} from "../shared/Button";
 import {Checkbox} from "../shared/Checkbox";
 import {Input} from "../shared/Input";
+import {usePrevious} from "../../hooks/usePrevious";
 
 const Wrapper = styled.div`
     display: flex;
@@ -24,7 +25,7 @@ const PhoneWrapper = styled.div`
     position: relative;
     width: ${({ sizeRatio }) => `calc(354px * ${sizeRatio})`};
     height: ${({ sizeRatio }) => `calc(601px * ${sizeRatio})`};
-    padding: ${({ sizeRatio }) => `calc(142px * ${sizeRatio}) calc(52px * ${sizeRatio}) calc(70px * ${sizeRatio})`};
+    padding: ${({ sizeRatio }) => `calc(124px * ${sizeRatio}) calc(52px * ${sizeRatio}) calc(70px * ${sizeRatio})`};
 `
 
 const Phone = styled.img`
@@ -43,6 +44,24 @@ const Form = styled.form`
     align-items: center;
     height: 100%;
     z-index: 2;
+`
+
+const Fields = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: ${({ sizeRatio }) => `calc(79px * ${sizeRatio})`};
+`
+
+const Error = styled.span`
+    position: absolute;
+    top: 0;
+    text-align: center;
+    font-size: ${({ sizeRatio }) => `calc(15px * ${sizeRatio})`};
+    color: #E31C1C;
+    transform: ${({visible}) => visible ? 'translateY(0)' : 'translateY(-20%)'};
+    opacity: ${({visible}) => visible ? '1' : '0'};
+    transition: transform 200ms, opacity 200ms;
 `
 
 const InputStyled = styled(Input)`
@@ -64,7 +83,7 @@ const CheckboxLink = styled.a`
 `
 
 const ButtonStyled = styled(Button)`
-    margin-top: auto;
+    margin-top: ${({ sizeRatio }) => `calc(109px * ${sizeRatio})`};
     font-size: ${({ sizeRatio }) => `calc(15px * ${sizeRatio})`};
 `
 
@@ -78,6 +97,8 @@ export function Intro3() {
     const [nameError, setNameError] = useState(null)
     const [emailError, setEmailError] = useState(null)
     const [isAgreedError, setIsAgreedError] = useState(null)
+    const error = nameError || emailError || isAgreedError
+    const previousError = usePrevious(error)
 
     function handleNameChange(name) {
         setName(name)
@@ -99,23 +120,23 @@ export function Intro3() {
 
         if (!isAgreed) {
             result = false
-            setIsAgreedError('Заполни поле')
+            setIsAgreedError('Поля обязательны для заполнения')
         }
 
         if (!name) {
             result = false
-            setNameError('Заполни поле')
+            setNameError('Поля обязательны для заполнения')
         }
 
         if (!email) {
             result = false
-            setEmailError('Заполни поле')
+            setEmailError('Поля обязательны для заполнения')
         } else if (!/\S+@\S+\.\S+/.test(email)) {
             result = false
-            setEmailError('Неверный формат')
+            setEmailError('Почта указана в неверном формате')
         } else if (leaderboard && leaderboard.resultByEmail[email]) {
             result = false
-            setEmailError('Эта почта уже участвует в рейтинге, попробуй другую')
+            setEmailError('Эта почта уже участвует в рейтинге, попробуй другую')
         }
 
         return result
@@ -135,11 +156,14 @@ export function Intro3() {
             <PhoneWrapper sizeRatio={sizeRatio}>
                 <Phone src={phone_mockup} />
                 <Form onSubmit={handleSubmit}>
-                    <InputStyled sizeRatio={sizeRatio} label="Имя" error={nameError} value={name} onChange={handleNameChange} />
-                    <InputStyled sizeRatio={sizeRatio} label="E-mail" error={emailError} value={email} onChange={handleEmailChange} />
-                    <CheckboxStyled sizeRatio={sizeRatio} error={isAgreedError} value={isAgreed} onChange={handleIsAgreedChange}>
-                        Я согласен с <CheckboxLink href="https://fut.ru/personal_data_policy/" target="_blank">Политикой обработки персональных данных</CheckboxLink>
-                    </CheckboxStyled>
+                    <Error sizeRatio={sizeRatio} visible={!!error}>{error ?? previousError}</Error>
+                    <Fields sizeRatio={sizeRatio}>
+                        <InputStyled sizeRatio={sizeRatio} label="Имя" error={!!nameError} value={name} onChange={handleNameChange} />
+                        <InputStyled sizeRatio={sizeRatio} label="E-mail" error={!!emailError} value={email} onChange={handleEmailChange} />
+                        <CheckboxStyled sizeRatio={sizeRatio} error={!!isAgreedError} value={isAgreed} onChange={handleIsAgreedChange}>
+                            Я согласен с <CheckboxLink href="https://fut.ru/personal_data_policy/" target="_blank">Политикой обработки персональных данных</CheckboxLink>
+                        </CheckboxStyled>
+                    </Fields>
                     <ButtonStyled sizeRatio={sizeRatio} buttonType="submit">
                         Получить пропуск
                     </ButtonStyled>

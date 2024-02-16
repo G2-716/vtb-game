@@ -7,7 +7,7 @@ const Wrapper = styled.label`
     font-family: 'ComicSansMS', 'VTBGroup', sans-serif;
     font-size: ${({sizeRatio}) => `calc(10px * ${sizeRatio})`};
     padding-left: ${({sizeRatio}) => `calc(40px * ${sizeRatio})`};
-    color: ${({error}) => error ? '#F44336' : '#000000'};
+    color: ${({error}) => error ? '#E31C1C' : '#000000'};
     cursor: pointer;
     user-select: none;
     transition: color 200ms;
@@ -21,7 +21,7 @@ const Mark = styled.span`
     width: ${({sizeRatio}) => `calc(30px * ${sizeRatio})`};
     height: ${({sizeRatio}) => `calc(30px * ${sizeRatio})`};
     border-radius: ${({sizeRatio}) => `calc(5px * ${sizeRatio})`};
-    border: ${({sizeRatio}) => `calc(2px * ${sizeRatio})`} solid ${({error}) => error ? '#F44336' : '#333333'};
+    border: ${({sizeRatio}) => `calc(2px * ${sizeRatio})`} solid ${({error}) => error ? '#E31C1C' : '#333333'};
     background-color: #FFFFFF;
     transition: background-color 200ms, border 200ms;
 `
@@ -46,7 +46,7 @@ const Input = styled.input`
 
     &:checked {
         & ~ ${Mark} {
-            background-color: ${({error}) => error ? '#F44336' : '#333333'};
+            background-color: ${({error}) => error ? '#E31C1C' : '#333333'};
 
             ${Check} {
                 opacity: 1;
