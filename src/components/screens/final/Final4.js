@@ -1,3 +1,4 @@
+import {useEffect} from "react";
 import styled from "@emotion/styled";
 import {useProgress} from "../../../contexts/ProgressContext";
 import { useSizeRatio } from "../../../contexts/SizeRatioContext";
@@ -6,6 +7,7 @@ import {Modal} from '../../shared/Modal';
 import { ResultText } from "../../shared/ResultText";
 import pic from '../../../assets/images/test_end.png';
 import { colors } from "../../../constants/colors";
+import {saveToLeaderboard} from "../../../api/saveToLeaderboard";
 
 const Wrapper = styled.div`
     width: 100%;
@@ -39,7 +41,13 @@ const Picture = styled.img`
 
 export function Final4() {
     const ratio = useSizeRatio();
-    const {totalPoints} = useProgress();
+    const {totalPoints, user} = useProgress();
+
+    useEffect(() => {
+        if (user) {
+            saveToLeaderboard(user, totalPoints)
+        }
+    }, []);
 
     return (
         <Wrapper>

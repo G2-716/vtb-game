@@ -1,4 +1,5 @@
 import {useState} from "react";
+import {uid} from "uid";
 import styled from "@emotion/styled";
 import pic from '../../assets/images/start3.png';
 import phone_mockup from '../../assets/images/phone_mockup.png';
@@ -68,8 +69,9 @@ const ButtonStyled = styled(Button)`
 `
 
 export function Intro3() {
-    const {next, setUser} = useProgress()
+    const {next, setUser, leaderboard} = useProgress()
     const sizeRatio = useSizeRatio()
+    const [id] = useState(uid)
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [isAgreed, setIsAgreed] = useState(false)
@@ -97,20 +99,23 @@ export function Intro3() {
 
         if (!isAgreed) {
             result = false
-            setIsAgreedError('Заполните поле')
+            setIsAgreedError('Заполни поле')
         }
 
         if (!name) {
             result = false
-            setNameError('Заполните поле')
+            setNameError('Заполни поле')
         }
 
         if (!email) {
             result = false
-            setEmailError('Заполните поле')
+            setEmailError('Заполни поле')
         } else if (!/\S+@\S+\.\S+/.test(email)) {
             result = false
             setEmailError('Неверный формат')
+        } else if (leaderboard && leaderboard.resultByEmail[email]) {
+            result = false
+            setEmailError('Эта почта уже участвует в рейтинге, попробуй другую')
         }
 
         return result
@@ -120,7 +125,7 @@ export function Intro3() {
         e.preventDefault()
 
         if (validate()) {
-            setUser(name, email)
+            setUser(id, name, email)
             next()
         }
     }
