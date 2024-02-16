@@ -4,6 +4,7 @@ import {getUrlParam} from "../utils/getUrlParam";
 
 const INITIAL_STATE = {
     screen: SCREENS.INTRO_1,
+    user: null,
     testPoints: 0,
     points2048: 0,
     wordPoints: 0,
@@ -17,6 +18,7 @@ const ProgressContext = createContext(INITIAL_STATE)
 export function ProgressProvider(props) {
     const {children} = props
     const [screen, setScreen] = useState(getUrlParam('screen') || INITIAL_STATE.screen)
+    const [user, setUser] = useState(INITIAL_STATE.user)
     const [testPoints, setTestPoints] = useState(INITIAL_STATE.testPoints)
     const [points2048, setPoints2048] = useState(INITIAL_STATE.points2048)
     const [wordPoints, setWordPoints] = useState(INITIAL_STATE.wordPoints)
@@ -42,34 +44,12 @@ export function ProgressProvider(props) {
         setLinesPoints(INITIAL_STATE.linesPoints)
         setTetrisPoints(INITIAL_STATE.tetrisPoints)
         setMoveFigurePoints(INITIAL_STATE.moveFigurePoints)
-    }
-
-    function addTestPoints() {
-        setTestPoints(prev => prev + 1);
-    }
-
-    function addPoints2048(amount) {
-        setPoints2048(amount)
-    }
-
-    function addWordPoints(amount) {
-        setWordPoints(amount)
-    }
-
-    function addLinesPoints(amount) {
-        setLinesPoints(amount)
-    }
-
-    function addTetrisPoints(amount) {
-        setTetrisPoints(amount)
-    }
-
-    function addMoveFigurePoints(amount) {
-        setMoveFigurePoints(amount)
+        setUser(INITIAL_STATE.user)
     }
 
     const state = {
         screen,
+        user,
         testPoints,
         points2048,
         wordPoints,
@@ -79,12 +59,13 @@ export function ProgressProvider(props) {
         totalPoints,
         next,
         reset,
-        addTestPoints,
-        addPoints2048,
-        addWordPoints,
-        addLinesPoints,
-        addTetrisPoints,
-        addMoveFigurePoints,
+        addTestPoints: () => setTestPoints(prev => prev + 1),
+        addPoints2048: setPoints2048,
+        addWordPoints: setWordPoints,
+        addLinesPoints: setLinesPoints,
+        addTetrisPoints: setTetrisPoints,
+        addMoveFigurePoints: setMoveFigurePoints,
+        setUser: (name, email) => setUser({name, email}),
     }
 
     return (

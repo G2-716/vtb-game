@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import {useProgress} from "../../contexts/ProgressContext";
-import background from '../../assets/images/start3.png';
+import background from '../../assets/images/start4.png';
 import { Button } from "../shared/Button";
 
 const Wrapper = styled.div`

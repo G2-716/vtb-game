@@ -38,12 +38,12 @@ const ButtonStyled = styled.button`
     border-radius: calc(45px * ${({$ratio}) => $ratio});
     font-size: calc(18px * ${({$ratio}) => $ratio});
     width: max-content;
-    
+    font-weight: 600;
     cursor: pointer;
 `;
 
-export const Button = ({ type = 'filled', size = 'md', ...props }) => {
+export const Button = ({ type = 'filled', size = 'md', buttonType, ...props }) => {
     const ratio = useSizeRatio();
 
-    return <ButtonStyled $ratio={ratio} $type={type} $size={size} {...props} />;
+    return <ButtonStyled $ratio={ratio} $type={type} $size={size} type={buttonType} {...props} />;
 }

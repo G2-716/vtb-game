@@ -101,6 +101,7 @@ import question2 from '../assets/images/question2.png'
 import question3 from '../assets/images/question3.png'
 import question4 from '../assets/images/question4.png'
 import question5 from '../assets/images/question5.png'
+import phone_mockup from '../assets/images/phone_mockup.png'
 import rules_2048 from '../assets/images/rules_2048.png'
 import rules_moveFigure from '../assets/images/rules_moveFigure.png'
 import rules_points from '../assets/images/rules_points.png'
@@ -109,6 +110,7 @@ import rules_wordGame from '../assets/images/rules_wordGame.png'
 import start from '../assets/images/start.png'
 import start2 from '../assets/images/start2.png'
 import start3 from '../assets/images/start3.png'
+import start4 from '../assets/images/start4.png'
 import test1 from '../assets/images/test1.png'
 import test_end from '../assets/images/test_end.png'
 
@@ -265,6 +267,7 @@ const SCREEN_IMAGES_TO_PRELOAD = [
     question3,
     question4,
     question5,
+    phone_mockup,
     rules_2048,
     rules_moveFigure,
     rules_points,
@@ -273,6 +276,7 @@ const SCREEN_IMAGES_TO_PRELOAD = [
     start,
     start2,
     start3,
+    start4,
     test1,
     test_end,
 ]
