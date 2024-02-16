@@ -7,7 +7,7 @@ import {Modal} from '../../shared/Modal';
 import { ResultText } from "../../shared/ResultText";
 import pic from '../../../assets/images/test_end.png';
 import { colors } from "../../../constants/colors";
-import {saveToLeaderboard} from "../../../api/saveToLeaderboard";
+import {usePrevious} from "../../../hooks/usePrevious";
 
 const Wrapper = styled.div`
     width: 100%;
@@ -41,23 +41,25 @@ const Picture = styled.img`
 
 export function Final4() {
     const ratio = useSizeRatio();
-    const {totalPoints, user} = useProgress();
+    const {totalPoints, isLeaderboardSaving, saveLeaderboard, reset} = useProgress();
+    const previousTotalPoints = usePrevious(totalPoints)
+    const points = totalPoints || previousTotalPoints || 0
 
     useEffect(() => {
-        if (user) {
-            saveToLeaderboard(user, totalPoints)
-        }
+        saveLeaderboard()
     }, []);
 
     return (
         <Wrapper>
             <ModalStyled $ratio={ratio} opened>
-                <ResultText points={totalPoints}/>
+                <ResultText points={points}/>
                 <ButtonsBlock $ratio={ratio}>
                     <Button background={colors.blue}>Перейти к рейтингу{'\n'}игроков</Button>
                     <Button 
                         type={BUTTON_TYPES.outlined} 
                         size={BUTTON_SIZE.sm}
+                        loading={isLeaderboardSaving}
+                        onClick={reset}
                     >
                         Завершить игру
                     </Button>

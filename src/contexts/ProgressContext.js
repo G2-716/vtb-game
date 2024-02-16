@@ -2,11 +2,14 @@ import {createContext, useContext, useEffect, useState} from 'react'
 import {NEXT_SCREENS, SCREENS} from "../constants/screens";
 import {getUrlParam} from "../utils/getUrlParam";
 import {getLeaderboard} from "../api/getLeaderboard";
+import {saveToLeaderboard} from "../api/saveToLeaderboard";
 
 const INITIAL_STATE = {
     screen: SCREENS.INTRO_1,
     user: null,
     leaderboard: null,
+    isLeaderboardLoading: false,
+    isLeaderboardSaving: false,
     isFirstElevator: true,
     testPoints: 0,
     points2048: 0,
@@ -23,6 +26,8 @@ export function ProgressProvider(props) {
     const [screen, setScreen] = useState(getUrlParam('screen') || INITIAL_STATE.screen)
     const [user, setUser] = useState(INITIAL_STATE.user)
     const [leaderboard, setLeaderboard] = useState(INITIAL_STATE.leaderboard)
+    const [isLeaderboardLoading, setIsLeaderboardLoading] = useState(INITIAL_STATE.isLeaderboardLoading)
+    const [isLeaderboardSaving, setIsLeaderboardSaving] = useState(INITIAL_STATE.isLeaderboardSaving)
     const [isFirstElevator, setIsFirstElevator] = useState(INITIAL_STATE.isFirstElevator);
     const [testPoints, setTestPoints] = useState(INITIAL_STATE.testPoints)
     const [points2048, setPoints2048] = useState(INITIAL_STATE.points2048)
@@ -32,8 +37,21 @@ export function ProgressProvider(props) {
     const [moveFigurePoints, setMoveFigurePoints] = useState(INITIAL_STATE.moveFigurePoints)
     const totalPoints = testPoints + points2048 + wordPoints + linesPoints + tetrisPoints + moveFigurePoints
 
-    function init() {
-        getLeaderboard().then(setLeaderboard)
+    function loadLeaderboard() {
+        setIsLeaderboardLoading(true)
+
+        getLeaderboard()
+            .then(setLeaderboard)
+            .finally(() => setIsLeaderboardLoading(false))
+    }
+
+    function saveLeaderboard() {
+        if (user) {
+            setIsLeaderboardSaving(true)
+
+            saveToLeaderboard(user, totalPoints)
+                .finally(() => setIsLeaderboardSaving(false))
+        }
     }
 
     function next(customScreen) {
@@ -55,7 +73,9 @@ export function ProgressProvider(props) {
         setMoveFigurePoints(INITIAL_STATE.moveFigurePoints)
         setUser(INITIAL_STATE.user)
         setIsFirstElevator(INITIAL_STATE.isFirstElevator)
-        getLeaderboard().then(setLeaderboard)
+        setIsLeaderboardLoading(INITIAL_STATE.isLeaderboardLoading)
+        setIsLeaderboardSaving(INITIAL_STATE.isLeaderboardSaving)
+        loadLeaderboard()
     }
 
     const state = {
@@ -70,6 +90,8 @@ export function ProgressProvider(props) {
         moveFigurePoints,
         totalPoints,
         isFirstElevator,
+        isLeaderboardLoading,
+        isLeaderboardSaving,
         next,
         reset,
         visitElevator: () => setIsFirstElevator(false),
@@ -80,10 +102,12 @@ export function ProgressProvider(props) {
         addTetrisPoints: setTetrisPoints,
         addMoveFigurePoints: setMoveFigurePoints,
         setUser: (id, name, email) => setUser({id, name, email}),
+        loadLeaderboard,
+        saveLeaderboard,
     }
 
     useEffect(() => {
-        init()
+        loadLeaderboard()
     }, []);
 
     return (

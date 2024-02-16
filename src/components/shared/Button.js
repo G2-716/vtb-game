@@ -27,6 +27,7 @@ const ButtonStyled = styled.button`
     --spacing_x2: calc(var(--spacing) * 2);
     --spacing_x4: calc(var(--spacing) * 4);
 
+    position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -41,8 +42,47 @@ const ButtonStyled = styled.button`
     cursor: pointer;
 `;
 
-export const Button = ({ type = 'filled', size = 'md', buttonType, ...props }) => {
+const Content = styled.span`
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    opacity: ${({visible}) => visible ? '1' : '0'};
+    transition: opacity 200ms;
+`
+
+const Loader = styled.svg`
+    position: absolute;
+    height: 100%;
+    opacity: ${({visible}) => visible ? '1' : '0'};
+    transition: opacity 200ms;
+    pointer-events: none;
+`
+
+export const Button = ({ type = 'filled', size = 'md', buttonType, loading, disabled, children, onClick, ...props }) => {
     const ratio = useSizeRatio();
 
-    return <ButtonStyled $ratio={ratio} $type={type} $size={size} type={buttonType} {...props} />;
+    function handleClick() {
+        if (loading || disabled) {
+            return
+        }
+
+        onClick?.()
+    }
+
+    return (
+        <ButtonStyled $ratio={ratio} $type={type} $size={size} disabled={loading || disabled} type={buttonType} onClick={handleClick} {...props}>
+            <Content visible={!loading}>{children}</Content>
+            <Loader visible={loading} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+                <circle fill={TYPE_TO_COLOR[type]} stroke={TYPE_TO_COLOR[type]} strokeWidth="10" r="15" cx="40" cy="100">
+                    <animate attributeName="opacity" calcMode="spline" dur="1" values="1;0;1;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.4"></animate>
+                </circle>
+                <circle fill={TYPE_TO_COLOR[type]} stroke={TYPE_TO_COLOR[type]} strokeWidth="10" r="15" cx="100" cy="100">
+                    <animate attributeName="opacity" calcMode="spline" dur="1" values="1;0;1;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="-.2"></animate>
+                </circle>
+                <circle fill={TYPE_TO_COLOR[type]} stroke={TYPE_TO_COLOR[type]} strokeWidth="10" r="15" cx="160" cy="100">
+                    <animate attributeName="opacity" calcMode="spline" dur="1" values="1;0;1;" keySplines=".5 0 .5 1;.5 0 .5 1" repeatCount="indefinite" begin="0"></animate>
+                </circle>
+            </Loader>
+        </ButtonStyled>
+    );
 }

@@ -169,7 +169,7 @@ const InfoButton = styled(Button)`
 `
 
 export function Intro3() {
-    const {next, setUser, leaderboard} = useProgress()
+    const {next, setUser, leaderboard, isLeaderboardLoading} = useProgress()
     const sizeRatio = useSizeRatio()
     const [step, setStep] = useState(STEP.LOGIN)
     const [id] = useState(() => uid(7))
@@ -249,7 +249,7 @@ export function Intro3() {
                             Я согласен с <FormCheckboxLink href="https://fut.ru/personal_data_policy/" target="_blank">Политикой обработки персональных данных</FormCheckboxLink>
                         </FormCheckbox>
                     </FormFields>
-                    <FormButton sizeRatio={sizeRatio} buttonType="submit">
+                    <FormButton sizeRatio={sizeRatio} buttonType="submit" loading={isLeaderboardLoading}>
                         Получить пропуск
                     </FormButton>
                 </Form>

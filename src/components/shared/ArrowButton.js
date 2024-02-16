@@ -5,7 +5,6 @@ import { Button, BUTTON_SIZE } from "./Button";
 const SvgStyled = styled.svg`
     width: calc(29px * ${({$ratio}) => $ratio});
     height: calc(20px * ${({$ratio}) => $ratio});
-    margin-top: calc(2px * ${({$ratio}) => $ratio});
 `;
 
 export const ArrowButton = (props) => {
