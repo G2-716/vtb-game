@@ -1,12 +1,5 @@
-import {useProgress} from "../../../contexts/ProgressContext";
+import { MoveFigureGame } from "./MoveFigureGame";
 
 export function Game58() {
-    const {next} = useProgress()
-
-    return (
-        <div>
-            <h1>Game58</h1>
-            <button onClick={() => next()}>next</button>
-        </div>
-    )
+    return <MoveFigureGame />
 }

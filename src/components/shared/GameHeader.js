@@ -2,6 +2,8 @@ import styled from "@emotion/styled";
 import { useSizeRatio } from "../../contexts/SizeRatioContext";
 
 const Wrapper = styled.div`
+    position: relative;
+    z-index: 3;
     width: 100%;
     display: flex;
     padding: 14px 24px 0 18px;

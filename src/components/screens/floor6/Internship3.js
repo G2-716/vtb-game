@@ -34,6 +34,7 @@ const InternWrapper = styled.div`
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
     margin-top: 5px;
     border-radius: 5px;
+    font-size: calc(16px * var(--ratio));
 
     transition: background .3s, color .3s;
     cursor: pointer;

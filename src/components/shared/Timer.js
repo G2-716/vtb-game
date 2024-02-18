@@ -15,7 +15,7 @@ const Time = styled.p`
   color: #4C6FCD;
 `;
 
-export const Timer = memo(({ className, size, reverse, isStart, shownTime, onFinish, initialTime = 0 }) => {
+export const Timer = memo(({ className, size, reverse, isStart, shownTime, onFinish, onStop, initialTime = 0 }) => {
     const [time, setTime] = useState(initialTime);
     const ratio = useSizeRatio();
     const $interval = useRef(null);
@@ -54,6 +54,7 @@ export const Timer = memo(({ className, size, reverse, isStart, shownTime, onFin
             }, 1000);
         }
         if (!isStart) {
+            onStop?.($time.current);
             clearInterval($interval.current);
             $interval.current = null;
             if ($time.current === 0) {

@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import plural from 'plural-ru';
 import { colors } from "../../constants/colors";
 import { useSizeRatio } from "../../contexts/SizeRatioContext";
 import { Text } from "./Text";
@@ -14,26 +15,11 @@ const Result = styled.h3`
 export const ResultText = ({points}) => {
     const ratio = useSizeRatio();
     
-    let ending = 'ов';
-
-    switch (points) {
-        case 1: 
-            ending = '';
-            break;
-        case 2: 
-        case 3: 
-        case 4: 
-            ending = 'а';
-            break;
-        default:
-            break;
-    };
-
     return (
         <>
             <Text>Твой результат</Text>
             <Result $ratio={ratio}>{points}</Result>
-            <Text style={{color: colors.purple}}>балл{ending}</Text>
+            <Text style={{color: colors.purple}}>{plural(points, 'балл', 'балла', 'баллов')}</Text>
         </>
     )
 }
