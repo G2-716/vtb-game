@@ -16,7 +16,7 @@ export function Game57() {
     return  (
         <Wrapper>
             <MoveFigureGame isDemo isBlurred/>
-            <RulesScreen background={bg} onNext={() => next(SCREENS.GAME_5_8)} />
+            <RulesScreen background={bg} onNext={() => next()} onSkip={() => next(SCREENS.GAME_5_9)}/>
         </Wrapper>
     )
 }

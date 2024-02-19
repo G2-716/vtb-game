@@ -33,9 +33,8 @@ const ButtonsWrapper = styled.div`
     }
 `;
 
-export const RulesScreen = ({background, onNext}) => {
+export const RulesScreen = ({background, onNext, onSkip}) => {
     const ratio = useSizeRatio();
-    const {next} = useProgress();
 
     return (
         <Wrapper>
@@ -45,7 +44,7 @@ export const RulesScreen = ({background, onNext}) => {
                 <Button 
                     size={BUTTON_SIZE.sm} 
                     type={BUTTON_TYPES.outlined}
-                    onClick={() => next(SCREENS.LIFT_3)}
+                    onClick={onSkip}
                 >
                     Пропустить
                 </Button>

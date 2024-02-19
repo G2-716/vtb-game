@@ -38,6 +38,7 @@ const ButtonStyled = styled.button`
     padding: ${({$size}) => $size === BUTTON_SIZE.md ? 'var(--spacing_x2) var(--spacing_x4)' : 'var(--spacing) var(--spacing_x2)'};
     border-radius: calc(45px * ${({$ratio}) => $ratio});
     font-size: calc(18px * ${({$ratio}) => $ratio});
+    font-weight: 600;
     width: max-content;
     cursor: pointer;
 `;

@@ -16,7 +16,7 @@ export function Game27() {
     return  (
         <Wrapper>
             <WordGame isHiddenKeyboard isBlurred/>
-            <RulesScreen background={bg} onNext={() => next(SCREENS.GAME_2_8)} />
+            <RulesScreen background={bg} onNext={() => next()} onSkip={() => next(SCREENS.GAME_2_9)}/>
         </Wrapper>
     )
 }

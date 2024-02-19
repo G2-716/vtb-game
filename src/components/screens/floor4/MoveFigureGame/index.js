@@ -233,7 +233,7 @@ export const MoveFigureGame = ({isDemo, isBlurred}) => {
                     )}
                 </Wrapper>
             </DndProvider>
-            {isSkip && <SkipModal onContinue={handleContinue} opened={isSkip}/>}
+            {isSkip && <SkipModal onContinue={handleContinue} opened={isSkip} onSkip={() => next()}/>}
             {finishModal.shown && <EndGameModal points={finishModal.points} opened onNext={() => next()}/>}
         </> 
     );

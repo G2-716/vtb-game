@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import {useProgress} from "../../../contexts/ProgressContext";
 import bg from '../../../assets/images/rules_points.png';
 import { RulesScreen } from "../../shared/RulesScreen";
+import { SCREENS } from "../../../constants/screens";
 import { PointsGame } from "./PointsGame";
 
 const Wrapper = styled.div`
@@ -15,7 +16,7 @@ export function Game38() {
     return  (
         <Wrapper>
             <PointsGame isRules />
-            <RulesScreen background={bg} onNext={() => next()} />
+            <RulesScreen background={bg} onNext={() => next()} onSkip={() => next(SCREENS.GAME_3_10)}/>
         </Wrapper>
     )
 }

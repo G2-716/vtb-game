@@ -195,7 +195,7 @@ export const WordGame = ({isHiddenKeyboard, isBlurred}) => {
                 </Text>
                 <ButtonStyled $ratio={ratio}onClick={() => setIsRules(false)}>Всё понятно</ButtonStyled>
             </Modal>
-            <SkipModal opened={isSkipping} onContinue={() => setIsSkipping(false)} onSkip={() => next(SCREENS.LIFT_3)}/>
+            <SkipModal opened={isSkipping} onContinue={() => setIsSkipping(false)} onSkip={() => next()}/>
             <EndGameModal opened={endModal.shown} points={endModal.points} onNext={() => next()}/>
         </>
         

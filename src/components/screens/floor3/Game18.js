@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import {useProgress} from "../../../contexts/ProgressContext";
 import bg from '../../../assets/images/rules_2048.png';
 import { RulesScreen } from "../../shared/RulesScreen";
+import { SCREENS } from "../../../constants/screens";
 import { Game2048 } from "./Game2048";
 
 const Wrapper = styled.div`
@@ -15,7 +16,7 @@ export function Game18() {
     return  (
         <Wrapper>
             <Game2048 isRules />
-            <RulesScreen background={bg} onNext={() => next()} />
+            <RulesScreen background={bg} onNext={() => next()} onSkip={() => next(SCREENS.GAME_1_10)}/>
         </Wrapper>
     )
 }
