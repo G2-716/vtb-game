@@ -14,6 +14,7 @@ const Wrapper = styled.div`
 const PersonCard = styled.div`
     display: flex;
     align-items: flex-end;
+    white-space: pre-line;
     
     & + & {
         margin-top: calc(15px * var(--ratio));

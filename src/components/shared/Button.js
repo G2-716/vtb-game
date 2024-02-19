@@ -23,7 +23,7 @@ const TYPE_TO_COLOR = {
 };
 
 const ButtonStyled = styled.button`
-    --spacing: calc(10px * ${({$ratio}) => $ratio});
+    --spacing: calc(8px * ${({$ratio}) => $ratio});
     --spacing_x2: calc(var(--spacing) * 2);
     --spacing_x4: calc(var(--spacing) * 4);
 

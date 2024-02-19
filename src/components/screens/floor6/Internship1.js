@@ -23,6 +23,11 @@ const ButtonsWrapper = styled.div`
 
 const ButtonStyled = styled(Button)`
     font-size: calc(16px * ${({$ratio}) => $ratio});
+    border-radius: calc(15px * ${({$ratio}) => $ratio});
+
+    & span {
+        width: max-content;
+    }
 `;
 
 

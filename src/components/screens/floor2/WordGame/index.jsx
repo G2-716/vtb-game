@@ -10,7 +10,6 @@ import { colors } from "../../../../constants/colors";
 import { Text } from "../../../shared/Text";
 import { Button } from "../../../shared/Button";
 import { useSizeRatio } from "../../../../contexts/SizeRatioContext";
-import { SCREENS } from "../../../../constants/screens";
 import { useProgress } from "../../../../contexts/ProgressContext";
 import { EndGameModal } from "../../../shared/EndGameModal";
 
@@ -136,7 +135,7 @@ export const WordGame = ({isHiddenKeyboard, isBlurred}) => {
         }, 0);
         
         setCurrentTry(id => id + 1);
-    }, [isDoneBtnActive, tries, currentTry, handleResult]);
+    }, [isDoneBtnActive, tries, currentTry, handleResult, answer, checkedLetters]);
 
     const onDelete = useCallback(() => {
         if (currentLetterId - 1 < 0) return;
