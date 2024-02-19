@@ -1,6 +1,4 @@
 import styled from "@emotion/styled"
-import { SCREENS } from "../../constants/screens";
-import { useProgress } from "../../contexts/ProgressContext";
 import { useSizeRatio } from "../../contexts/SizeRatioContext";
 import { Button, BUTTON_SIZE, BUTTON_TYPES } from "./Button";
 
