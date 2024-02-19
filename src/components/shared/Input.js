@@ -10,7 +10,7 @@ const Wrapper = styled.label`
 
 const Label = styled.span`
     flex-shrink: 0;
-    font-family: 'ComicSansMS', 'VTBGroup', sans-serif;
+    font-family: 'ComicSansMS', 'VTB Group', sans-serif;
     font-size: ${({sizeRatio}) => `calc(16px * ${sizeRatio})`};
     color: ${({error}) => error ? '#E31C1C' : '#000000'};
     transition: color 200ms;
@@ -25,7 +25,7 @@ const Field = styled.input`
     outline: none;
     background-color: #FFFFFF;
     color: ${({error}) => error ? '#E31C1C' : '#000000'};
-    font-family: 'ComicSansMS', 'VTBGroup', sans-serif;
+    font-family: 'ComicSansMS', 'VTB Group', sans-serif;
     font-size: ${({sizeRatio}) => `calc(16px * ${sizeRatio})`};
     font-weight: 600;
     transition: border 200ms, color 200ms;

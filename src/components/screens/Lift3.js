@@ -60,7 +60,7 @@ const FloorCircleIcon = styled(Icon)`
 
 const FloorTitle = styled.p`
     font-size: calc(14px * ${({$ratio}) => $ratio});
-    font-family: 'ComicSansMS', 'VTBGroup', sans-serif;
+    font-family: 'ComicSansMS', 'VTB Group', sans-serif;
     width: 45%;
     margin: 0 auto;
     text-align: left;

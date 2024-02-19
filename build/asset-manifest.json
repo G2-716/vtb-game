@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "./static/css/main.91017cf3.css",
-    "main.js": "./static/js/main.c9e69b05.js",
+    "main.css": "./static/css/main.29b3dfe1.css",
+    "main.js": "./static/js/main.cb0c1cd2.js",
     "static/media/bg_floor6.png": "./static/media/bg_floor6.08102cafc8f91457cf45.png",
     "static/media/VTBGroupCond-DemiBold.ttf": "./static/media/VTBGroupCond-DemiBold.8b222f2e6ffbe2d93de4.ttf",
     "static/media/VTBGroupCond-Book.ttf": "./static/media/VTBGroupCond-Book.655859e04873d6a3419a.ttf",
@@ -85,11 +85,11 @@
     "static/media/bg_elevatorMenu.svg": "./static/media/bg_elevatorMenu.b773e2e53a189176df5c1a0bb66bfeb8.svg",
     "static/media/moveFigureBorder.svg": "./static/media/moveFigureBorder.4d24e93b1c18133ce8b1b4df4ca321e4.svg",
     "index.html": "./index.html",
-    "main.91017cf3.css.map": "./static/css/main.91017cf3.css.map",
-    "main.c9e69b05.js.map": "./static/js/main.c9e69b05.js.map"
+    "main.29b3dfe1.css.map": "./static/css/main.29b3dfe1.css.map",
+    "main.cb0c1cd2.js.map": "./static/js/main.cb0c1cd2.js.map"
   },
   "entrypoints": [
-    "static/css/main.91017cf3.css",
-    "static/js/main.c9e69b05.js"
+    "static/css/main.29b3dfe1.css",
+    "static/js/main.cb0c1cd2.js"
   ]
 }

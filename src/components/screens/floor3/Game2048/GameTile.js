@@ -70,7 +70,7 @@ const Tile = styled.div`
     border-radius: ${({sizeRatio}) => `calc(15px * ${sizeRatio})`};
     background: ${({value}) => VALUE_TO_BACKGROUND[value]};
     color: ${({value}) => VALUE_TO_COLOR[value]};
-    font-family: 'ComicSansMs', 'VTBGroup', sans-serif;
+    font-family: 'ComicSansMs', 'VTB Group', sans-serif;
     font-size: ${({value, sizeRatio}) => `calc(${VALUE_TO_FONT_SIZE[value]} * ${sizeRatio})`};
     line-height: ${({value, sizeRatio}) => `calc(${VALUE_TO_LINE_HEIGHT[value]} * ${sizeRatio})`};
     font-weight: 400;

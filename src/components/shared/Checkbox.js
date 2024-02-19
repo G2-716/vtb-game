@@ -4,7 +4,7 @@ import {useSizeRatio} from "../../contexts/SizeRatioContext";
 
 const Wrapper = styled.label`
     position: relative;
-    font-family: 'ComicSansMS', 'VTBGroup', sans-serif;
+    font-family: 'ComicSansMS', 'VTB Group', sans-serif;
     font-size: ${({sizeRatio}) => `calc(10px * ${sizeRatio})`};
     padding-left: ${({sizeRatio}) => `calc(40px * ${sizeRatio})`};
     color: ${({error}) => error ? '#E31C1C' : '#000000'};

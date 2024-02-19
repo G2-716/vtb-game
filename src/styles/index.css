@@ -6,13 +6,13 @@ html {
 
 body {
   height: 100%;
-  font-family: 'VTBGroup', sans-serif;
+  font-family: 'VTB Group', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 button {
-  font-family: 'VTBGroup', sans-serif;
+  font-family: 'VTB Group', sans-serif;
 }
 
 #root {
