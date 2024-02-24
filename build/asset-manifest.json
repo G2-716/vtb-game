@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.29b3dfe1.css",
-    "main.js": "./static/js/main.cb0c1cd2.js",
+    "main.js": "./static/js/main.f06206ac.js",
     "static/media/bg_floor6.png": "./static/media/bg_floor6.08102cafc8f91457cf45.png",
     "static/media/VTBGroupCond-DemiBold.ttf": "./static/media/VTBGroupCond-DemiBold.8b222f2e6ffbe2d93de4.ttf",
     "static/media/VTBGroupCond-Book.ttf": "./static/media/VTBGroupCond-Book.655859e04873d6a3419a.ttf",
@@ -13,7 +13,7 @@
     "static/media/elevator1.png": "./static/media/elevator1.703f00634e0f7c291e6d.png",
     "static/media/bg_floor5.png": "./static/media/bg_floor5.a15f341e3ebdf5d99c29.png",
     "static/media/test1.png": "./static/media/test1.f9b9166e274847c37e53.png",
-    "static/media/elevator2.png": "./static/media/elevator2.1247eabe2f30e7b4948e.png",
+    "static/media/elevator2.png": "./static/media/elevator2.48b9b6f74ad2ff0f11f3.png",
     "static/media/bg_floor3.png": "./static/media/bg_floor3.3e53fcc42ab72ade888a.png",
     "static/media/floor5_people.png": "./static/media/floor5_people.f6513164cd033e3ae9bf.png",
     "static/media/start.png": "./static/media/start.3d25cd001d576b0ee9db.png",
@@ -24,12 +24,11 @@
     "static/media/bg_elevator.png": "./static/media/bg_elevator.25b3e5263471138ddc55.png",
     "static/media/floor1_people.png": "./static/media/floor1_people.c5170e6ea694c67baaf8.png",
     "static/media/answer5_projects.png": "./static/media/answer5_projects.ad9cb678e991cdf48872.png",
-    "static/media/start2.png": "./static/media/start2.c95ea8f844a1583ebf6a.png",
+    "static/media/start2.png": "./static/media/start2.150d5469bc5e6212dc3d.png",
     "static/media/bg_floor1.png": "./static/media/bg_floor1.bd39ef1be4bf5f777e52.png",
     "static/media/answer1_projects.png": "./static/media/answer1_projects.bd79276e8e254448ae03.png",
     "static/media/finish.png": "./static/media/finish.e5bf5fcb832d5591fb9d.png",
     "static/media/answer1_skills.png": "./static/media/answer1_skills.268c053cac9f613c9a59.png",
-    "static/media/elevator_hint.png": "./static/media/elevator_hint.3920328828b28815cf08.png",
     "static/media/answer5_values.png": "./static/media/answer5_values.98df4562c052e72c7de0.png",
     "static/media/answer5_skills.png": "./static/media/answer5_skills.ef8e7316853b70579a00.png",
     "static/media/question5.png": "./static/media/question5.d276aaf9d4e42c358434.png",
@@ -49,13 +48,13 @@
     "static/media/answer4_skills.png": "./static/media/answer4_skills.dce4ab467c964bf9ac14.png",
     "static/media/rules_2048.png": "./static/media/rules_2048.ccc381612de5c4088d40.png",
     "static/media/floor1_start.png": "./static/media/floor1_start.58826b0f43d2a65117de.png",
-    "static/media/floor3Finish.png": "./static/media/floor3Finish.a6c8dc0d43db57791c37.png",
     "static/media/answer3_projects.png": "./static/media/answer3_projects.6543c94b5036f97ebc0b.png",
     "static/media/answer4_projects.png": "./static/media/answer4_projects.38d561fa8aee1a235d58.png",
     "static/media/floor4_start.png": "./static/media/floor4_start.603a661a6bbdb74f1325.png",
     "static/media/answer5_work.png": "./static/media/answer5_work.2b2c015a750ae0522abc.png",
     "static/media/floor3_start.png": "./static/media/floor3_start.692594f94de85d25665a.png",
-    "static/media/floor2_start.png": "./static/media/floor2_start.8a77a74ab7603643ef2c.png",
+    "static/media/floor3Finish.png": "./static/media/floor3Finish.2d521d02cee983e9457e.png",
+    "static/media/floor2_start.png": "./static/media/floor2_start.ad5d639d64e1aa7f0617.png",
     "static/media/answer2_work.png": "./static/media/answer2_work.36c578d5958dfd619e49.png",
     "static/media/answer2_skills.png": "./static/media/answer2_skills.afe9ae7285e5c7de21c3.png",
     "static/media/rules_points.png": "./static/media/rules_points.a19efc4134aeab1c6e74.png",
@@ -79,17 +78,19 @@
     "static/media/floor1FinishIcon.png": "./static/media/floor1FinishIcon.a53c7c82ee331f6df6e0.png",
     "static/media/finish_it.png": "./static/media/finish_it.c353f8c4a3be27c28d4d.png",
     "static/media/finish_finance.png": "./static/media/finish_finance.da28c629607faca12162.png",
+    "static/media/elevator_hint.png": "./static/media/elevator_hint.1ce723d47ac359935325.png",
     "static/media/phone_mockup.png": "./static/media/phone_mockup.8cff76a151ce444cbb1d.png",
     "static/media/floor4FinishIcon.png": "./static/media/floor4FinishIcon.6537972d838c8bece6b8.png",
     "static/media/InfoIcon.svg": "./static/media/InfoIcon.c8794fcc67099dcba2a6df342e98da5a.svg",
     "static/media/bg_elevatorMenu.svg": "./static/media/bg_elevatorMenu.b773e2e53a189176df5c1a0bb66bfeb8.svg",
     "static/media/moveFigureBorder.svg": "./static/media/moveFigureBorder.4d24e93b1c18133ce8b1b4df4ca321e4.svg",
     "index.html": "./index.html",
+    "static/media/visitedIcon.svg": "./static/media/visitedIcon.cdd3341433f7c3becd4f81078f7dfea2.svg",
     "main.29b3dfe1.css.map": "./static/css/main.29b3dfe1.css.map",
-    "main.cb0c1cd2.js.map": "./static/js/main.cb0c1cd2.js.map"
+    "main.f06206ac.js.map": "./static/js/main.f06206ac.js.map"
   },
   "entrypoints": [
     "static/css/main.29b3dfe1.css",
-    "static/js/main.cb0c1cd2.js"
+    "static/js/main.f06206ac.js"
   ]
 }
