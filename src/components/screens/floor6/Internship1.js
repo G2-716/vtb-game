@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { useEffect } from "react";
 import background from '../../../assets/images/floor6_start.png';
 import { SCREENS } from "../../../constants/screens";
 import { useProgress } from "../../../contexts/ProgressContext";
@@ -32,8 +33,12 @@ const ButtonStyled = styled(Button)`
 
 
 export const Internship1 = () => {
-    const { next } = useProgress();
-    const ratio = useSizeRatio();
+    const {next, addVisitedFloor} = useProgress()
+    const ratio = useSizeRatio()
+
+    useEffect(() => {
+        addVisitedFloor(6)
+    }, [addVisitedFloor])
 
     return (
         <Wrapper>

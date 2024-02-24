@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import {useProgress} from "../../contexts/ProgressContext";
 import background from "../../assets/images/bg_elevatorMenu.svg";
 import hint from "../../assets/images/elevator_hint.png";
+import visited from "../../assets/images/visitedIcon.svg";
 import { SCREENS } from "../../constants/screens";
 import { FLOORS } from "../../constants/floors";
 import { useState } from "react";
@@ -29,6 +30,7 @@ const ExitBtn = styled.div`
 `;
 
 const Floor = styled.div`
+    position: relative;
     display: flex;
     padding:  calc(4px * ${({$ratio}) => $ratio}) calc(10px * ${({$ratio}) => $ratio});
     cursor: pointer;
@@ -66,6 +68,15 @@ const FloorTitle = styled.p`
     text-align: left;
 `;
 
+const VisitedIcon = styled.div`
+    position: absolute;
+    top: calc(5px * ${({$ratio}) => $ratio});
+    right: calc(5px * ${({$ratio}) => $ratio});
+    width: calc(10px * ${({$ratio}) => $ratio});
+    height: calc(10px * ${({$ratio}) => $ratio});
+    background: url(${visited}) no-repeat 0 0 / contain;
+`;
+
 const ButtonsWrapper = styled.div`
     margin-top: calc(40px * ${({$ratio}) => $ratio});
 
@@ -84,7 +95,7 @@ const Hint = styled.img`
 `;
 
 export function Lift3() {
-    const {next, isFirstElevator, visitElevator} = useProgress();
+    const {next, isFirstElevator, visitElevator, visitedFloors} = useProgress();
     const [chosen, setChosen] = useState(null);
     const [isModal, setIsModal] = useState(false);
     const ratio = useSizeRatio();
@@ -116,6 +127,7 @@ export function Lift3() {
                         <FloorLogoIcon background={floor.logo} $ratio={ratio}/>
                         <FloorTitle $ratio={ratio}>{floor.name}</FloorTitle>
                         <FloorCircleIcon background={floor.circle} $ratio={ratio}/>
+                        {visitedFloors.includes(floor.id) && <VisitedIcon $ratio={ratio}/>}
                     </Floor>
                 ))}
             </Wrapper>

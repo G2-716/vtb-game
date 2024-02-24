@@ -1,13 +1,13 @@
 import {useEffect} from "react";
 import styled from "@emotion/styled";
 import {useProgress} from "../../../contexts/ProgressContext";
-import { useSizeRatio } from "../../../contexts/SizeRatioContext";
-import { Button, BUTTON_SIZE, BUTTON_TYPES } from "../../shared/Button";
-import {Modal} from '../../shared/Modal';
-import { ResultText } from "../../shared/ResultText";
 import pic from '../../../assets/images/test_end.png';
 import { colors } from "../../../constants/colors";
 import {usePrevious} from "../../../hooks/usePrevious";
+import { useSizeRatio } from "../../../contexts/SizeRatioContext";
+import { Button } from "../../shared/Button";
+import {Modal} from '../../shared/Modal';
+import { ResultText } from "../../shared/ResultText";
 
 const Wrapper = styled.div`
     width: 100%;
@@ -41,7 +41,7 @@ const Picture = styled.img`
 
 export function Final4() {
     const ratio = useSizeRatio();
-    const {totalPoints, isLeaderboardSaving, saveLeaderboard, reset} = useProgress();
+    const {totalPoints, saveLeaderboard} = useProgress();
     const previousTotalPoints = usePrevious(totalPoints)
     const points = totalPoints || previousTotalPoints || 0
 
@@ -55,14 +55,6 @@ export function Final4() {
                 <ResultText points={points}/>
                 <ButtonsBlock $ratio={ratio}>
                     <Button background={colors.blue}>Перейти к рейтингу{'\n'}игроков</Button>
-                    <Button 
-                        type={BUTTON_TYPES.outlined} 
-                        size={BUTTON_SIZE.sm}
-                        loading={isLeaderboardSaving}
-                        onClick={reset}
-                    >
-                        Завершить игру
-                    </Button>
                 </ButtonsBlock>
             </ModalStyled>
             <Picture src={pic} alt="" $ratio={ratio}/>

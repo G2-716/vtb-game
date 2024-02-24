@@ -54,7 +54,7 @@ export const itInterns = [
     {
         id: 'it-2',
         name: 'Школа аналитики',
-        start: '17 июня 2024',
+        start: '17 сентября 2024',
         duration: '3 месяца',
         placement: 'Москва',
         type: 'Оплачиваемая',

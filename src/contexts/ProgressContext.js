@@ -17,6 +17,7 @@ const INITIAL_STATE = {
     linesPoints: 0,
     tetrisPoints: 0,
     moveFigurePoints: 0,
+    visitedFloors: [],
 }
 
 const ProgressContext = createContext(INITIAL_STATE)
@@ -28,13 +29,14 @@ export function ProgressProvider(props) {
     const [leaderboard, setLeaderboard] = useState(INITIAL_STATE.leaderboard)
     const [isLeaderboardLoading, setIsLeaderboardLoading] = useState(INITIAL_STATE.isLeaderboardLoading)
     const [isLeaderboardSaving, setIsLeaderboardSaving] = useState(INITIAL_STATE.isLeaderboardSaving)
-    const [isFirstElevator, setIsFirstElevator] = useState(INITIAL_STATE.isFirstElevator);
+    const [isFirstElevator, setIsFirstElevator] = useState(INITIAL_STATE.isFirstElevator)
     const [testPoints, setTestPoints] = useState(INITIAL_STATE.testPoints)
     const [points2048, setPoints2048] = useState(INITIAL_STATE.points2048)
     const [wordPoints, setWordPoints] = useState(INITIAL_STATE.wordPoints)
     const [linesPoints, setLinesPoints] = useState(INITIAL_STATE.linesPoints)
     const [tetrisPoints, setTetrisPoints] = useState(INITIAL_STATE.tetrisPoints)
     const [moveFigurePoints, setMoveFigurePoints] = useState(INITIAL_STATE.moveFigurePoints)
+    const [visitedFloors, setVisitedFloors] = useState(INITIAL_STATE.visitedFloors)
     const totalPoints = testPoints + points2048 + wordPoints + linesPoints + tetrisPoints + moveFigurePoints
 
     function loadLeaderboard() {
@@ -92,10 +94,11 @@ export function ProgressProvider(props) {
         isFirstElevator,
         isLeaderboardLoading,
         isLeaderboardSaving,
+        visitedFloors,
         next,
         reset,
         visitElevator: () => setIsFirstElevator(false),
-        addTestPoints: () => setTestPoints(prev => prev + 1),
+        addTestPoints: () => setTestPoints(prev => prev + 2),
         addPoints2048: setPoints2048,
         addWordPoints: setWordPoints,
         addLinesPoints: setLinesPoints,
@@ -104,6 +107,7 @@ export function ProgressProvider(props) {
         setUser: (id, name, email) => setUser({id, name, email}),
         loadLeaderboard,
         saveLeaderboard,
+        addVisitedFloor: (id) => setVisitedFloors(prev => prev.includes(id) ? prev : [...prev, id])
     }
 
     useEffect(() => {

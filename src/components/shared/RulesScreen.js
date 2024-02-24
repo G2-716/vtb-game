@@ -1,10 +1,13 @@
 import styled from "@emotion/styled"
+import { useState } from "react";
 import { useSizeRatio } from "../../contexts/SizeRatioContext";
 import { Button, BUTTON_SIZE, BUTTON_TYPES } from "./Button";
+import { SkipModal } from './SkipModal';
 
 const Wrapper = styled.div`
     position: absolute;
     inset: 0;
+    ${({$isBlurred}) => $isBlurred ? 'filter: blur(1.5px)' : ''};
 `;
 
 const Background = styled.img`
@@ -33,20 +36,24 @@ const ButtonsWrapper = styled.div`
 
 export const RulesScreen = ({background, onNext, onSkip}) => {
     const ratio = useSizeRatio();
+    const [isSkip, setIsSkip] = useState(false);
 
     return (
-        <Wrapper>
-            <Background src={background} />
-            <ButtonsWrapper $ratio={ratio}>
-                <Button onClick={onNext}>Играть</Button>
-                <Button 
-                    size={BUTTON_SIZE.sm} 
-                    type={BUTTON_TYPES.outlined}
-                    onClick={onSkip}
-                >
-                    Пропустить
-                </Button>
-            </ButtonsWrapper>
-        </Wrapper>
+        <>
+            <Wrapper $isBlurred={isSkip}>
+                <Background src={background} />
+                <ButtonsWrapper $ratio={ratio}>
+                    <Button onClick={onNext}>Играть</Button>
+                    <Button 
+                        size={BUTTON_SIZE.sm} 
+                        type={BUTTON_TYPES.outlined}
+                        onClick={() => setIsSkip(true)}
+                    >
+                        Пропустить
+                    </Button>
+                </ButtonsWrapper>
+            </Wrapper>
+            {isSkip && <SkipModal opened onContinue={onNext} onSkip={onSkip}/>}
+        </>
     )
 }
