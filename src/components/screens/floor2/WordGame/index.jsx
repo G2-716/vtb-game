@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import styled from "@emotion/styled";
-import { Game } from "./parts";
+import { Game } from "./game";
 
 import { ANSWERS, CELLS_AMOUNT, TRIES_AMOUNT } from "./constants";
 import { GameHeader } from "../../../shared/GameHeader";

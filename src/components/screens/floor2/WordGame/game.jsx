@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
-import { useSizeRatio } from "../../../../../contexts/SizeRatioContext";
-import { TRIES_AMOUNT } from "../constants";
+import { useSizeRatio } from "../../../../contexts/SizeRatioContext";
+import { TRIES_AMOUNT } from "./constants";
 
 const Content = styled.div`
     width: 100%;
@@ -17,6 +17,8 @@ const Line = styled.div`
   display: flex;
   justify-content: center;
   margin: 0 auto;
+  width: 100%;
+  padding: 0 10px;
 
   & + & {
     margin-top: var(--lineGap);
@@ -24,6 +26,7 @@ const Line = styled.div`
 `;
 
 const ButtonsWrapper = styled.div`
+  --keyboardCellWidth: calc((100% - 22px) / 12);
   margin-top: auto;
   display: flex;
   flex-direction: column;
@@ -40,14 +43,16 @@ const Cell = styled.div`
     transition: background-color 0.3s ease-in;
     color: ${({$isInWord}) => $isInWord ? 'white' : '#4C6FCD'};
 
-    & + & {
+    & + div {
         margin-left: 2px;
     }
 `;
 
 const ButtonCell = styled(Cell)`
-    padding: calc(8px * ${({$ratio}) => $ratio}) calc(6px * ${({$ratio}) => $ratio}) calc(6px * ${({$ratio}) => $ratio});
+    padding: calc(8px * ${({$ratio}) => $ratio}) 0 calc(6px * ${({$ratio}) => $ratio});
     border-radius: calc(5px * ${({$ratio}) => $ratio});
+    width: var(--keyboardCellWidth);
+    cursor: pointer;
     
     p {
         touch-action: none;
@@ -67,9 +72,8 @@ const CellStyled = styled(Cell)`
 `;
 
 const ActiveButtonCell = styled(ButtonCell)`
-    width: calc(40px * ${({$ratio}) => $ratio});
+    width: calc((100% - var(--keyboardCellWidth) * 9) / 2);
     justify-content: center;
-    margin: 0 2px;
 `;
 
 const GameLines = styled.div`
