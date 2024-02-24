@@ -7,7 +7,7 @@ import { useMemo } from "react";
 import { Cell } from "./Cell";
 
 const Wrapper = styled.div`
-  --rectSize: calc(218px * ${({$ratio})=> $ratio} / 4);
+  --rectSize: calc(270px * ${({$ratio})=> $ratio} / 4);
   display: grid;
   width: calc(var(--rectSize) * 4);
   grid-template-columns: repeat(4, 1fr);
@@ -16,12 +16,12 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
-  margin: calc(144px * ${({$ratio})=> $ratio}) auto calc(48px * ${({$ratio})=> $ratio});
-  padding: calc(10px * ${({$ratio})=> $ratio});
+  margin: calc(92px * ${({$ratio})=> $ratio}) 0 calc(48px * ${({$ratio})=> $ratio}) calc(50px * ${({$ratio})=> $ratio});
+  padding: calc(7px * ${({$ratio})=> $ratio});
   padding-left: calc(23px * ${({$ratio})=> $ratio});
   padding-right: calc(8px * ${({$ratio})=> $ratio});
-  width: calc(249px * ${({$ratio})=> $ratio});
-  height: calc(237px * ${({$ratio})=> $ratio});
+  width: calc(303px * ${({$ratio})=> $ratio});
+  height: calc(289px * ${({$ratio})=> $ratio});
   background: url(${border}) no-repeat center center;
   background-size: contain;
 `;

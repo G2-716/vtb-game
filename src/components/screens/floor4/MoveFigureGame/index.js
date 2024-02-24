@@ -31,8 +31,8 @@ const Description = styled(Text)`
 
 const TimerStyled = styled(Timer)`
     position: absolute;
-    top: calc(181px * ${({$ratio}) => $ratio});
-    left: calc(87px * ${({$ratio}) => $ratio});
+    top: calc(124px * ${({$ratio}) => $ratio});
+    left: calc(70px * ${({$ratio}) => $ratio});
     justify-content: flex-start;
 `;
 
