@@ -7,5 +7,5 @@ import {SCREENS} from '../../../constants/screens';
 export function Game26() {
     const {next} = useProgress()
 
-    return <BgImageScreen image={pic} onClick={() => next(SCREENS.GAME_2_7)} background={background} isIcon/>
+    return <BgImageScreen image={pic} onClick={() => next(SCREENS.GAME_2_2)} background={background} isIcon/>
 }

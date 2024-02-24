@@ -11,5 +11,5 @@ export function Game13() {
         game: SCREENS.GAME_1_8
     }
 
-    return <QuestionScreen answerScreens={answerScreens} image={questionImg} />
+    return <QuestionScreen answerScreens={answerScreens} image={questionImg} floorId={3}/>
 }

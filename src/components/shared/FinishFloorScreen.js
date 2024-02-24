@@ -27,11 +27,11 @@ export const FinishFloorScreen = ({finishText, background, icon, children}) => {
     return (
         <>
             <Wrapper background={background} $isBlurred={isShowModal}>
-                {!isShowModal && <ButtonStyled onClick={() => setIsShowModal(true)} $ratio={ratio}>В лифт</ButtonStyled>}
+                <ButtonStyled onClick={() => next(SCREENS.LIFT_3)} $ratio={ratio}>В лифт</ButtonStyled>
             </Wrapper>
-            <FinishFloorModal opened={isShowModal} icon={icon} onClick={() => next(SCREENS.LIFT_3)} text={finishText}>
+            {/* <FinishFloorModal opened={isShowModal} icon={icon} onClick={() => setIsShowModal(false)} text={finishText}>
                 {children}
-            </FinishFloorModal>
+            </FinishFloorModal> */}
         </>
         
     )

@@ -64,8 +64,8 @@ const SkipAnswer = styled(Answer)`
     background-color: ${colors.purple};
 `;
 
-export const QuestionScreen = ({ image, answerScreens, isBigPicture }) => {
-    const {next} = useProgress();
+export const QuestionScreen = ({ image, answerScreens, isBigPicture, floorId }) => {
+    const {next, addFloorAnswer, floorAnswers} = useProgress();
     const [chosen, setChosen] = useState('');
     const ratio = useSizeRatio();
 
@@ -73,6 +73,7 @@ export const QuestionScreen = ({ image, answerScreens, isBigPicture }) => {
 
     const handleChoose = (id, screen) => {
         setChosen(id);
+        addFloorAnswer(floorId, id);
         setTimeout(() => next(screen), 400);
     }
 
@@ -84,14 +85,14 @@ export const QuestionScreen = ({ image, answerScreens, isBigPicture }) => {
                 <HorizontalBlock>
                     <Answer 
                         $ratio={ratio}
-                        $isActive={chosen === 'projects'}
+                        $isActive={chosen === 'projects' || floorAnswers[floorId]?.includes('projects')}
                         onClick={() => handleChoose('projects', answerScreens?.projects)}
                     >
                         {'Над какими\nпроектами\nвы работаете?'}
                     </Answer>
                     <Answer
                         $ratio={ratio}
-                        $isActive={chosen === 'values'}
+                        $isActive={chosen === 'values' || floorAnswers[floorId]?.includes('values')}
                         onClick={() => handleChoose('values', answerScreens?.values)}
                     >
                         {'Какая ценность\nВТБ вам наиболее\nблизка?'}
@@ -99,14 +100,14 @@ export const QuestionScreen = ({ image, answerScreens, isBigPicture }) => {
                 </HorizontalBlock>
                 <Answer
                     $ratio={ratio}
-                    $isActive={chosen === 'skills'}
+                    $isActive={chosen === 'skills' || floorAnswers[floorId]?.includes('skills')}
                     onClick={() => handleChoose('skills', answerScreens?.skills)}
                 >  
                     Какие навыки вам важны для успешной работы?
                 </Answer>
                 <Answer
                     $ratio={ratio}
-                    $isActive={chosen === 'work'}
+                    $isActive={chosen === 'work' || floorAnswers[floorId]?.includes('work') }
                     onClick={() => handleChoose('work', answerScreens?.work)}
                 >
                     За что вы любите стажировку в ВТБ?

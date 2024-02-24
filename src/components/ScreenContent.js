@@ -117,6 +117,8 @@ import start3 from '../assets/images/start3.png'
 import start4 from '../assets/images/start4.png'
 import test1 from '../assets/images/test1.png'
 import test_end from '../assets/images/test_end.png'
+import landingBg from '../assets/images/landing_bgDesktop.png'
+import landingBgMobile from '../assets/images/landing_bgMobile.png'
 
 const SCREEN_COMPONENTS = {
     [SCREENS.INTRO_1]: Intro1,
@@ -287,6 +289,8 @@ const SCREEN_IMAGES_TO_PRELOAD = [
     start4,
     test1,
     test_end,
+    landingBg,
+    landingBgMobile
 ]
 
 const SWITCH_DURATION = 400;

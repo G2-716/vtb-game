@@ -20,5 +20,5 @@ export function Game52() {
         addVisitedFloor(4)
     }, [addVisitedFloor])
 
-    return <QuestionScreen answerScreens={answerScreens} image={questionImg} isBigPicture/>
+    return <QuestionScreen answerScreens={answerScreens} image={questionImg} floorId={4} isBigPicture />
 }
