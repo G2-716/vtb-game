@@ -1,11 +1,13 @@
 {
   "files": {
     "main.css": "./static/css/main.29b3dfe1.css",
-    "main.js": "./static/js/main.f06206ac.js",
+    "main.js": "./static/js/main.66278efa.js",
     "static/media/bg_floor6.png": "./static/media/bg_floor6.08102cafc8f91457cf45.png",
+    "static/media/landing_bgDesktop.png": "./static/media/landing_bgDesktop.5352d235c592fd10fa50.png",
     "static/media/VTBGroupCond-DemiBold.ttf": "./static/media/VTBGroupCond-DemiBold.8b222f2e6ffbe2d93de4.ttf",
     "static/media/VTBGroupCond-Book.ttf": "./static/media/VTBGroupCond-Book.655859e04873d6a3419a.ttf",
     "static/media/start3.png": "./static/media/start3.bd6a05ac500df658a7f0.png",
+    "static/media/landing_bgMobile.png": "./static/media/landing_bgMobile.a61ba86d9c76802523b3.png",
     "static/media/VTBGroupCond-Bold.ttf": "./static/media/VTBGroupCond-Bold.5580f502c3b8e3db58f7.ttf",
     "static/media/ComicSansMS-Bold.ttf": "./static/media/ComicSansMS-Bold.03ce8dc39cc924b9d8b6.ttf",
     "static/media/bg_floor2.png": "./static/media/bg_floor2.c2950a444af1bea19eb4.png",
@@ -83,14 +85,14 @@
     "static/media/floor4FinishIcon.png": "./static/media/floor4FinishIcon.6537972d838c8bece6b8.png",
     "static/media/InfoIcon.svg": "./static/media/InfoIcon.c8794fcc67099dcba2a6df342e98da5a.svg",
     "static/media/bg_elevatorMenu.svg": "./static/media/bg_elevatorMenu.b773e2e53a189176df5c1a0bb66bfeb8.svg",
-    "static/media/moveFigureBorder.svg": "./static/media/moveFigureBorder.4d24e93b1c18133ce8b1b4df4ca321e4.svg",
+    "static/media/moveFigureBorder.svg": "./static/media/moveFigureBorder.07b21fc22e0924ea57a143ae0fc1895c.svg",
     "index.html": "./index.html",
     "static/media/visitedIcon.svg": "./static/media/visitedIcon.cdd3341433f7c3becd4f81078f7dfea2.svg",
     "main.29b3dfe1.css.map": "./static/css/main.29b3dfe1.css.map",
-    "main.f06206ac.js.map": "./static/js/main.f06206ac.js.map"
+    "main.66278efa.js.map": "./static/js/main.66278efa.js.map"
   },
   "entrypoints": [
     "static/css/main.29b3dfe1.css",
-    "static/js/main.f06206ac.js"
+    "static/js/main.66278efa.js"
   ]
 }
