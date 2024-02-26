@@ -39,29 +39,20 @@ const Picture = styled.img`
 
 export function Test12() {
     const ratio = useSizeRatio();
-    const {next, testPoints, saveLeaderboard, isLeaderboardSaving} = useProgress();
-
-    const handleEndGame = () => {
-        saveLeaderboard();
-        next(SCREENS.FINAL_1);
-    }
+    const {next, testPoints} = useProgress();
 
     return (
         <Wrapper>
             <ModalStyled opened $ratio={ratio}>
                 <ResultText points={testPoints}/>
                 <ButtonsBlock $ratio={ratio}>
-                    <Button 
-                        onClick={() => next(SCREENS.INTERNSHIP_2)} 
-                        disabled={isLeaderboardSaving}
-                    >
+                    <Button onClick={() => next(SCREENS.INTERNSHIP_2)}>
                         К этажу стажировок
                     </Button>
                     <Button 
                         type={BUTTON_TYPES.outlined} 
                         size={BUTTON_SIZE.sm}
-                        onClick={handleEndGame}
-                        loading={isLeaderboardSaving}
+                        onClick={() => next(SCREENS.FINAL_1)}
                     >
                         Завершить игру
                     </Button>
