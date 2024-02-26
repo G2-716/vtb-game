@@ -19,59 +19,59 @@ const Line2 = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: ${({sizeRatio}) => `calc(9px * ${sizeRatio})`};
+  margin-top: ${({sizeRatio}) => `calc(4px * ${sizeRatio})`};
 `
 
 const Line3 = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: ${({sizeRatio}) => `calc(9px * ${sizeRatio})`};
+  margin-top: ${({sizeRatio}) => `calc(4px * ${sizeRatio})`};
 `
 
 const RotateButton = styled(Button)`
-  width: ${({sizeRatio}) => `calc(59px * ${sizeRatio})`};
-  height: ${({sizeRatio}) => `calc(32px * ${sizeRatio})`};
+  width: ${({sizeRatio}) => `calc(69px * ${sizeRatio})`};
+  height: ${({sizeRatio}) => `calc(37px * ${sizeRatio})`};
   padding: 0;
 `
 
 const LeftButton = styled(Button)`
-  width: ${({sizeRatio}) => `calc(59px * ${sizeRatio})`};
-  height: ${({sizeRatio}) => `calc(32px * ${sizeRatio})`};
+  width: ${({sizeRatio}) => `calc(69px * ${sizeRatio})`};
+  height: ${({sizeRatio}) => `calc(37px * ${sizeRatio})`};
   padding: 0;
 `
 
 const RightButton = styled(Button)`
-  width: ${({sizeRatio}) => `calc(59px * ${sizeRatio})`};
-  height: ${({sizeRatio}) => `calc(32px * ${sizeRatio})`};
-  margin-left: ${({sizeRatio}) => `calc(52px * ${sizeRatio})`};
+  width: ${({sizeRatio}) => `calc(69px * ${sizeRatio})`};
+  height: ${({sizeRatio}) => `calc(37px * ${sizeRatio})`};
+  margin-left: ${({sizeRatio}) => `calc(115px * ${sizeRatio})`};
   padding: 0;
 `
 
 const DownButton = styled(Button)`
-  width: ${({sizeRatio}) => `calc(59px * ${sizeRatio})`};
-  height: ${({sizeRatio}) => `calc(32px * ${sizeRatio})`};
+  width: ${({sizeRatio}) => `calc(69px * ${sizeRatio})`};
+  height: ${({sizeRatio}) => `calc(37px * ${sizeRatio})`};
   padding: 0;
 `
 
 const RotateIcon = styled.svg`
-  width: ${({sizeRatio}) => `calc(25px * ${sizeRatio})`};
-  height: ${({sizeRatio}) => `calc(24px * ${sizeRatio})`};
+  width: ${({sizeRatio}) => `calc(34px * ${sizeRatio})`};
+  height: ${({sizeRatio}) => `calc(34px * ${sizeRatio})`};
 `
 
 const LeftIcon = styled.svg`
-  width: ${({sizeRatio}) => `calc(20px * ${sizeRatio})`};
-  height: ${({sizeRatio}) => `calc(13px * ${sizeRatio})`};
+  width: ${({sizeRatio}) => `calc(26px * ${sizeRatio})`};
+  height: ${({sizeRatio}) => `calc(26px * ${sizeRatio})`};
 `
 
 const RightIcon = styled.svg`
-  width: ${({sizeRatio}) => `calc(20px * ${sizeRatio})`};
-  height: ${({sizeRatio}) => `calc(13px * ${sizeRatio})`};
+  width: ${({sizeRatio}) => `calc(26px * ${sizeRatio})`};
+  height: ${({sizeRatio}) => `calc(26px * ${sizeRatio})`};
 `
 
 const DownIcon = styled.svg`
-  width: ${({sizeRatio}) => `calc(20px * ${sizeRatio})`};
-  height: ${({sizeRatio}) => `calc(16px * ${sizeRatio})`};
+  width: ${({sizeRatio}) => `calc(26px * ${sizeRatio})`};
+  height: ${({sizeRatio}) => `calc(26px * ${sizeRatio})`};
 `
 
 export const BoardActions = ({ className, onInput }) => {
