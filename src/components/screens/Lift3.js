@@ -5,7 +5,7 @@ import hint from "../../assets/images/elevator_hint.png";
 import visited from "../../assets/images/visitedIcon.svg";
 import { SCREENS } from "../../constants/screens";
 import { FLOORS } from "../../constants/floors";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Modal } from "../shared/Modal";
 import { Text } from "../shared/Text";
 import { Button, BUTTON_SIZE, BUTTON_TYPES } from "../shared/Button";
@@ -23,7 +23,7 @@ const Wrapper = styled.div`
 const ExitBtn = styled.div`
     position: absolute;
     top: calc(24px * ${({$ratio}) => $ratio});
-    right: calc(24px * ${({$ratio}) => $ratio});
+    right: calc(20px * ${({$ratio}) => $ratio});
     width: calc(32px * ${({$ratio}) => $ratio});
     height: calc(26px * ${({$ratio}) => $ratio});
     cursor: pointer;
@@ -94,10 +94,48 @@ const Hint = styled.img`
     height: calc(211px * ${({$ratio}) => $ratio});
 `;
 
+const ModalHint = styled(Modal)`
+    top: calc(16px * ${({$ratio}) => $ratio});
+    left: calc(18px * ${({$ratio}) => $ratio});
+    padding: calc(12px * ${({$ratio}) => $ratio}) calc(10px * ${({$ratio}) => $ratio});
+    transform: none !important; 
+    font-size: 12px;
+`;
+
+const ModalHintButton = styled.div`
+    position: absolute;
+    top: calc(15px * ${({$ratio}) => $ratio});
+    right: calc(18px * ${({$ratio}) => $ratio});
+    border-radius: 50%;
+    padding: calc(9px * ${({$ratio}) => $ratio}) calc(2px * ${({$ratio}) => $ratio}) calc(9px * ${({$ratio}) => $ratio}) calc(10px * ${({$ratio}) => $ratio});
+    width: calc(44px * ${({$ratio}) => $ratio});
+    height: calc(44px * ${({$ratio}) => $ratio});
+    z-index: 1000;
+    overflow: hidden;
+
+    &::before {
+        --left: calc(100% - 38px * ${({$ratio}) => $ratio});
+        --top: calc(36px * ${({$ratio}) => $ratio});
+        --size: calc(22px * ${({$ratio}) => $ratio});
+        content: '';
+        position: fixed;
+        inset: 0;
+        background: url(${background});
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-position: center 0;
+        background-size: cover;
+        z-index: -1;
+        clip-path: circle(var(--size) at var(--left) var(--top));
+    }
+`;
+
 export function Lift3() {
     const {next, isFirstElevator, visitElevator, visitedFloors} = useProgress();
     const [chosen, setChosen] = useState(null);
     const [isModal, setIsModal] = useState(false);
+    const [isHint, setIsHint] = useState(false);
+    const [isGirlHint, setIsGirlHint] = useState(false);
     const ratio = useSizeRatio();
 
     const handleMove = (id, screen) => {
@@ -107,6 +145,21 @@ export function Lift3() {
             next(screen)
         }, 400);
     };
+
+    useEffect(() => {
+        if (!isFirstElevator) return;
+
+        const timeOut = setTimeout(() => {
+            setIsHint(true);
+        }, 500)
+
+        return () => clearTimeout(timeOut);
+    }, []);
+
+    const handleCloseHint = () => {
+        setIsHint(false);
+        setIsGirlHint(true);
+    }
 
     return (
         <>
@@ -131,7 +184,18 @@ export function Lift3() {
                     </Floor>
                 ))}
             </Wrapper>
-            {isFirstElevator && <Hint src={hint} alt='' $ratio={ratio}/>}
+            {isGirlHint && <Hint src={hint} alt='' $ratio={ratio}/>}
+            <ModalHint opened={isHint} isDark onClick={handleCloseHint} $ratio={ratio}>
+                Нажми сюда, если захочешь завершить игру и сохранить баллы
+            </ModalHint>
+            {isHint && (
+                <ModalHintButton $ratio={ratio}>
+                    <svg width="100%" height="100%" viewBox="0 0 32 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 0C1.34315 0 0 1.34315 0 3V23C0 24.6569 1.34315 26 3 26H15C16.6569 26 18 24.6569 18 23V19H16V23C16 23.5523 15.5523 24 15 24H3C2.44772 24 2 23.5523 2 23V3C2 2.44772 2.44772 2 3 2H15C15.5523 2 16 2.44772 16 3V7.26087H18V3C18 1.34315 16.6569 0 15 0H3Z" fill="black"/>
+                        <path d="M32 13L22 7.2265V12H10V14H22V18.7735L32 13Z" fill="black"/>
+                    </svg>
+                </ModalHintButton>
+            )}
             <Modal opened={isModal}>
                 <Text>
                     Уверен, что хочешь завершить игру? В рейтинг пойдут только те баллы, которые ты успел заработать до этого момента

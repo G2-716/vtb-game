@@ -10,6 +10,7 @@ const ModalWrapper = styled.div`
     position: absolute;
     inset: 0;
     z-index: 1000;
+    background-color: ${({$isDark}) => $isDark ? 'rgba(0, 0, 0, 0.3)' : 'transparent'};
     
     &.${ANIMATION_NAME}-enter {
         opacity: 0;
@@ -69,12 +70,12 @@ const Sign = styled.div`
     right: calc(0px - 22px * ${({$ratio}) => $ratio});
 `;
 
-export const Modal = ({ className, opened, children }) => {
+export const Modal = ({ className, opened, children, isDark, onClick }) => {
     const ratio = useSizeRatio();
 
     return (
         <CSSTransition in={opened} mountOnEnter unmountOnExit timeout={ANIMATION_DURATION} classNames={ANIMATION_NAME}>
-            <ModalWrapper>
+            <ModalWrapper $isDark={isDark} onClick={onClick}>
                 <ModalStyled className={className} $ratio={ratio}>
                     {children}
                     <Sign $ratio={ratio}>
