@@ -55,10 +55,7 @@ export function Game2048({isRules}) {
         if (hasTileValue(256)) {
             return 2
         }
-        if (hasTileValue(128)) {
-            return 1
-        }
-        return 0
+        return 1
     }
 
     useEffect(() => {
