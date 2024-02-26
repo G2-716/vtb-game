@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled from "@emotion/styled";
 import { SCREENS } from "../../constants/screens";
 import { useProgress } from "../../contexts/ProgressContext";
@@ -19,20 +18,17 @@ const ButtonStyled = styled(Button)`
     right: calc(16px * ${({$ratio}) => $ratio});
 `;
 
-export const FinishFloorScreen = ({finishText, background, icon, children}) => {
-    const [isShowModal, setIsShowModal] = useState(false);
+export const FinishFloorScreen = ({background, finishText, isShowModal, icon, children}) => {
     const {next} = useProgress();
     const ratio = useSizeRatio();
 
     return (
         <>
             <Wrapper background={background} $isBlurred={isShowModal}>
+                {children}
                 <ButtonStyled onClick={() => next(SCREENS.LIFT_3)} $ratio={ratio}>В лифт</ButtonStyled>
             </Wrapper>
-            {/* <FinishFloorModal opened={isShowModal} icon={icon} onClick={() => setIsShowModal(false)} text={finishText}>
-                {children}
-            </FinishFloorModal> */}
+            <FinishFloorModal opened={isShowModal} icon={icon} onClick={() => next(SCREENS.LIFT_3)} text={finishText} />
         </>
-        
     )
 }

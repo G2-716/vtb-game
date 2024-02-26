@@ -1,4 +1,3 @@
-import {useEffect} from "react";
 import styled from "@emotion/styled";
 import {useProgress} from "../../../contexts/ProgressContext";
 import pic from '../../../assets/images/test_end.png';
@@ -41,17 +40,13 @@ const Picture = styled.img`
 
 export function Final4() {
     const ratio = useSizeRatio();
-    const {totalPoints, saveLeaderboard} = useProgress();
+    const {totalPoints} = useProgress();
     const previousTotalPoints = usePrevious(totalPoints)
     const points = totalPoints || previousTotalPoints || 0
 
     function goToRating() {
         window.open('/rating', '_blank')
     }
-
-    useEffect(() => {
-        saveLeaderboard()
-    }, []);
 
     return (
         <Wrapper>

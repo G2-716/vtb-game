@@ -19,6 +19,8 @@ const INITIAL_STATE = {
     moveFigurePoints: 0,
     visitedFloors: [],
     floorAnswers: {},
+    itemsPoints: 0,
+    items: [],
 }
 
 const ProgressContext = createContext(INITIAL_STATE)
@@ -36,10 +38,12 @@ export function ProgressProvider(props) {
     const [wordPoints, setWordPoints] = useState(INITIAL_STATE.wordPoints)
     const [linesPoints, setLinesPoints] = useState(INITIAL_STATE.linesPoints)
     const [tetrisPoints, setTetrisPoints] = useState(INITIAL_STATE.tetrisPoints)
+    const [itemsPoints, setItemsPoints] = useState(INITIAL_STATE.itemsPoints)
     const [moveFigurePoints, setMoveFigurePoints] = useState(INITIAL_STATE.moveFigurePoints)
     const [visitedFloors, setVisitedFloors] = useState(INITIAL_STATE.visitedFloors)
     const [floorAnswers, setFloorAnswers] = useState(INITIAL_STATE.floorAnswers)
-    const totalPoints = testPoints + points2048 + wordPoints + linesPoints + tetrisPoints + moveFigurePoints
+    const [items, setItems] = useState(INITIAL_STATE.items)
+    const totalPoints = testPoints + points2048 + wordPoints + linesPoints + tetrisPoints + moveFigurePoints + itemsPoints
 
     function loadLeaderboard() {
         setIsLeaderboardLoading(true)
@@ -93,6 +97,13 @@ export function ProgressProvider(props) {
         })
     }
 
+    function addItemPoints(floor) {
+        if (items.includes(floor)) return;
+
+        setItemsPoints(prev => prev + 1);
+        setItems(prev => [...prev, floor]);
+    }
+
     const state = {
         screen,
         user,
@@ -123,6 +134,7 @@ export function ProgressProvider(props) {
         saveLeaderboard,
         addVisitedFloor: (id) => setVisitedFloors(prev => prev.includes(id) ? prev : [...prev, id]),
         addFloorAnswer,
+        addItemPoints,
     }
 
     useEffect(() => {
