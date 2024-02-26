@@ -123,7 +123,6 @@ const Info = styled.div`
     flex-direction: column;
     align-items: center;
     height: 100%;
-    padding-top: ${({ sizeRatio }) => `calc(47px * ${sizeRatio})`};
     z-index: 2;
     
     &.${SWITCH_NAME}-enter {
@@ -164,7 +163,7 @@ const InfoDescription = styled(Text)`
 `
 
 const InfoButton = styled(Button)`
-    margin-top: ${({ sizeRatio }) => `calc(134px * ${sizeRatio})`};
+    margin-top: ${({ sizeRatio }) => `calc(61px * ${sizeRatio})`};
     font-size: ${({ sizeRatio }) => `calc(16px * ${sizeRatio})`};
 `
 
@@ -264,7 +263,12 @@ export function Intro3() {
                     <InfoDescription sizeRatio={sizeRatio}>
                         Он нужен, чтобы отслеживать твою позицию в рейтинге.
                         {'\n'}
-                        Сделай скриншот, чтобы не потерять его.
+                        <b>Сделай скриншот</b>, чтобы не потерять его.
+                    </InfoDescription>
+                    <InfoDescription sizeRatio={sizeRatio}>
+                        Обрати внимание, <b>твои баллы сохранятся только после завершения игры</b>.
+                        {'\n'}
+                        Если ты закроешь окно с игрой до её завершения, данные не будут записаны.
                     </InfoDescription>
                     <InfoButton sizeRatio={sizeRatio} onClick={handleContinue}>
                         Продолжить
