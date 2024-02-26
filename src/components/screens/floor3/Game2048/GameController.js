@@ -1,4 +1,4 @@
-import {useCallback, useRef, useState} from "react";
+import {useCallback, useEffect, useRef, useState} from "react";
 import {useClickListener} from "../../../../hooks/useClickListener";
 
 
@@ -6,6 +6,26 @@ export function GameController({ active, children, onMoveUp, onMoveDown, onMoveL
     const [startX, setStartX] = useState(0);
     const [startY, setStartY] = useState(0);
     const targetRef = useRef()
+
+    const handleKeyDown = useCallback(
+        (e) => {
+            switch (e.code) {
+                case "ArrowUp":
+                    onMoveUp();
+                    break;
+                case "ArrowDown":
+                    onMoveDown();
+                    break;
+                case "ArrowLeft":
+                    onMoveLeft();
+                    break;
+                case "ArrowRight":
+                    onMoveRight();
+                    break;
+            }
+        },
+        [onMoveDown, onMoveUp, onMoveRight, onMoveLeft],
+    );
 
     const handleStart = useCallback((e) => {
         setStartX(e.x);
@@ -46,6 +66,16 @@ export function GameController({ active, children, onMoveUp, onMoveDown, onMoveL
         onStart: handleStart,
         onEnd: handleEnd,
     })
+
+    useEffect(() => {
+        if (active) {
+            document.addEventListener("keydown", handleKeyDown);
+
+            return () => {
+                document.removeEventListener("keydown", handleKeyDown);
+            };
+        }
+    }, [active, handleKeyDown]);
 
     return children(targetRef);
 }

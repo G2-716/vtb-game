@@ -67,10 +67,15 @@ export const getTetromino = (key) => {
   return {...tetromino, shape}
 }
 
+let lastTetromino = undefined
+
 export const randomTetromino = () => {
-  const keys = Object.keys(TETROMINOES);
+  const keys = Object.keys(TETROMINOES).filter(key => !lastTetromino || key !== lastTetromino);
   const index = Math.floor(Math.random() * keys.length);
   const key = keys[index];
+
+  lastTetromino = key
+
   return getTetromino(key);
 };
 

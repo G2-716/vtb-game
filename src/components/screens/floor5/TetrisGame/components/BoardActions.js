@@ -105,7 +105,7 @@ export const BoardActions = ({ className, onInput }) => {
         </RightButton>
       </Line2>
       <Line3 sizeRatio={sizeRatio}>
-        <DownButton size={BUTTON_SIZE.sm} sizeRatio={sizeRatio} onClick={() => onInput?.(Action.FastDrop)}>
+        <DownButton size={BUTTON_SIZE.sm} sizeRatio={sizeRatio} onClick={() => onInput?.(Action.SlowDrop)}>
           <DownIcon sizeRatio={sizeRatio} viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fillRule="evenodd" clipRule="evenodd"
                   d="M12.7671 7.21621L20.5863 -0.00012207H0.533691L8.35294 7.21621H0.533691L10.56 16.4694L20.5863 7.21621H12.7671Z"

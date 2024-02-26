@@ -6,7 +6,7 @@ import {GameController} from "./components/GameController";
 import {useGameStats} from "./hooks/useGameStats";
 import {usePlayer} from "./hooks/usePlayer";
 import {useBoard} from "./hooks/useBoard";
-import {useMemo, useState} from "react";
+import {useEffect, useMemo, useState} from "react";
 import {GameHeader} from "../../../shared/GameHeader";
 import {SkipModal} from "../../../shared/SkipModal";
 import {EndGameModal} from "../../../shared/EndGameModal";
@@ -74,6 +74,12 @@ export function TetrisGame({isRules}) {
         }
         return 0
     }
+
+    useEffect(() => {
+        if (gameStats.linesCompleted >= 5) {
+            handleResult()
+        }
+    }, [gameStats.linesCompleted]);
 
     return (
         <>

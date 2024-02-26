@@ -49,13 +49,13 @@ export function Game2048({isRules}) {
     }
 
     function getPoints() {
-        if (hasTileValue(2048)) {
+        if (hasTileValue(512)) {
             return 3
         }
-        if (hasTileValue(1024)) {
+        if (hasTileValue(256)) {
             return 2
         }
-        if (hasTileValue(512)) {
+        if (hasTileValue(128)) {
             return 1
         }
         return 0

@@ -45,6 +45,10 @@ export function Final4() {
     const previousTotalPoints = usePrevious(totalPoints)
     const points = totalPoints || previousTotalPoints || 0
 
+    function goToRating() {
+        window.open('/rating', '_blank')
+    }
+
     useEffect(() => {
         saveLeaderboard()
     }, []);
@@ -54,7 +58,9 @@ export function Final4() {
             <ModalStyled $ratio={ratio} opened>
                 <ResultText points={points}/>
                 <ButtonsBlock $ratio={ratio}>
-                    <Button background={colors.blue}>Перейти к рейтингу{'\n'}игроков</Button>
+                    <Button background={colors.blue} onClick={goToRating}>
+                        Перейти к рейтингу{'\n'}игроков
+                    </Button>
                 </ButtonsBlock>
             </ModalStyled>
             <Picture src={pic} alt="" $ratio={ratio}/>
