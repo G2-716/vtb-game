@@ -54,10 +54,10 @@ export function ProgressProvider(props) {
     }
 
     function saveLeaderboard() {
-        if (user) {
+        if (user && leaderboard) {
             setIsLeaderboardSaving(true)
 
-            saveToLeaderboard(user, totalPoints)
+            saveToLeaderboard([...leaderboard, { ...user, points: totalPoints }])
                 .finally(() => setIsLeaderboardSaving(false))
         }
     }

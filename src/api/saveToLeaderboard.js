@@ -1,10 +1,11 @@
-import {GOOGLE_TABLES_ENDPOINT_URL} from "../constants/api";
+import {SAVE_ENDPOINT_URL} from "../constants/api";
 
-export function saveToLeaderboard(user, points) {
-    return fetch(
-        `${GOOGLE_TABLES_ENDPOINT_URL}?id=${user.id}&name=${user.name}&email=${user.email}&points=${points}`,
-        { method: 'POST', redirect: 'follow' },
-    )
+export function saveToLeaderboard(data) {
+    return fetch(SAVE_ENDPOINT_URL, {
+        method: 'PUT',
+        body: JSON.stringify(data),
+        headers: { 'Content-Type': 'application/json' },
+    })
         .then(resp => resp.json())
         .catch(console.log)
 }

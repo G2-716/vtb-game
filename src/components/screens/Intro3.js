@@ -215,7 +215,7 @@ export function Intro3() {
         } else if (!/\S+@\S+\.\S+/.test(email)) {
             result = false
             setEmailError('Почта указана в неверном формате')
-        } else if (leaderboard && leaderboard.resultByEmail[email]) {
+        } else if (leaderboard && leaderboard.find((data) => data.email === email)) {
             result = false
             setEmailError('Эта почта уже участвует в рейтинге, попробуй другую')
         }
