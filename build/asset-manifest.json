@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.29b3dfe1.css",
-    "main.js": "./static/js/main.0ac45221.js",
+    "main.js": "./static/js/main.9dd6997a.js",
     "static/media/bg_floor6.png": "./static/media/bg_floor6.08102cafc8f91457cf45.png",
     "static/media/landing_bgDesktop.png": "./static/media/landing_bgDesktop.5352d235c592fd10fa50.png",
     "static/media/VTBGroupCond-DemiBold.ttf": "./static/media/VTBGroupCond-DemiBold.8b222f2e6ffbe2d93de4.ttf",
@@ -22,7 +22,7 @@
     "static/media/internship1.png": "./static/media/internship1.b06b326a31fdeac9ff19.png",
     "static/media/bg_floor4.png": "./static/media/bg_floor4.6a917eb30a0360069112.png",
     "static/media/ComicSansMS.ttf": "./static/media/ComicSansMS.2be4a49a17700938dbc0.ttf",
-    "static/media/floor3_people.png": "./static/media/floor3_people.768cfdcb0248cb2cb462.png",
+    "static/media/floor3_people.png": "./static/media/floor3_people.ab34b4af61c24a51e2ee.png",
     "static/media/bg_elevator.png": "./static/media/bg_elevator.25b3e5263471138ddc55.png",
     "static/media/floor1_people.png": "./static/media/floor1_people.c5170e6ea694c67baaf8.png",
     "static/media/answer5_projects.png": "./static/media/answer5_projects.ad9cb678e991cdf48872.png",
@@ -48,7 +48,7 @@
     "static/media/answer2_projects.png": "./static/media/answer2_projects.8c5eaf0db10f5f07c32b.png",
     "static/media/answer2_values.png": "./static/media/answer2_values.76427a98932ab8b13653.png",
     "static/media/answer4_skills.png": "./static/media/answer4_skills.dce4ab467c964bf9ac14.png",
-    "static/media/rules_2048.png": "./static/media/rules_2048.ccc381612de5c4088d40.png",
+    "static/media/rules_2048.png": "./static/media/rules_2048.e9eee23da912061bce07.png",
     "static/media/floor1_start.png": "./static/media/floor1_start.58826b0f43d2a65117de.png",
     "static/media/answer3_projects.png": "./static/media/answer3_projects.6543c94b5036f97ebc0b.png",
     "static/media/answer4_projects.png": "./static/media/answer4_projects.38d561fa8aee1a235d58.png",
@@ -89,10 +89,10 @@
     "index.html": "./index.html",
     "static/media/visitedIcon.svg": "./static/media/visitedIcon.cdd3341433f7c3becd4f81078f7dfea2.svg",
     "main.29b3dfe1.css.map": "./static/css/main.29b3dfe1.css.map",
-    "main.0ac45221.js.map": "./static/js/main.0ac45221.js.map"
+    "main.9dd6997a.js.map": "./static/js/main.9dd6997a.js.map"
   },
   "entrypoints": [
     "static/css/main.29b3dfe1.css",
-    "static/js/main.0ac45221.js"
+    "static/js/main.9dd6997a.js"
   ]
 }
