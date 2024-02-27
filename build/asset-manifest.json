@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.29b3dfe1.css",
-    "main.js": "./static/js/main.797d2494.js",
+    "main.js": "./static/js/main.8b5c7d21.js",
     "static/media/bg_floor6.png": "./static/media/bg_floor6.08102cafc8f91457cf45.png",
     "static/media/landing_bgDesktop.png": "./static/media/landing_bgDesktop.5352d235c592fd10fa50.png",
     "static/media/VTBGroupCond-DemiBold.ttf": "./static/media/VTBGroupCond-DemiBold.8b222f2e6ffbe2d93de4.ttf",
@@ -32,8 +32,8 @@
     "static/media/finish.png": "./static/media/finish.e5bf5fcb832d5591fb9d.png",
     "static/media/answer1_skills.png": "./static/media/answer1_skills.268c053cac9f613c9a59.png",
     "static/media/answer5_values.png": "./static/media/answer5_values.98df4562c052e72c7de0.png",
-    "static/media/answer5_skills.png": "./static/media/answer5_skills.ef8e7316853b70579a00.png",
     "static/media/question5.png": "./static/media/question5.d276aaf9d4e42c358434.png",
+    "static/media/answer5_skills.png": "./static/media/answer5_skills.457d55536ffec12c4916.png",
     "static/media/answer3_skills.png": "./static/media/answer3_skills.366b4ddee91de38109b7.png",
     "static/media/start4.png": "./static/media/start4.e774d3f71aa4db20667f.png",
     "static/media/floor2Finish.png": "./static/media/floor2Finish.7c4dd13955f0889e8736.png",
@@ -48,12 +48,12 @@
     "static/media/answer2_projects.png": "./static/media/answer2_projects.8c5eaf0db10f5f07c32b.png",
     "static/media/answer2_values.png": "./static/media/answer2_values.76427a98932ab8b13653.png",
     "static/media/answer4_skills.png": "./static/media/answer4_skills.dce4ab467c964bf9ac14.png",
-    "static/media/rules_2048.png": "./static/media/rules_2048.e9eee23da912061bce07.png",
+    "static/media/rules_2048.png": "./static/media/rules_2048.7ab23cb15f2e4f49730a.png",
     "static/media/floor1_start.png": "./static/media/floor1_start.58826b0f43d2a65117de.png",
     "static/media/answer3_projects.png": "./static/media/answer3_projects.6543c94b5036f97ebc0b.png",
     "static/media/answer4_projects.png": "./static/media/answer4_projects.38d561fa8aee1a235d58.png",
     "static/media/floor4_start.png": "./static/media/floor4_start.603a661a6bbdb74f1325.png",
-    "static/media/answer5_work.png": "./static/media/answer5_work.2b2c015a750ae0522abc.png",
+    "static/media/answer5_work.png": "./static/media/answer5_work.fa68098c8f492fdfdebf.png",
     "static/media/floor3_start.png": "./static/media/floor3_start.692594f94de85d25665a.png",
     "static/media/floor3Finish.png": "./static/media/floor3Finish.2d521d02cee983e9457e.png",
     "static/media/floor2_start.png": "./static/media/floor2_start.ad5d639d64e1aa7f0617.png",
@@ -89,10 +89,10 @@
     "index.html": "./index.html",
     "static/media/visitedIcon.svg": "./static/media/visitedIcon.cdd3341433f7c3becd4f81078f7dfea2.svg",
     "main.29b3dfe1.css.map": "./static/css/main.29b3dfe1.css.map",
-    "main.797d2494.js.map": "./static/js/main.797d2494.js.map"
+    "main.8b5c7d21.js.map": "./static/js/main.8b5c7d21.js.map"
   },
   "entrypoints": [
     "static/css/main.29b3dfe1.css",
-    "static/js/main.797d2494.js"
+    "static/js/main.8b5c7d21.js"
   ]
 }
