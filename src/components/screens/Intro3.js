@@ -106,6 +106,11 @@ const FormInput = styled(Input)`
 const FormCheckbox = styled(Checkbox)`
     width: 100%;
     margin-top: ${({ sizeRatio }) => `calc(40px * ${sizeRatio})`};
+
+    & span {
+        top: 0;
+        transform: none;
+    }
 `
 
 const FormCheckboxLink = styled.a`
