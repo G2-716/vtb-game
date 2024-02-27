@@ -11,6 +11,7 @@ import {Text} from "../../../shared/Text";
 import {useSizeRatio} from "../../../../contexts/SizeRatioContext";
 import {SkipModal} from "../../../shared/SkipModal";
 import {EndGameModal} from "../../../shared/EndGameModal";
+import {useCallbackRef} from "../../../../hooks/useCallbackRef";
 
 const Wrapper = styled.div`
     display: flex;
@@ -40,13 +41,8 @@ export function Game2048({isRules}) {
         () => !(isRules || isSkipping || endModal.shown),
         [isRules, isSkipping, endModal.shown],
     );
-    const {startGame, hasTileValue, getTiles, moveTiles} = useGame(handleResult, handleResult);
-
-    function handleResult() {
-        const points = getPoints()
-        setEndModal({shown: true, points})
-        addPoints2048(points)
-    }
+    const handleResultRef = useCallbackRef(handleResult)
+    const {startGame, hasTileValue, getTiles, moveTiles} = useGame(handleResultRef, handleResultRef);
 
     function getPoints() {
         if (hasTileValue(512)) {
@@ -58,8 +54,14 @@ export function Game2048({isRules}) {
         if (hasTileValue(128)) {
             return 1
         }
-        
+
         return 0;
+    }
+
+    function handleResult() {
+        const points = getPoints()
+        setEndModal({shown: true, points})
+        addPoints2048(points)
     }
 
     useEffect(() => {
@@ -79,7 +81,7 @@ export function Game2048({isRules}) {
                 >
                     {(ref) => (
                         <WrapperInner ref={ref} sizeRatio={sizeRatio}>
-                            <Timer shownTime size={35} isStart={isGameActive} initialTime={60 * 3} onFinish={() => setEndModal({shown: true, points: getPoints()})} />
+                            <Timer shownTime size={35} isStart={isGameActive} initialTime={60 * 3} onFinish={handleResultRef} />
                             <GameBoard tiles={getTiles()} />
                             {!isRules && (
                                 <Description sizeRatio={sizeRatio}>

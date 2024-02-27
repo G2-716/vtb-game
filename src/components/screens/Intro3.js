@@ -119,7 +119,7 @@ const FormCheckboxLink = styled.a`
 `
 
 const FormButton = styled(Button)`
-    margin-top: ${({ sizeRatio }) => `calc(109px * ${sizeRatio})`};
+    margin-top: ${({ sizeRatio }) => `calc(90px * ${sizeRatio})`};
     font-size: ${({ sizeRatio }) => `calc(15px * ${sizeRatio})`};
 `
 
