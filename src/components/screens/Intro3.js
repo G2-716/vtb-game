@@ -12,6 +12,7 @@ import {Checkbox} from "../shared/Checkbox";
 import {Input} from "../shared/Input";
 import {Text} from "../shared/Text";
 import {colors} from "../../constants/colors";
+import { reachMetrikaGoal } from "../../utils/reachMetrikaGoal";
 
 const SWITCH_DURATION = 400;
 
@@ -229,6 +230,7 @@ export function Intro3() {
         if (validate()) {
             setUser(id, name, email)
             setStep(STEP.INFO)
+            reachMetrikaGoal('fill')
         }
     }
 

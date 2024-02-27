@@ -7,6 +7,7 @@ import { useSizeRatio } from "../../../contexts/SizeRatioContext";
 import { Button } from "../../shared/Button";
 import {Modal} from '../../shared/Modal';
 import { ResultText } from "../../shared/ResultText";
+import { reachMetrikaGoal } from "../../../utils/reachMetrikaGoal";
 
 const Wrapper = styled.div`
     width: 100%;
@@ -45,6 +46,7 @@ export function Final4() {
     const points = totalPoints || previousTotalPoints || 0
 
     function goToRating() {
+        reachMetrikaGoal('rating')
         window.open('/rating', '_blank')
     }
 

@@ -4,6 +4,7 @@ import background from '../../../assets/images/floor6_start.png';
 import { SCREENS } from "../../../constants/screens";
 import { useProgress } from "../../../contexts/ProgressContext";
 import { useSizeRatio } from "../../../contexts/SizeRatioContext";
+import { reachMetrikaGoal } from "../../../utils/reachMetrikaGoal";
 import { Button, BUTTON_SIZE } from "../../shared/Button";
 
 const Wrapper = styled.div`
@@ -40,13 +41,23 @@ export const Internship1 = () => {
         addVisitedFloor(6)
     }, [addVisitedFloor])
 
+    const handleIntern = () => {
+        reachMetrikaGoal('intership')
+        next(SCREENS.INTERNSHIP_2)
+    }
+
+    const handleTest = () => {
+        reachMetrikaGoal('test1')
+        next(SCREENS.TEST_1)
+    }
+
     return (
         <Wrapper>
             <ButtonsWrapper $ratio={ratio}>
-                <ButtonStyled size={BUTTON_SIZE.sm} $ratio={ratio} onClick={() => next(SCREENS.TEST_1)}>
+                <ButtonStyled size={BUTTON_SIZE.sm} $ratio={ratio} onClick={handleTest}>
                  Пройти тест
                 </ButtonStyled>
-                <ButtonStyled size={BUTTON_SIZE.sm} $ratio={ratio} onClick={() => next(SCREENS.INTERNSHIP_2)}>
+                <ButtonStyled size={BUTTON_SIZE.sm} $ratio={ratio} onClick={handleIntern}>
                     Узнать о стажировках
                 </ButtonStyled>
             </ButtonsWrapper>

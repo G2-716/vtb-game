@@ -4,6 +4,7 @@ import bg from '../../../assets/images/rules_points.png';
 import { RulesScreen } from "../../shared/RulesScreen";
 import { SCREENS } from "../../../constants/screens";
 import { PointsGame } from "./PointsGame";
+import { reachMetrikaGoal } from "../../../utils/reachMetrikaGoal";
 
 const Wrapper = styled.div`
     width: 100%;
@@ -13,10 +14,15 @@ const Wrapper = styled.div`
 export function Game38() {
     const {next} = useProgress()
 
+    const handleNext = () => {
+        reachMetrikaGoal('start_rb')
+        next()
+    }
+
     return  (
         <Wrapper>
             <PointsGame isRules />
-            <RulesScreen background={bg} onNext={() => next()} onSkip={() => next(SCREENS.GAME_3_10)}/>
+            <RulesScreen background={bg} onNext={handleNext} onSkip={() => next(SCREENS.GAME_3_10)}/>
         </Wrapper>
     )
 }

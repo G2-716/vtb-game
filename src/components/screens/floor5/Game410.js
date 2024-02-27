@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import bg from '../../../assets/images/floor5Finish.png';
 import icon from '../../../assets/images/floor5FinishIcon.png';
 import { useProgress } from '../../../contexts/ProgressContext';
+import { reachMetrikaGoal } from '../../../utils/reachMetrikaGoal';
 import { FinishFloorScreen } from "../../shared/FinishFloorScreen";
 
 export function Game410() {
@@ -12,6 +13,10 @@ export function Game410() {
         setIsShowModal(true);
         addItemPoints('floor5');
     }
+
+    useEffect(() => {
+        reachMetrikaGoal('finish_ppik');
+    }, []);
 
     const finishText = 'В 2022 году в Финансовом университете открылась базовая кафедра ВТБ. ' +
     'На программе студенты изучают темы в области риск-менеджмента, работы с большими данными и автоматизации ' + 

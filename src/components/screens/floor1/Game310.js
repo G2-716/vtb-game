@@ -1,12 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import bg from '../../../assets/images/floor1Finish.png';
 import icon from '../../../assets/images/floor1FinishIcon.png';
 import { useProgress } from '../../../contexts/ProgressContext';
+import { reachMetrikaGoal } from '../../../utils/reachMetrikaGoal';
 import { FinishFloorScreen } from "../../shared/FinishFloorScreen";
 
 export function Game310() {
     const {addItemPoints} = useProgress();
     const [isShowModal, setIsShowModal] = useState(false);
+
+    useEffect(() => {
+        reachMetrikaGoal('finish_rb');
+    }, []);
 
     const handleFindItem = () => {
         setIsShowModal(true);

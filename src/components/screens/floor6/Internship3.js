@@ -5,6 +5,7 @@ import { bankInterns, itInterns } from "../../../constants/internships";
 import { SCREENS } from "../../../constants/screens";
 import {useProgress} from "../../../contexts/ProgressContext";
 import { useSizeRatio } from "../../../contexts/SizeRatioContext";
+import { reachMetrikaGoal } from "../../../utils/reachMetrikaGoal";
 import { Button, BUTTON_TYPES } from "../../shared/Button";
 import { Modal } from "../../shared/Modal";
 
@@ -105,6 +106,11 @@ export function Internship3() {
         }, 400);
     };
 
+    const handleToTest = () => {
+        reachMetrikaGoal('test2')
+        next(SCREENS.TEST_1)
+    }
+
     return (
         <Container $ratio={ratio}>
             <Wrapper $isBlurred={isModal}>
@@ -129,7 +135,7 @@ export function Internship3() {
                     ))}
                 </Block>
                 <ButtonsWrapper>
-                    <Button onClick={() => next(SCREENS.TEST_1)}>К тесту</Button>
+                    <Button onClick={handleToTest}>К тесту</Button>
                     <Button type={BUTTON_TYPES.outlined} onClick={() => next(SCREENS.LIFT_3)}>В лифт</Button>
                 </ButtonsWrapper>
             </Wrapper>

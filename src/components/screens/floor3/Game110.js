@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import bg from '../../../assets/images/floor3Finish.png';
 import icon from '../../../assets/images/floor3FinishIcon.png';
 import { useProgress } from '../../../contexts/ProgressContext';
+import { reachMetrikaGoal } from '../../../utils/reachMetrikaGoal';
 import { FinishFloorScreen } from "../../shared/FinishFloorScreen";
 
 export function Game110() {
@@ -12,6 +13,10 @@ export function Game110() {
         setIsShowModal(true);
         addItemPoints('floor3');
     }
+
+    useEffect(() => {
+        reachMetrikaGoal('finish_kib');
+    }, []);
 
     const finishText = 'Именные Гранты ВТБ — это 5 недель интенсивной прокачки навыков, ' + 
     'мастер-классы от ведущих экспертов, карьерные консультации, подарки от Банка ВТБ и главный ' + 

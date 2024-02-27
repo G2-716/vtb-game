@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import bg from '../../../assets/images/floor2Finish.png';
 import icon from '../../../assets/images/floor2FinishIcon.png';
 import { useProgress } from '../../../contexts/ProgressContext';
+import { reachMetrikaGoal } from '../../../utils/reachMetrikaGoal';
 import { FinishFloorScreen } from "../../shared/FinishFloorScreen";
 
 export function Game29() {
@@ -12,6 +13,10 @@ export function Game29() {
         setIsShowModal(true);
         addItemPoints('floor2');
     }
+
+    useEffect(() => {
+        reachMetrikaGoal('finish_smb');
+    }, []);
 
     const finishText = 'В наших карьерных сообществах в VK и TG ' + 
     '«Карьера в ВТБ» мы рассказываем об актуальных вакансиях, секретах построения успешной ' + 
