@@ -253,7 +253,7 @@ export function Intro3() {
                         <FormInput sizeRatio={sizeRatio} label="E-mail" error={!!emailError} value={email} onChange={handleEmailChange} />
                         <FormCheckbox sizeRatio={sizeRatio} error={!!isAgreedError} value={isAgreed} onChange={handleIsAgreedChange}>
                             Я согласен(а) на <FormCheckboxLink href="https://fut.ru/personal_data_policy/" target="_blank">обработку персональных данных</FormCheckboxLink>{' '}
-                            и получение информационных сообщений, а также с <FormCheckboxLink href="/" target="_blank">правилами проведения акции</FormCheckboxLink>.
+                            и получение информационных сообщений, а также с <FormCheckboxLink href="/rules" target="_blank">правилами проведения акции</FormCheckboxLink>.
                         </FormCheckbox>
                     </FormFields>
                     <FormButton sizeRatio={sizeRatio} buttonType="submit" loading={isLeaderboardLoading}>
