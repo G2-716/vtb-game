@@ -16,6 +16,7 @@ import { useProgress } from '../../../../contexts/ProgressContext';
 import { Timer } from '../../../shared/Timer';
 import { Button } from '../../../shared/Button';
 import { EndGameModal } from '../../../shared/EndGameModal';
+import {useCallbackRef} from "../../../../hooks/useCallbackRef";
 
 const Wrapper = styled.div`
     width: 100%;
@@ -75,6 +76,8 @@ export const MoveFigureGame = ({isDemo, isBlurred}) => {
         setFinishModal({shown: true, points});
         addMoveFigurePoints(points);
     }
+
+    const handleGetPointsRef = useCallbackRef(handleGetPoints)
 
     const handleDropBlock = async (block, dropX, dropY, isDownPartDrag, isLeftPartDrag) => {
         if (freeExit.current && block.id === 'main' && (dropX === winCol - 1) && block.x === winCol && block.y === winRow) {
@@ -208,7 +211,7 @@ export const MoveFigureGame = ({isDemo, isBlurred}) => {
                         align="baseline" 
                         isHiddenButtons={isDemo}
                     />
-                    {!isDemo && <TimerStyled reverse size={35} $ratio={ratio} isStart={isTimer} shownTime onStop={handleGetPoints}/>}
+                    {!isDemo && <TimerStyled reverse size={35} $ratio={ratio} isStart={isTimer} shownTime onStop={handleGetPointsRef}/>}
                     <Board
                         innerRef={$boardRef}
                         blocks={shownBlocks}
