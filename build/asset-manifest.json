@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.29b3dfe1.css",
-    "main.js": "./static/js/main.d2e52a7e.js",
+    "main.js": "./static/js/main.96de9c95.js",
     "static/media/bg_floor6.png": "./static/media/bg_floor6.08102cafc8f91457cf45.png",
     "static/media/landing_bgDesktop.png": "./static/media/landing_bgDesktop.5352d235c592fd10fa50.png",
     "static/media/VTBGroupCond-DemiBold.ttf": "./static/media/VTBGroupCond-DemiBold.8b222f2e6ffbe2d93de4.ttf",
@@ -30,11 +30,11 @@
     "static/media/bg_floor1.png": "./static/media/bg_floor1.bd39ef1be4bf5f777e52.png",
     "static/media/answer1_projects.png": "./static/media/answer1_projects.bd79276e8e254448ae03.png",
     "static/media/finish.png": "./static/media/finish.e5bf5fcb832d5591fb9d.png",
-    "static/media/answer1_skills.png": "./static/media/answer1_skills.268c053cac9f613c9a59.png",
+    "static/media/answer1_skills.png": "./static/media/answer1_skills.21a27ca585ed5e0d0191.png",
     "static/media/answer5_skills.png": "./static/media/answer5_skills.ed03c890ec4f00d68fb4.png",
     "static/media/question5.png": "./static/media/question5.d276aaf9d4e42c358434.png",
     "static/media/answer5_values.png": "./static/media/answer5_values.66a83a7cb1ed1977e7a0.png",
-    "static/media/answer3_skills.png": "./static/media/answer3_skills.366b4ddee91de38109b7.png",
+    "static/media/answer3_skills.png": "./static/media/answer3_skills.7d3e42e8411735cd6dcd.png",
     "static/media/start4.png": "./static/media/start4.e774d3f71aa4db20667f.png",
     "static/media/floor2Finish.png": "./static/media/floor2Finish.7c4dd13955f0889e8736.png",
     "static/media/answer3_work.png": "./static/media/answer3_work.c4da79aa0c949a7a2720.png",
@@ -89,10 +89,10 @@
     "static/media/moveFigureBorder.svg": "./static/media/moveFigureBorder.07b21fc22e0924ea57a143ae0fc1895c.svg",
     "static/media/visitedIcon.svg": "./static/media/visitedIcon.cdd3341433f7c3becd4f81078f7dfea2.svg",
     "main.29b3dfe1.css.map": "./static/css/main.29b3dfe1.css.map",
-    "main.d2e52a7e.js.map": "./static/js/main.d2e52a7e.js.map"
+    "main.96de9c95.js.map": "./static/js/main.96de9c95.js.map"
   },
   "entrypoints": [
     "static/css/main.29b3dfe1.css",
-    "static/js/main.d2e52a7e.js"
+    "static/js/main.96de9c95.js"
   ]
 }
