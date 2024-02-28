@@ -202,7 +202,7 @@ export function Lift3() {
                     {visitedFloors.includes(FLOORS[5].id) && <VisitedIcon $ratio={ratio}/>}
                 </LastFloor>
             </Wrapper>
-            {isGirlHint && <Hint src={hint} alt='' $ratio={ratio}/>}
+            {isGirlHint && <Hint src={hint} alt='' $ratio={ratio} onClick={() => setIsGirlHint(false)}/>}
             <ModalHint opened={isHint} isDark onClick={handleCloseHint} $ratio={ratio}>
                 Нажми сюда, если захочешь завершить игру и сохранить баллы
             </ModalHint>
