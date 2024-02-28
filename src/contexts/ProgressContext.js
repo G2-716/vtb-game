@@ -3,6 +3,7 @@ import {NEXT_SCREENS, SCREENS} from "../constants/screens";
 import {getUrlParam} from "../utils/getUrlParam";
 import {getLeaderboard} from "../api/getLeaderboard";
 import {saveToLeaderboard} from "../api/saveToLeaderboard";
+import {saveToMailList} from "../api/saveToMailList";
 
 const INITIAL_STATE = {
     screen: SCREENS.INTRO_1,
@@ -59,7 +60,10 @@ export function ProgressProvider(props) {
         if (user && leaderboard) {
             setIsLeaderboardSaving(true)
 
-            saveToLeaderboard([...leaderboard, { ...user, points: totalPoints }])
+            Promise.allSettled([
+                saveToLeaderboard([...leaderboard, { ...user, points: totalPoints }]),
+                saveToMailList(user),
+            ])
                 .finally(() => setIsLeaderboardSaving(false))
         }
     }

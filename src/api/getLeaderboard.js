@@ -1,7 +1,7 @@
-import {GET_ENDPOINT_URL} from "../constants/api";
+import {LEADERBOARD_ENDPOINT_URL} from "../constants/api";
 
 export function getLeaderboard() {
-    return fetch(GET_ENDPOINT_URL, {
+    return fetch(`${LEADERBOARD_ENDPOINT_URL}/latest?meta=false`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' },
     })
