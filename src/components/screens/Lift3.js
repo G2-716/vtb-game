@@ -43,6 +43,11 @@ const Floor = styled.div`
     white-space: pre-line;
 `;
 
+const LastFloor = styled(Floor)`
+    background: #ffffff;
+    box-shadow: 2px 2px 0 0 #D1D1D1 ${({$active}) => $active ? ', inset 0 0 0 2px #E7B3FF' : ''};
+`;
+
 const Icon = styled.div`
     background: url(${({background}) => background}) center center no-repeat;
     background-size: contain;
@@ -170,19 +175,33 @@ export function Lift3() {
                         <path d="M32 13L22 7.2265V12H10V14H22V18.7735L32 13Z" fill="black"/>
                     </svg>
                 </ExitBtn>
-                {FLOORS.map(floor => (
-                    <Floor 
-                        key={floor.id}
-                        $ratio={ratio}
-                        onClick={() => handleMove(floor.id, floor.screen)} 
-                        $active={floor.id === chosen}
-                    >
-                        <FloorLogoIcon background={floor.logo} $ratio={ratio}/>
-                        <FloorTitle $ratio={ratio}>{floor.name}</FloorTitle>
-                        <FloorCircleIcon background={floor.circle} $ratio={ratio}/>
-                        {visitedFloors.includes(floor.id) && <VisitedIcon $ratio={ratio}/>}
-                    </Floor>
-                ))}
+                {FLOORS.map((floor, ind) => {
+                    if (ind === FLOORS.length - 1) return;
+
+                    return (
+                        <Floor 
+                            key={floor.id}
+                            $ratio={ratio}
+                            onClick={() => handleMove(floor.id, floor.screen)} 
+                            $active={floor.id === chosen}
+                        >
+                            <FloorLogoIcon background={floor.logo} $ratio={ratio}/>
+                            <FloorTitle $ratio={ratio}>{floor.name}</FloorTitle>
+                            <FloorCircleIcon background={floor.circle} $ratio={ratio}/>
+                            {visitedFloors.includes(floor.id) && <VisitedIcon $ratio={ratio}/>}
+                        </Floor>
+                    )
+                })}
+                <LastFloor
+                    $ratio={ratio}
+                    onClick={() => handleMove(FLOORS[5].id, FLOORS[5].screen)} 
+                    $active={FLOORS[5].id === chosen}
+                >
+                    <FloorLogoIcon background={FLOORS[5].logo} $ratio={ratio}/>
+                    <FloorTitle $ratio={ratio}>{FLOORS[5].name}</FloorTitle>
+                    <FloorCircleIcon background={FLOORS[5].circle} $ratio={ratio}/>
+                    {visitedFloors.includes(FLOORS[5].id) && <VisitedIcon $ratio={ratio}/>}
+                </LastFloor>
             </Wrapper>
             {isGirlHint && <Hint src={hint} alt='' $ratio={ratio}/>}
             <ModalHint opened={isHint} isDark onClick={handleCloseHint} $ratio={ratio}>

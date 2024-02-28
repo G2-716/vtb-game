@@ -13,12 +13,17 @@ export const BUTTON_SIZE = {
 };
 
 const TYPE_TO_BACKGROUND = {
-    [BUTTON_TYPES.filled]: colors.gray,
+    [BUTTON_TYPES.filled]: colors.darkBlue,
     [BUTTON_TYPES.outlined]: 'transparent',
 };
 
 const TYPE_TO_COLOR = {
     [BUTTON_TYPES.filled]: 'white',
+    [BUTTON_TYPES.outlined]: colors.gray,
+};
+
+const TYPE_TO_BORDER = {
+    [BUTTON_TYPES.filled]: colors.darkBlue,
     [BUTTON_TYPES.outlined]: colors.gray,
 };
 
@@ -32,7 +37,7 @@ const ButtonStyled = styled.button`
     align-items: center;
     justify-content: center;
     outline: none;
-    border:  2px solid ${({background}) => background ?? colors.gray};
+    border:  2px solid ${({background, $type}) => background ?? TYPE_TO_BORDER[$type]};
     color: ${({$type}) => TYPE_TO_COLOR[$type]};
     background-color: ${({background, $type}) => background ?? TYPE_TO_BACKGROUND[$type]};
     padding: ${({$size}) => $size === BUTTON_SIZE.md ? 'var(--spacing_x2) var(--spacing_x4)' : 'var(--spacing) var(--spacing_x2)'};

@@ -48,8 +48,8 @@ const HorizontalBlock = styled.div`
 
 const Answer = styled.div`
     font-size: calc(16px * ${({$ratio}) => $ratio});
-    background: ${({$isActive}) => $isActive ? 'white' : colors.gray};
-    border: 2px solid ${colors.gray};
+    background: ${({$isActive}) => $isActive ? 'white' : colors.darkBlue};
+    border: 2px solid ${({$isActive}) => $isActive ? colors.gray :  colors.darkBlue};
     border-radius: calc(15px * ${({$ratio}) => $ratio});
     padding: calc(10px * ${({$ratio}) => $ratio}) calc(20px * ${({$ratio}) => $ratio});
     margin-top: calc(10px * ${({$ratio}) => $ratio});

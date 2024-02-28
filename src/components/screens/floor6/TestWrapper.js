@@ -40,7 +40,7 @@ const Answer = styled.div`
     padding: calc(10px * ${({$ratio}) => $ratio}) calc(20px * ${({$ratio}) => $ratio});
     color: white;
     border-radius: calc(15px * ${({$ratio}) => $ratio});
-    background: ${({$isActive}) => $isActive ? colors.purple : colors.gray};
+    background: ${({$isActive}) => $isActive ? colors.purple : colors.darkBlue};
 
     transition: background .3s ease-in;
 

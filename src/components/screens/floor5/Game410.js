@@ -15,7 +15,7 @@ export function Game410() {
     }
 
     useEffect(() => {
-        reachMetrikaGoal('finish_ppik');
+        reachMetrikaGoal('finish_ppik')
     }, []);
 
     const finishText = 'В 2022 году в Финансовом университете открылась базовая кафедра ВТБ. ' +

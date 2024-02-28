@@ -29,11 +29,11 @@ const Content = styled.div`
     width: 100%;
     height: 100%;
     transform: translate(0, 0);
+    border: 2px solid #000000;
 
     @media (min-width: ${MIN_MOCKUP_WIDTH}px) {
         max-width: ${({sizeRatio}) => `calc(${TARGET_WIDTH}px * ${sizeRatio})`};
         max-height: ${({sizeRatio}) => `calc(${TARGET_HEIGHT}px * ${sizeRatio})`};
-        border: 2px solid #000000;
         border-radius: 10px;
         box-sizing: content-box;
     }
