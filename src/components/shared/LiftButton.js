@@ -13,9 +13,9 @@ const ButtonStyled = styled(Button)`
     z-index: 3;
 `;
 
-export const LiftButton = () => {
+export const LiftButton = ({className}) => {
     const {next} = useProgress();
     const ratio = useSizeRatio();
 
-    return <ButtonStyled $ratio={ratio} onClick={() => next(SCREENS.LIFT_3)}>В лифт</ButtonStyled>
+    return <ButtonStyled className={className} $ratio={ratio} onClick={() => next(SCREENS.LIFT_3)}>В лифт</ButtonStyled>
 }

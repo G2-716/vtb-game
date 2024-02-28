@@ -21,6 +21,7 @@ const INITIAL_STATE = {
     floorAnswers: {},
     itemsPoints: 0,
     items: [],
+    floorPoints: 0,
 }
 
 const ProgressContext = createContext(INITIAL_STATE)
@@ -42,8 +43,9 @@ export function ProgressProvider(props) {
     const [moveFigurePoints, setMoveFigurePoints] = useState(INITIAL_STATE.moveFigurePoints)
     const [visitedFloors, setVisitedFloors] = useState(INITIAL_STATE.visitedFloors)
     const [floorAnswers, setFloorAnswers] = useState(INITIAL_STATE.floorAnswers)
+    const [floorPoints, setFloorPoints] = useState(INITIAL_STATE.floorPoints);
     const [items, setItems] = useState(INITIAL_STATE.items)
-    const totalPoints = testPoints + points2048 + wordPoints + linesPoints + tetrisPoints + moveFigurePoints + itemsPoints
+    const totalPoints = testPoints + points2048 + wordPoints + linesPoints + tetrisPoints + moveFigurePoints + itemsPoints + floorPoints
 
     function loadLeaderboard() {
         setIsLeaderboardLoading(true)
@@ -88,8 +90,16 @@ export function ProgressProvider(props) {
 
     function addFloorAnswer(floorId, answerId) {
         setFloorAnswers(prev => {
-            if (!prev[floorId]) return {...prev, [floorId]: [answerId]};
+            if (!prev[floorId]) {
+                setFloorPoints(prev => prev + 1);
+                return {...prev, [floorId]: [answerId]};
+            }
 
+            if (!prev[floorId].includes(answerId)) {
+                const points = [...prev[floorId], answerId].length === 4 ? 2 : 1;
+                setFloorPoints(prev => prev + points);
+            }
+            
             return  {
                 ...prev, 
                 [floorId]: prev[floorId].includes(answerId) ? prev[floorId] : [...prev[floorId], answerId]
@@ -120,6 +130,7 @@ export function ProgressProvider(props) {
         isLeaderboardSaving,
         visitedFloors,
         floorAnswers,
+        floorPoints,
         next,
         reset,
         visitElevator: () => setIsFirstElevator(false),

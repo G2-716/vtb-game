@@ -41,7 +41,7 @@ const Answer = styled.div`
     color: white;
     border-radius: calc(15px * ${({$ratio}) => $ratio});
     background: ${({$isActive}) => $isActive ? colors.purple : colors.darkBlue};
-
+    font-size: calc(16px * ${({$ratio}) => $ratio});
     transition: background .3s ease-in;
 
     &:first-of-type {

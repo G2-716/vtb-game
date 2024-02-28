@@ -175,10 +175,9 @@ export function Lift3() {
                         <path d="M32 13L22 7.2265V12H10V14H22V18.7735L32 13Z" fill="black"/>
                     </svg>
                 </ExitBtn>
-                {FLOORS.map((floor, ind) => {
-                    if (ind === FLOORS.length - 1) return;
-
-                    return (
+                {FLOORS.map((floor, ind) => (
+                    (ind === FLOORS.length - 1) ? null 
+                    : (
                         <Floor 
                             key={floor.id}
                             $ratio={ratio}
@@ -191,7 +190,7 @@ export function Lift3() {
                             {visitedFloors.includes(floor.id) && <VisitedIcon $ratio={ratio}/>}
                         </Floor>
                     )
-                })}
+                ))}
                 <LastFloor
                     $ratio={ratio}
                     onClick={() => handleMove(FLOORS[5].id, FLOORS[5].screen)} 

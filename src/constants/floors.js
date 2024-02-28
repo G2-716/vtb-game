@@ -46,7 +46,7 @@ export const FLOORS = [
         screen: SCREENS.GAME_4_1,
         logo: floor5,
         circle: circle5,
-        name: 'Подразделение поддержки и контроля'
+        name: 'Подразделения поддержки и контроля'
     },
     {
         id: 6,

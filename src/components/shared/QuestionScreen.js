@@ -46,6 +46,10 @@ const HorizontalBlock = styled.div`
     }
 `;
 
+const LiftButtonStyled = styled(LiftButton)`
+    right: calc((100% - 337px * ${({$ratio}) => $ratio}) / 2  + 2px);
+`;
+
 const Answer = styled.div`
     font-size: calc(16px * ${({$ratio}) => $ratio});
     background: ${({$isActive}) => $isActive ? 'white' : colors.darkBlue};
@@ -79,7 +83,7 @@ export const QuestionScreen = ({ image, answerScreens, isBigPicture, floorId }) 
 
     return (
         <Wrapper>
-            <LiftButton />
+            <LiftButtonStyled $ratio={ratio}/>
             <ImageComponent src={image} alt={''} $ratio={ratio}/>
             <QuestionsBlock $ratio={ratio}>
                 <HorizontalBlock>
