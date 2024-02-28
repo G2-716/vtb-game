@@ -19,6 +19,10 @@ const ScreenStyled = styled(BgScreenWrapper)`
        background-position-y: 0;
     }
 
+    @media screen and (min-width: 370px) and (max-height: 800px) {
+        background-position-y: 0;
+    }
+
     @media screen and (min-height: 800px) {
         background-size: contain;
     }
@@ -28,9 +32,9 @@ const ScreenStyled = styled(BgScreenWrapper)`
     }
 `;
 
-export const BgImageScreen = ({ image, onClick, background, isIcon, isLift, text = "Познакомиться" }) => (
+export const BgImageScreen = ({ image, onClick, background, isIcon, isLift, className, text = "Познакомиться" }) => (
     <Wrapper background={background}>
         {isLift && <LiftButton />}
-        <ScreenStyled background={image} text={text} onClick={onClick} isIcon={isIcon}/>
+        <ScreenStyled background={image} text={text} onClick={onClick} isIcon={isIcon} className={className}/>
     </Wrapper>
 )
