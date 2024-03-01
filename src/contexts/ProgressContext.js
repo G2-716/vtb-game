@@ -59,10 +59,11 @@ export function ProgressProvider(props) {
     function saveLeaderboard() {
         if (user && leaderboard) {
             setIsLeaderboardSaving(true)
+            const data = { ...user, points: totalPoints }
 
             Promise.allSettled([
-                saveToLeaderboard([...leaderboard, { ...user, points: totalPoints }]),
-                saveToMailList(user),
+                saveToLeaderboard([...leaderboard, data]),
+                saveToMailList(data),
             ])
                 .finally(() => setIsLeaderboardSaving(false))
         }
