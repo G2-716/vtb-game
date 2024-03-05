@@ -34,7 +34,7 @@ const ButtonStyled = styled(Button)`
 
 
 export const Internship1 = () => {
-    const {next, addVisitedFloor, isTestDone} = useProgress()
+    const {next, addVisitedFloor} = useProgress()
     const ratio = useSizeRatio()
 
     useEffect(() => {
@@ -48,7 +48,7 @@ export const Internship1 = () => {
 
     const handleTest = () => {
         reachMetrikaGoal('test1')
-        next(isTestDone ? SCREENS.TEST_12 : SCREENS.TEST_1);
+        next(SCREENS.TEST_1)
     }
 
     return (

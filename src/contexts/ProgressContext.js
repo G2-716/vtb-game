@@ -23,7 +23,6 @@ const INITIAL_STATE = {
     itemsPoints: 0,
     items: [],
     floorPoints: 0,
-    isTestDone: false,
 }
 
 const ProgressContext = createContext(INITIAL_STATE)
@@ -46,7 +45,6 @@ export function ProgressProvider(props) {
     const [visitedFloors, setVisitedFloors] = useState(INITIAL_STATE.visitedFloors)
     const [floorAnswers, setFloorAnswers] = useState(INITIAL_STATE.floorAnswers)
     const [floorPoints, setFloorPoints] = useState(INITIAL_STATE.floorPoints);
-    const [isTestDone, setIsTestDone] = useState(INITIAL_STATE.isTestDone);
     const [items, setItems] = useState(INITIAL_STATE.items)
     const totalPoints = testPoints + points2048 + wordPoints + linesPoints + tetrisPoints + moveFigurePoints + itemsPoints + floorPoints
 
@@ -83,6 +81,7 @@ export function ProgressProvider(props) {
 
     function reset() {
         setScreen(getUrlParam('screen') || INITIAL_STATE.screen)
+        setTestPoints(INITIAL_STATE.testPoints)
         setPoints2048(INITIAL_STATE.points2048)
         setWordPoints(INITIAL_STATE.wordPoints)
         setLinesPoints(INITIAL_STATE.linesPoints)
@@ -138,7 +137,6 @@ export function ProgressProvider(props) {
         visitedFloors,
         floorAnswers,
         floorPoints,
-        isTestDone,
         next,
         reset,
         visitElevator: () => setIsFirstElevator(false),
@@ -154,7 +152,6 @@ export function ProgressProvider(props) {
         addVisitedFloor: (id) => setVisitedFloors(prev => prev.includes(id) ? prev : [...prev, id]),
         addFloorAnswer,
         addItemPoints,
-        startTest: () => setIsTestDone(true),
     }
 
     useEffect(() => {

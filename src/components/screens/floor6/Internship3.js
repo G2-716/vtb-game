@@ -95,7 +95,7 @@ export function Internship3() {
     const [active, setActive] = useState();
     const [isModal, setIsModal] = useState(false);
     const ratio = useSizeRatio();
-    const {next, isTestDone} = useProgress()
+    const {next} = useProgress()
 
     const handleClick = (intern) => {
         setInfo({...intern});
@@ -108,7 +108,7 @@ export function Internship3() {
 
     const handleToTest = () => {
         reachMetrikaGoal('test2')
-        next(isTestDone ? SCREENS.TEST_12 : SCREENS.TEST_1)
+        next(SCREENS.TEST_1)
     }
 
     return (
