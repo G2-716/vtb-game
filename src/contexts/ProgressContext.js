@@ -152,6 +152,7 @@ export function ProgressProvider(props) {
         addVisitedFloor: (id) => setVisitedFloors(prev => prev.includes(id) ? prev : [...prev, id]),
         addFloorAnswer,
         addItemPoints,
+        resetTestPoints: () => setTestPoints(0),
     }
 
     useEffect(() => {
