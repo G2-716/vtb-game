@@ -1,9 +1,12 @@
-import {LEADERBOARD_ENDPOINT_URL} from "../constants/api";
+import {LEADERBOARD_ENDPOINT_URL, LEADERBOARD_API_KEY} from "../constants/api";
 
 export function getLeaderboard() {
-    return fetch(`${LEADERBOARD_ENDPOINT_URL}/latest?meta=false`, {
+    return fetch(LEADERBOARD_ENDPOINT_URL, {
         method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `token ${LEADERBOARD_API_KEY}`,
+        },
     })
         .then(resp => resp.json())
         .catch(console.log)
