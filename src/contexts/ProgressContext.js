@@ -140,7 +140,7 @@ export function ProgressProvider(props) {
         next,
         reset,
         visitElevator: () => setIsFirstElevator(false),
-        addTestPoints: () => setTestPoints(prev => prev + 2),
+        addTestPoints: () => setTestPoints(prev => prev >= 20 ? 20 : prev + 2),
         addPoints2048: setPoints2048,
         addWordPoints: setWordPoints,
         addLinesPoints: setLinesPoints,
