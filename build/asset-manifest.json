@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.29b3dfe1.css",
-    "main.js": "./static/js/main.8a9ecf8d.js",
+    "main.js": "./static/js/main.d35c04a8.js",
     "static/media/bg_floor6.png": "./static/media/bg_floor6.08102cafc8f91457cf45.png",
     "static/media/landing_bgDesktop.png": "./static/media/landing_bgDesktop.5352d235c592fd10fa50.png",
     "static/media/VTBGroupCond-DemiBold.ttf": "./static/media/VTBGroupCond-DemiBold.8b222f2e6ffbe2d93de4.ttf",
@@ -15,7 +15,7 @@
     "static/media/bg_floor5.png": "./static/media/bg_floor5.a15f341e3ebdf5d99c29.png",
     "static/media/floor6_start.png": "./static/media/floor6_start.43f95ad31109e4124f70.png",
     "static/media/test1.png": "./static/media/test1.f9b9166e274847c37e53.png",
-    "static/media/elevator2.png": "./static/media/elevator2.48b9b6f74ad2ff0f11f3.png",
+    "static/media/elevator2.png": "./static/media/elevator2.f5f16c0ae6a3f0402aad.png",
     "static/media/bg_floor3.png": "./static/media/bg_floor3.3e53fcc42ab72ade888a.png",
     "static/media/floor5_people.png": "./static/media/floor5_people.f6513164cd033e3ae9bf.png",
     "static/media/start.png": "./static/media/start.3d25cd001d576b0ee9db.png",
@@ -26,7 +26,7 @@
     "static/media/bg_elevator.png": "./static/media/bg_elevator.25b3e5263471138ddc55.png",
     "static/media/floor1_people.png": "./static/media/floor1_people.c5170e6ea694c67baaf8.png",
     "static/media/answer5_projects.png": "./static/media/answer5_projects.ad9cb678e991cdf48872.png",
-    "static/media/start2.png": "./static/media/start2.150d5469bc5e6212dc3d.png",
+    "static/media/start2.png": "./static/media/start2.9430b4f9871bf61e9893.png",
     "static/media/bg_floor1.png": "./static/media/bg_floor1.bd39ef1be4bf5f777e52.png",
     "static/media/answer1_projects.png": "./static/media/answer1_projects.bd79276e8e254448ae03.png",
     "static/media/finish.png": "./static/media/finish.e5bf5fcb832d5591fb9d.png",
@@ -89,10 +89,10 @@
     "static/media/moveFigureBorder.svg": "./static/media/moveFigureBorder.07b21fc22e0924ea57a143ae0fc1895c.svg",
     "static/media/visitedIcon.svg": "./static/media/visitedIcon.cdd3341433f7c3becd4f81078f7dfea2.svg",
     "main.29b3dfe1.css.map": "./static/css/main.29b3dfe1.css.map",
-    "main.8a9ecf8d.js.map": "./static/js/main.8a9ecf8d.js.map"
+    "main.d35c04a8.js.map": "./static/js/main.d35c04a8.js.map"
   },
   "entrypoints": [
     "static/css/main.29b3dfe1.css",
-    "static/js/main.8a9ecf8d.js"
+    "static/js/main.d35c04a8.js"
   ]
 }
