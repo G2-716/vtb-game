@@ -12,13 +12,13 @@ const Result = styled.h3`
     font-weight: bold;
 `;
 
-export const ResultText = ({points}) => {
+export const ResultText = ({points, totalPoints}) => {
     const ratio = useSizeRatio();
     
     return (
         <>
             <Text>Твой результат</Text>
-            <Result $ratio={ratio}>{points}</Result>
+            <Result $ratio={ratio}>{points}{totalPoints ? `/${totalPoints}` : ''}</Result>
             <Text style={{color: colors.purple}}>{plural(points, 'балл', 'балла', 'баллов')}</Text>
         </>
     )

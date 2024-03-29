@@ -216,7 +216,7 @@ export function Lift3() {
             )}
             <Modal opened={isModal}>
                 <Text>
-                    Уверен, что хочешь завершить игру? В рейтинг пойдут только те баллы, которые ты успел заработать до этого момента
+                    Уверен, что хочешь завершить игру прямо сейчас?
                 </Text>
                 <ButtonsWrapper $ratio={ratio}>
                     <Button size={BUTTON_SIZE.sm} onClick={() => setIsModal(false)}>

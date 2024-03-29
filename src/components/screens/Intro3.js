@@ -1,6 +1,5 @@
 import {useState} from "react";
 import {uid} from "uid";
-import {SwitchTransition, CSSTransition} from "react-transition-group";
 import styled from "@emotion/styled";
 import pic from '../../assets/images/start3.png';
 import phone_mockup from '../../assets/images/phone_mockup.png';
@@ -18,10 +17,6 @@ const SWITCH_DURATION = 400;
 
 const SWITCH_NAME = 'switch';
 
-const STEP = {
-    LOGIN: 'LOGIN',
-    INFO: 'INFO',
-}
 
 const Wrapper = styled.div`
     display: flex;
@@ -123,60 +118,9 @@ const FormButton = styled(Button)`
     font-size: ${({ sizeRatio }) => `calc(15px * ${sizeRatio})`};
 `
 
-const Info = styled.div`
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-    z-index: 2;
-    
-    &.${SWITCH_NAME}-enter {
-        opacity: 0;
-    }
-
-    &.${SWITCH_NAME}-enter-active {
-        opacity: 1;
-        transition: opacity ${SWITCH_DURATION}ms;
-    }
-
-    &.${SWITCH_NAME}-exit {
-        opacity: 1;
-    }
-
-    &.${SWITCH_NAME}-exit-active {
-        opacity: 0;
-        transition: opacity ${SWITCH_DURATION}ms;
-    }
-`
-
-const InfoTitle = styled(Text)`
-    text-align: center;
-`
-
-const InfoId = styled(Text)`
-    margin-top: ${({ sizeRatio }) => `calc(4px * ${sizeRatio})`};
-    font-size: ${({ sizeRatio }) => `calc(48px * ${sizeRatio})`};
-    line-height: ${({ sizeRatio }) => `calc(57.6px * ${sizeRatio})`};
-    text-align: center;
-    color: ${colors.purple};
-    font-weight: 700;
-`
-
-const InfoDescription = styled(Text)`
-    text-align: center;
-    margin-top: ${({ sizeRatio }) => `calc(9px * ${sizeRatio})`};
-`
-
-const InfoButton = styled(Button)`
-    margin-top: ${({ sizeRatio }) => `calc(61px * ${sizeRatio})`};
-    font-size: ${({ sizeRatio }) => `calc(16px * ${sizeRatio})`};
-`
-
 export function Intro3() {
     const {next, setUser, leaderboard, isLeaderboardLoading} = useProgress()
     const sizeRatio = useSizeRatio()
-    const [step, setStep] = useState(STEP.LOGIN)
     const [id] = useState(() => uid(7))
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
@@ -223,7 +167,7 @@ export function Intro3() {
             setEmailError('Почта указана в неверном формате')
         } else if (leaderboard && leaderboard.find((data) => data.email === email)) {
             result = false
-            setEmailError('Эта почта уже участвует в рейтинге, попробуй другую')
+            setEmailError('Эта почта уже участвует в игре, попробуй другую')
         }
 
         return result
@@ -234,69 +178,29 @@ export function Intro3() {
 
         if (validate()) {
             setUser(id, name, email)
-            setStep(STEP.INFO)
             reachMetrikaGoal('fill')
+            next()
         }
-    }
-
-    function handleContinue() {
-        next()
-    }
-
-    function renderContent() {
-        if (step === STEP.LOGIN) {
-            return (
-                <Form onSubmit={handleSubmit}>
-                    <FormError sizeRatio={sizeRatio} visible={!!error}>{error ?? previousError}</FormError>
-                    <FormFields sizeRatio={sizeRatio}>
-                        <FormInput sizeRatio={sizeRatio} label="Имя" error={!!nameError} value={name} onChange={handleNameChange} />
-                        <FormInput sizeRatio={sizeRatio} label="E-mail" error={!!emailError} value={email} onChange={handleEmailChange} />
-                        <FormCheckbox sizeRatio={sizeRatio} error={!!isAgreedError} value={isAgreed} onChange={handleIsAgreedChange}>
-                            Я согласен(а) на <FormCheckboxLink href="https://fut.ru/personal_data_policy/" target="_blank">обработку персональных данных</FormCheckboxLink>{' '}
-                            и получение информационных сообщений, а также с <FormCheckboxLink href="/rules" target="_blank">правилами проведения акции</FormCheckboxLink>.
-                        </FormCheckbox>
-                    </FormFields>
-                    <FormButton sizeRatio={sizeRatio} buttonType="submit" loading={isLeaderboardLoading}>
-                        Получить пропуск
-                    </FormButton>
-                </Form>
-            )
-        }
-
-        if (step === STEP.INFO) {
-            return (
-                <Info sizeRatio={sizeRatio}>
-                    <InfoTitle sizeRatio={sizeRatio}>Твой ID</InfoTitle>
-                    <InfoId sizeRatio={sizeRatio}>{id}</InfoId>
-                    <InfoDescription sizeRatio={sizeRatio}>
-                        Он нужен, чтобы отслеживать твою позицию в рейтинге.
-                        {'\n'}
-                        <b>Сделай скриншот</b>, чтобы не потерять его.
-                    </InfoDescription>
-                    <InfoDescription sizeRatio={sizeRatio}>
-                        Обрати внимание, <b>твои баллы сохранятся только после завершения игры</b>.
-                        {'\n'}
-                        Если ты закроешь окно с игрой до её завершения, данные не будут записаны.
-                    </InfoDescription>
-                    <InfoButton sizeRatio={sizeRatio} onClick={handleContinue}>
-                        Продолжить
-                    </InfoButton>
-                </Info>
-            )
-        }
-
-        return null
     }
 
     return (
         <Wrapper sizeRatio={sizeRatio} background={pic}>
             <PhoneWrapper sizeRatio={sizeRatio}>
                 <Phone src={phone_mockup} />
-                <SwitchTransition mode='out-in'>
-                    <CSSTransition key={step} timeout={SWITCH_DURATION} classNames={SWITCH_NAME}>
-                        {renderContent()}
-                    </CSSTransition>
-                </SwitchTransition>
+                <Form onSubmit={handleSubmit}>
+                        <FormError sizeRatio={sizeRatio} visible={!!error}>{error ?? previousError}</FormError>
+                        <FormFields sizeRatio={sizeRatio}>
+                            <FormInput sizeRatio={sizeRatio} label="Имя" error={!!nameError} value={name} onChange={handleNameChange} />
+                            <FormInput sizeRatio={sizeRatio} label="E-mail" error={!!emailError} value={email} onChange={handleEmailChange} />
+                            <FormCheckbox sizeRatio={sizeRatio} error={!!isAgreedError} value={isAgreed} onChange={handleIsAgreedChange}>
+                                Я согласен(а) на <FormCheckboxLink href="https://fut.ru/personal_data_policy/" target="_blank">обработку персональных данных</FormCheckboxLink>{' '}
+                                и получение информационных сообщений, а также с <FormCheckboxLink href="/rules" target="_blank">правилами проведения акции</FormCheckboxLink>.
+                            </FormCheckbox>
+                        </FormFields>
+                        <FormButton sizeRatio={sizeRatio} buttonType="submit" loading={isLeaderboardLoading}>
+                            Получить пропуск
+                        </FormButton>
+                    </Form>
             </PhoneWrapper>
         </Wrapper>
     )

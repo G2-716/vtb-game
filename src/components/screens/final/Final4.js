@@ -47,16 +47,16 @@ export function Final4() {
 
     function goToRating() {
         reachMetrikaGoal('rating')
-        window.open('/rating', '_blank')
+        window.open('https://vtbcareer.com', '_blank')
     }
 
     return (
         <Wrapper>
             <ModalStyled $ratio={ratio} opened>
-                <ResultText points={points}/>
+                <ResultText points={points} totalPoints={65}/>
                 <ButtonsBlock $ratio={ratio}>
                     <Button background={colors.blue} onClick={goToRating}>
-                        Перейти к рейтингу{'\n'}игроков
+                        Карьера в ВТБ
                     </Button>
                 </ButtonsBlock>
             </ModalStyled>
