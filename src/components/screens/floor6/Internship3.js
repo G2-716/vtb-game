@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { useState } from "react";
 import { colors } from "../../../constants/colors";
-import { bankInterns, itInterns } from "../../../constants/internships";
+import { interns } from "../../../constants/internships";
 import { SCREENS } from "../../../constants/screens";
 import {useProgress} from "../../../contexts/ProgressContext";
 import { useSizeRatio } from "../../../contexts/SizeRatioContext";
@@ -115,20 +115,10 @@ export function Internship3() {
         <Container $ratio={ratio}>
             <Wrapper $isBlurred={isModal}>
                 <Title>
-                    {'Общебанковские\nстажировки'}
+                    Стажировки ВТБ
                 </Title>
                 <Block>
-                    {bankInterns.map((intern) => (
-                        <InternWrapper key={intern.id} onClick={() => handleClick(intern)} $isActive={intern?.id === active}>
-                            {intern.name}
-                        </InternWrapper>
-                    ))}
-                </Block>
-                <Title>
-                    Стажировки в IT
-                </Title>
-                <Block>
-                    {itInterns.map((intern) => (
+                    {interns.map((intern) => (
                         <InternWrapper key={intern.id} onClick={() => handleClick(intern)} $isActive={intern?.id === active}>
                             {intern.name}
                         </InternWrapper>
