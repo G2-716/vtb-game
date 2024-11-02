@@ -1,6 +1,6 @@
 import { FTClient } from "ft-client";
 
-export const LEADERBOARD_ENDPOINT_URL = "https://ft-admin-api.sjuksin.ru/";
+export const LEADERBOARD_ENDPOINT_URL = "https://games-admin.fut.ru/api/";
 export const LEADERBOARD_PROJECT_ID = "vtb-tower";
 
 export const MAIL_LIST_ID = "83";
