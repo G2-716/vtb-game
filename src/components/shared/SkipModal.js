@@ -18,18 +18,18 @@ export const SkipModal = ({opened, onContinue, onSkip}) => {
     return (
         <Modal opened={opened}>
             <Text>
-                Уверен, что хочешь пропустить игру? Если пропустишь — не сможешь получить баллы
+                Уверен, что хочешь завершить игру прямо сейчас?
             </Text>
             <ButtonWrapper $ratio={ratio}>
                 <Button size={BUTTON_SIZE.sm} onClick={onContinue}>
-                    Играть
+                    Нет, продолжить игру
                 </Button>
                 <Button 
                     size={BUTTON_SIZE.sm} 
                     type={BUTTON_TYPES.outlined}
                     onClick={onSkip}
                 >
-                    Да, пропустить
+                    Да, завершить игру
                 </Button>
             </ButtonWrapper>
         </Modal>

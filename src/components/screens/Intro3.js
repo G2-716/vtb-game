@@ -1,6 +1,5 @@
 import {useState} from "react";
 import {uid} from "uid";
-import {SwitchTransition, CSSTransition} from "react-transition-group";
 import styled from "@emotion/styled";
 import pic from '../../assets/images/start3.png';
 import phone_mockup from '../../assets/images/phone_mockup.png';
@@ -10,18 +9,11 @@ import {usePrevious} from "../../hooks/usePrevious";
 import {Button} from "../shared/Button";
 import {Checkbox} from "../shared/Checkbox";
 import {Input} from "../shared/Input";
-import {Text} from "../shared/Text";
-import {colors} from "../../constants/colors";
 import { reachMetrikaGoal } from "../../utils/reachMetrikaGoal";
 
 const SWITCH_DURATION = 400;
 
 const SWITCH_NAME = 'switch';
-
-const STEP = {
-    LOGIN: 'LOGIN',
-    INFO: 'INFO',
-}
 
 const Wrapper = styled.div`
     display: flex;
@@ -121,9 +113,6 @@ const FormCheckboxLink = styled.a`
 const FormButton = styled(Button)`
     margin-top: ${({ sizeRatio }) => `calc(90px * ${sizeRatio})`};
     font-size: ${({ sizeRatio }) => `calc(15px * ${sizeRatio})`};
-`
-
-const Info = styled.div`
     position: relative;
     display: flex;
     flex-direction: column;
@@ -151,33 +140,9 @@ const Info = styled.div`
     }
 `
 
-const InfoTitle = styled(Text)`
-    text-align: center;
-`
-
-const InfoId = styled(Text)`
-    margin-top: ${({ sizeRatio }) => `calc(4px * ${sizeRatio})`};
-    font-size: ${({ sizeRatio }) => `calc(48px * ${sizeRatio})`};
-    line-height: ${({ sizeRatio }) => `calc(57.6px * ${sizeRatio})`};
-    text-align: center;
-    color: ${colors.purple};
-    font-weight: 700;
-`
-
-const InfoDescription = styled(Text)`
-    text-align: center;
-    margin-top: ${({ sizeRatio }) => `calc(9px * ${sizeRatio})`};
-`
-
-const InfoButton = styled(Button)`
-    margin-top: ${({ sizeRatio }) => `calc(134px * ${sizeRatio})`};
-    font-size: ${({ sizeRatio }) => `calc(16px * ${sizeRatio})`};
-`
-
 export function Intro3() {
     const {next, setUser, leaderboard, isLeaderboardLoading} = useProgress()
     const sizeRatio = useSizeRatio()
-    const [step, setStep] = useState(STEP.LOGIN)
     const [id] = useState(() => uid(7))
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
@@ -224,7 +189,7 @@ export function Intro3() {
             setEmailError('Почта указана в неверном формате')
         } else if (leaderboard && leaderboard.find((data) => data.email === email)) {
             result = false
-            setEmailError('Эта почта уже участвует в игре, попробуй другую')
+            setEmailError('Эта почта уже участвует в игре, попробуй другую')
         }
 
         return result
@@ -235,18 +200,15 @@ export function Intro3() {
 
         if (validate()) {
             setUser(id, name, email)
-            setStep(STEP.INFO)
             reachMetrikaGoal('fill')
+            next()
         }
     }
 
-    function handleContinue() {
-        next()
-    }
-
-    function renderContent() {
-        if (step === STEP.LOGIN) {
-            return (
+    return (
+        <Wrapper sizeRatio={sizeRatio} background={pic}>
+            <PhoneWrapper sizeRatio={sizeRatio}>
+                <Phone src={phone_mockup} />
                 <Form onSubmit={handleSubmit}>
                     <FormError sizeRatio={sizeRatio} visible={!!error}>{error ?? previousError}</FormError>
                     <FormFields sizeRatio={sizeRatio}>
@@ -261,38 +223,6 @@ export function Intro3() {
                         Получить пропуск
                     </FormButton>
                 </Form>
-            )
-        }
-
-        if (step === STEP.INFO) {
-            return (
-                <Info sizeRatio={sizeRatio}>
-                    <InfoTitle sizeRatio={sizeRatio}>Твой ID</InfoTitle>
-                    <InfoId sizeRatio={sizeRatio}>{id}</InfoId>
-                    <InfoDescription sizeRatio={sizeRatio}>
-                        Он нужен, чтобы отслеживать твою позицию в рейтинге.
-                        {'\n'}
-                        Сделай скриншот, чтобы не потерять его.
-                    </InfoDescription>
-                    <InfoButton sizeRatio={sizeRatio} onClick={handleContinue}>
-                        Продолжить
-                    </InfoButton>
-                </Info>
-            )
-        }
-
-        return null
-    }
-
-    return (
-        <Wrapper sizeRatio={sizeRatio} background={pic}>
-            <PhoneWrapper sizeRatio={sizeRatio}>
-                <Phone src={phone_mockup} />
-                <SwitchTransition mode='out-in'>
-                    <CSSTransition key={step} timeout={SWITCH_DURATION} classNames={SWITCH_NAME}>
-                        {renderContent()}
-                    </CSSTransition>
-                </SwitchTransition>
             </PhoneWrapper>
         </Wrapper>
     )

@@ -56,7 +56,7 @@ export function Final4() {
                 <ResultText points={points} totalPoints={65}/>
                 <ButtonsBlock $ratio={ratio}>
                     <Button background={colors.blue} onClick={goToRating}>
-                        Карьера в ВТБ
+                        Карьера в ВТБ
                     </Button>
                 </ButtonsBlock>
             </ModalStyled>
