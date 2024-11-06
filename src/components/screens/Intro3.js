@@ -11,10 +11,6 @@ import {Checkbox} from "../shared/Checkbox";
 import {Input} from "../shared/Input";
 import { reachMetrikaGoal } from "../../utils/reachMetrikaGoal";
 
-const SWITCH_DURATION = 400;
-
-const SWITCH_NAME = 'switch';
-
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
@@ -49,24 +45,6 @@ const Form = styled.form`
     align-items: center;
     height: 100%;
     z-index: 2;
-    
-    &.${SWITCH_NAME}-enter {
-        opacity: 0;
-    }
-
-    &.${SWITCH_NAME}-enter-active {
-        opacity: 1;
-        transition: opacity ${SWITCH_DURATION}ms;
-    }
-
-    &.${SWITCH_NAME}-exit {
-        opacity: 1;
-    }
-
-    &.${SWITCH_NAME}-exit-active {
-        opacity: 0;
-        transition: opacity ${SWITCH_DURATION}ms;
-    }
 `
 
 const FormFields = styled.div`
@@ -113,31 +91,6 @@ const FormCheckboxLink = styled.a`
 const FormButton = styled(Button)`
     margin-top: ${({ sizeRatio }) => `calc(90px * ${sizeRatio})`};
     font-size: ${({ sizeRatio }) => `calc(15px * ${sizeRatio})`};
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-    padding-top: ${({ sizeRatio }) => `calc(47px * ${sizeRatio})`};
-    z-index: 2;
-    
-    &.${SWITCH_NAME}-enter {
-        opacity: 0;
-    }
-
-    &.${SWITCH_NAME}-enter-active {
-        opacity: 1;
-        transition: opacity ${SWITCH_DURATION}ms;
-    }
-
-    &.${SWITCH_NAME}-exit {
-        opacity: 1;
-    }
-
-    &.${SWITCH_NAME}-exit-active {
-        opacity: 0;
-        transition: opacity ${SWITCH_DURATION}ms;
-    }
 `
 
 export function Intro3() {
@@ -216,7 +169,7 @@ export function Intro3() {
                         <FormInput sizeRatio={sizeRatio} label="E-mail" error={!!emailError} value={email} onChange={handleEmailChange} />
                         <FormCheckbox sizeRatio={sizeRatio} error={!!isAgreedError} value={isAgreed} onChange={handleIsAgreedChange}>
                             Я согласен(а) на <FormCheckboxLink href="https://fut.ru/personal_data_policy/" target="_blank">обработку персональных данных</FormCheckboxLink>{' '}
-                            и получение информационных сообщений, а также с <FormCheckboxLink href="https://vtb-tower.fut.ru/agreement.pdf" target="_blank">правилами проведения акции</FormCheckboxLink>.
+                            и получение информационных сообщений.
                         </FormCheckbox>
                     </FormFields>
                     <FormButton sizeRatio={sizeRatio} buttonType="submit" loading={isLeaderboardLoading}>
